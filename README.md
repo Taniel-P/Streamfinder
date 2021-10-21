@@ -1,5 +1,64 @@
 # Streamfinder
 
+## Catchy headline / cool graphic
+
+## Team Members
+- [Chris Monteilh]() - [Engineering Journal]()
+- [Jaimie Diemer]() - [Engineering Journal]()
+- [Mark Thomas](https://github.com/MarkPThomas) - [Engineering Journal](https://gist.github.com/MarkPThomas/11067bca74b4361ebe8f4c0129fbfa0e)
+- [Robert Lawrence]() - [Engineering Journal]()
+- [Steven Harder]() - [Engineering Journal]()
+- [Taniel Pogharian]() - [Engineering Journal]()
+
+## Introduction
+> This was a month long project where our team completed an MVP full stack application for an external user (Jane Doe)
+>
+> Add any additional content here pertaining to the timeline, any personal goals, etc.
+
+## What This App Does
+> * What problem does it solve? Who uses it?
+> * Why was it built?
+> * User Inputs and Outputs
+
+## Tech Stack ( you can include logos)
+
+## Anticipated Technical Challenges and Research
+> * Why, what was the plan to overcome those challenges?
+> * What did you learn?
+
+## Unexpected Challenges
+> * Why was it a challenge
+> * What did you learn?
+
+## App Video Demo / Screen Shot Walkthrough
+> * What were the user stories /  what was MVP (mention Minimal Viable Product)
+
+## How Does the App Work?
+> * What happens behind the scenes when the user interacts with it?
+> * OR What are all the places the data travels?  What happens to that data?
+> * Optionally include a diagram
+> * How does the tech stack come together?
+
+## Research Required
+> * Workflow and Key lessons from your team - specifically those related to: Agile, CI/CD, testing, working with external stakeholders, ticketing, and user stories.
+> * Your git workflow, style guides, commit guides, etc
+> * What did you learn from the process
+> * What were key takeaways from stand ups, code reviews, etc
+> * Writing tests
+> * Link to your project board, discuss completed tickets
+
+## Any non-MVP tickets (optional)
+> * Code refactorings
+> * Performance Optimizations
+> * Additional features
+> * etc
+
+## Notes From Sprint Retro
+> * What additional features do you plan to add, how do you plan to implement those features?
+> * Future refactoring?
+> * Additional dev ops considerations?
+> * UI/UX additions?
+
 ## Setup
 - **Clone/pull repo**
 - `npm install`
@@ -15,9 +74,6 @@
 ## Documentation
 - Documentation such as diagrams for the app and UX styling guidelines are stored in the **`./docs`** directory.
 - See the [web style guide](./docs/web-style-guide.md) for the standards we are following for coding and project organization.
-
-## Team Members
-- [Mark Thomas](https://github.com/MarkPThomas) - [Engineering Journal](https://gist.github.com/MarkPThomas/11067bca74b4361ebe8f4c0129fbfa0e)
 
 
 ## Testing (IP)
