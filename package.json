@@ -1,0 +1,53 @@
+{
+  "name": "streamfinder",
+  "version": "1.0.0",
+  "description": "## Catchy headline / cool graphic",
+  "main": "index.js",
+  "scripts": {
+    "clear": "rimraf build",
+    "build:server": "webpack --config webpack.server.config.js",
+    "start:server": "node build/server/bundle.js",
+    "dev:server": "nodemon --ignore build --exec 'run-s clear build:server start:server'",
+    "dev:client": "webpack server --config webpack.client.config.js",
+    "dev": "run-p dev:client dev:server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BOC-CornflowerBlue/Streamfinder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BOC-CornflowerBlue/Streamfinder/issues"
+  },
+  "homepage": "https://github.com/BOC-CornflowerBlue/Streamfinder#readme",
+  "dependencies": {
+    "axios": "^0.23.0",
+    "express": "^4.17.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/runtime": "^7.15.4",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.4.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.4.2",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "run-p": "0.0.0",
+    "style-loader": "^3.3.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1",
+    "webpack-merge": "^5.8.0",
+    "webpack-node-externals": "^3.0.0"
+  }
+}
