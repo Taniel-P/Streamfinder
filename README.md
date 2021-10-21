@@ -63,8 +63,7 @@
 - **Clone/pull repo**
 - `npm install`
 - Create a GitHub authorization token and store it in **`config.js`** (make sure it's `.gitignored`).
-- `npm start` for the server
-- `npm run build` (in a separate terminal) for webpack/react/index.html
+- `npm run dev` to build and run server and client side app (in development, bundles will be compiled and served by webpack in-memory)
 - Navigate to `http://localhost:3000` in browser
 
 ## Contributing
