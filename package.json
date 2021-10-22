@@ -10,7 +10,7 @@
     "dev:server": "nodemon --ignore build --exec 'run-s clear build:server start:server'",
     "dev:client": "webpack server --config webpack.client.config.js",
     "dev": "run-p dev:client dev:server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
