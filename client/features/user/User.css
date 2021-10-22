@@ -1,4 +1,7 @@
+/* Please prefix class names with ss (e.g., ss-menu-item) to avoid conflicts with other features when CSS is bundled */
+
 /* Please prefix class names with sh (e.g., sh-menu-item) to avoid conflicts with other features when CSS is bundled */
+
 
 .header {
   display: inline-grid;
@@ -39,16 +42,8 @@ hr {
   padding: 0;
 }
 
-.suggested {
+.account {
   color: cornflowerblue;
-}
-
-.trending {
-  color:cornflowerblue;
-}
-
-.history {
-  color:cornflowerblue;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,3 +1,5 @@
+/* Please prefix class names with ss (e.g., ss-menu-item) to avoid conflicts with other features when CSS is bundled */
+
 /* Please prefix class names with sh (e.g., sh-menu-item) to avoid conflicts with other features when CSS is bundled */
 
 .header {
@@ -39,16 +41,22 @@ hr {
   padding: 0;
 }
 
-.suggested {
-  color: cornflowerblue;
+.banner {
+  width: auto;
+  height:auto;
+  max-height: 30em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.trending {
+.aboutHeader {
   color:cornflowerblue;
 }
 
-.history {
-  color:cornflowerblue;
+.userReview {
+  width: 50em;
+  height: 20em;
 }
 
 @media (prefers-color-scheme: dark) {
