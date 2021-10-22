@@ -2,17 +2,17 @@
 
 /* Please prefix class names with sh (e.g., sh-menu-item) to avoid conflicts with other features when CSS is bundled */
 
-.header {
+.overview-header {
   display: inline-grid;
   border-bottom: 3px cornflowerblue;
 }
 
-.title {
+.overview-title {
   color: cornflowerblue;
   font-size: 3em;
 }
 
-.searchBar {
+.overview-searchBar {
   position: absolute;
   margin: auto;
   width: 50%;
@@ -22,12 +22,12 @@
   width: 40em;
 }
 
-.homeIcon {
+.overview-homeIcon {
   position: absolute;
   right: 5%;
 }
 
-.userIcon {
+.overview-userIcon {
   position: absolute;
   right: 10%;
 }
@@ -41,7 +41,7 @@ hr {
   padding: 0;
 }
 
-.banner {
+.overview-banner {
   width: auto;
   height:auto;
   max-height: 30em;
@@ -50,11 +50,11 @@ hr {
   margin-right: auto;
 }
 
-.aboutHeader {
+.overview-aboutHeader {
   color:cornflowerblue;
 }
 
-.userReview {
+.overview-userReview {
   width: 50em;
   height: 20em;
 }

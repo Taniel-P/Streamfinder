@@ -1,16 +1,16 @@
 /* Please prefix class names with sh (e.g., sh-menu-item) to avoid conflicts with other features when CSS is bundled */
 
-.header {
+.home-header {
   display: inline-grid;
   border-bottom: 3px cornflowerblue;
 }
 
-.title {
+.home-title {
   color: cornflowerblue;
   font-size: 3em;
 }
 
-.searchBar {
+.home-searchBar {
   position: absolute;
   margin: auto;
   width: 50%;
@@ -20,12 +20,12 @@
   width: 40em;
 }
 
-.homeIcon {
+.home-homeIcon {
   position: absolute;
   right: 5%;
 }
 
-.userIcon {
+.home-userIcon {
   position: absolute;
   right: 10%;
 }
@@ -39,15 +39,15 @@ hr {
   padding: 0;
 }
 
-.suggested {
+.home-suggested {
   color: cornflowerblue;
 }
 
-.trending {
+.home-trending {
   color:cornflowerblue;
 }
 
-.history {
+.home-history {
   color:cornflowerblue;
 }
 

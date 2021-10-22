@@ -3,17 +3,17 @@
 /* Please prefix class names with sh (e.g., sh-menu-item) to avoid conflicts with other features when CSS is bundled */
 
 
-.header {
+.users-header {
   display: inline-grid;
   border-bottom: 3px cornflowerblue;
 }
 
-.title {
+.users-title {
   color: cornflowerblue;
   font-size: 3em;
 }
 
-.searchBar {
+.users-searchBar {
   position: absolute;
   margin: auto;
   width: 50%;
@@ -23,12 +23,12 @@
   width: 40em;
 }
 
-.homeIcon {
+.users-homeIcon {
   position: absolute;
   right: 5%;
 }
 
-.userIcon {
+.users-userIcon {
   position: absolute;
   right: 10%;
 }
@@ -42,7 +42,7 @@ hr {
   padding: 0;
 }
 
-.account {
+.users-account {
   color: cornflowerblue;
 }
 
