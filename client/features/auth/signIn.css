@@ -1,6 +1,4 @@
-/* Please prefix class names with sa (e.g., sa-menu-item) to avoid conflicts with other features when CSS is bundled */
-
-.mainCreateAccount {
+.signInPage {
   margin: 0;
   border: 3px solid cornflowerblue;
   border-radius: 1em;
@@ -24,39 +22,17 @@ h1 {
   color: cornflowerblue
 }
 
-h3 {
-  color: cornflowerblue
-}
-
-.name {
-  color: cornflowerblue
-}
-
 .userName {
   padding-top: 1em;
   color: cornflowerblue
 }
 
-.email {
-  padding-top: 1em;
-  color: cornflowerblue
-}
 .password {
   padding-top: 1em;
-  color: cornflowerblue
-}
-
-.subscriptionOptions {
-  padding-top: 1em;
   padding-bottom: 1em;
   color: cornflowerblue
 }
 
-.subscriptionIcons {
-  padding-bottom: 1em;
-}
-
-@media (prefers-color-scheme: dark) {
-/* Modifications for dark mode go here */
-
+.signInLink {
+  color: cornflowerblue
 }
