@@ -124,6 +124,7 @@ compiled
 #config
 #config.js
 .env
+.pem
 
 # Supporting Files/Documentation
 __archive__
