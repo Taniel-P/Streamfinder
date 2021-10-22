@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import express from 'express';
 import path from 'path';
-import Streamfinder from '../client/components/Streamfinder';
+import Streamfinder from '../client/app/Streamfinder';
 
 // const path = require('path');
 // const express = require('express');
