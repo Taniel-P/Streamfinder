@@ -15,44 +15,48 @@
   padding: 10px;
 }
 
-.titleHeader {
+.auth-titleHeader {
   font-size: 2em;
   text-align: center;
 }
 
 h1 {
-  color: cornflowerblue
+  color: cornflowerblue;
 }
 
 h3 {
-  color: cornflowerblue
+  color: cornflowerblue;
 }
 
-.name {
-  color: cornflowerblue
+.createAccountHeader {
+  color:cornflowerblue;
 }
 
-.userName {
+.auth-name {
+  color: cornflowerblue;
+}
+
+.auth-userName {
   padding-top: 1em;
-  color: cornflowerblue
+  color: cornflowerblue;
 }
 
-.email {
+.auth-email {
   padding-top: 1em;
-  color: cornflowerblue
+  color: cornflowerblue;
 }
-.password {
+.auth-password {
   padding-top: 1em;
-  color: cornflowerblue
+  color: cornflowerblue;
 }
 
-.subscriptionOptions {
+.auth-subscriptionOptions {
   padding-top: 1em;
   padding-bottom: 1em;
-  color: cornflowerblue
+  color: cornflowerblue;
 }
 
-.subscriptionIcons {
+.auth-subscriptionIcons {
   padding-bottom: 1em;
 }
 

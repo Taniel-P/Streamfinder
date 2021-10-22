@@ -13,26 +13,30 @@
   padding: 10px;
 }
 
-.titleHeader {
+.signIn-titleHeader {
   font-size: 2em;
   text-align: center;
 }
 
-h1 {
+.signInHeader {
+  color: cornflowerblue;
+}
+
+.signIn-title {
   color: cornflowerblue
 }
 
-.userName {
+.signIn-userName {
   padding-top: 1em;
   color: cornflowerblue
 }
 
-.password {
+.signIn-password {
   padding-top: 1em;
   padding-bottom: 1em;
   color: cornflowerblue
 }
 
-.signInLink {
+.signIn-signInLink {
   color: cornflowerblue
 }
