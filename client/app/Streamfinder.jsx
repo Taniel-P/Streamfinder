@@ -1,4 +1,7 @@
 import React from 'react';
+import Auth from '../features/auth/Auth';
+import Home from '../features/home/Home';
+import Search from '../features/search/Search';
 import './Streamfinder.css';
 
 class Streamfinder extends React.Component {
@@ -24,7 +27,15 @@ class Streamfinder extends React.Component {
     return (
       <>
         <h2>Streamfinder{message.length ? `: ${message}` : null}</h2>
-        {buttonLabel.length ? <button onClick={this.handleClick}>Hello</button> : null}
+        { buttonLabel.length ?
+          <button onClick={this.handleClick}>Hello</button>
+        :
+          <>
+            <Auth />
+            <Home />
+            <Search />
+          </>
+        }
       </>
     );
   }
