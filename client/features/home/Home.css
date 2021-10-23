@@ -1,5 +1,10 @@
 /* Please prefix class names with sh (e.g., sh-menu-item) to avoid conflicts with other features when CSS is bundled */
 
+#Home {
+  color: cornflowerblue;
+  margin: 1em;
+}
+
 .home-header {
   display: inline-grid;
   border-bottom: 3px cornflowerblue;
@@ -30,7 +35,7 @@
   right: 10%;
 }
 
-hr {
+#Home hr {
   display: block;
   height: 5px;
   border: 0;

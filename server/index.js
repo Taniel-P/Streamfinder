@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import express from 'express';
 import path from 'path';
+// import authRoutes from './auth/authRoutes';
+// import homeRoutes from './home/homeRoutes';
+// import searchRoutes from './search/searchRoutes';
 import Streamfinder from '../client/app/Streamfinder';
 
 // const path = require('path');
@@ -13,9 +16,12 @@ const port = 3000;
 const clientBundleScript = `<script src="http://localhost:8080/scripts/bundle.js"></script>`;
 const clientBundleStyle = `<link rel="stylesheet" href="http://localhost:8080/styles/bundle.css">`;
 
-app.use(express.static(path.join(__dirname, 'client/staticAssets')));
+app.use(express.static(path.join(__dirname, 'staticAssets')));
+// app.use('/auth', authRoutes);
+// app.use('/home', homeRoutes);
+// app.use('/search', searchRoutes);
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   const jsx = ReactDOMServer.renderToString(
     <Streamfinder />
   );
@@ -28,6 +34,7 @@ app.get('/', (req, res) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Streamfinder</title>
         ${clientBundleStyle}
+        <link rel="icon" type="image/png" href="cornflower.png">
       </head>
       <body>
         <div id="ssr-app">${jsx}</div>
