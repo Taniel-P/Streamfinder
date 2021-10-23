@@ -1,4 +1,5 @@
 import React from 'react';
+import StarRatingInteractive from '../sharedComponents/StarRatingInteractive';
 import './MediaDetail.css';
 
 const MediaDetail = props => (
@@ -26,6 +27,7 @@ const MediaDetail = props => (
     <hr/>
     <div className="Reviews">
       <h1>Reviews</h1>
+      <StarRatingInteractive />
       <div className="eachReview">
         <h2>Reviews Placeholder</h2>
       </div>

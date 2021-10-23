@@ -1,0 +1,27 @@
+/* "sc" prefix stands for "Shared Component" */
+
+.sc-star-rating {
+  cursor: pointer;
+}
+
+.sc-stars {
+  user-select: none;
+  display: block;
+  min-width: 100%;
+  max-width: 100%;
+  background-image: linear-gradient(to right, cornflowerblue 5em, #333 5em);
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  overflow: hidden;
+}
+
+.sc-stars a {
+  text-decoration: none;
+}
+
+.sc-star:hover {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: 666;
+}
