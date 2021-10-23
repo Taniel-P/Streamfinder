@@ -1,16 +1,18 @@
+/* Please prefix class names with ss (e.g., ss-menu-item) to avoid conflicts with other features when CSS is bundled */
+
 /* Please prefix class names with sh (e.g., sh-menu-item) to avoid conflicts with other features when CSS is bundled */
 
-.home-header {
+.overview-header {
   display: inline-grid;
   border-bottom: 3px cornflowerblue;
 }
 
-.home-title {
+.overview-title {
   color: cornflowerblue;
   font-size: 3em;
 }
 
-.home-searchBar {
+.overview-searchBar {
   position: absolute;
   margin: auto;
   width: 50%;
@@ -20,12 +22,12 @@
   width: 40em;
 }
 
-.home-homeIcon {
+.overview-homeIcon {
   position: absolute;
   right: 5%;
 }
 
-.home-userIcon {
+.overview-userIcon {
   position: absolute;
   right: 10%;
 }
@@ -39,16 +41,22 @@ hr {
   padding: 0;
 }
 
-.home-suggested {
-  color: cornflowerblue;
+.overview-banner {
+  width: auto;
+  height:auto;
+  max-height: 30em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.home-trending {
+.overview-aboutHeader {
   color:cornflowerblue;
 }
 
-.home-history {
-  color:cornflowerblue;
+.overview-userReview {
+  width: 50em;
+  height: 20em;
 }
 
 @media (prefers-color-scheme: dark) {

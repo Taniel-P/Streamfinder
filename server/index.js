@@ -12,6 +12,7 @@ import Streamfinder from '../client/app/Streamfinder';
 const app = express();
 const port = 3000;
 
+
 const clientBundleScript = `<script src="http://localhost:8080/scripts/bundle.js"></script>`;
 const clientBundleStyle = `<link rel="stylesheet" href="http://localhost:8080/styles/bundle.css">`;
 
