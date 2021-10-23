@@ -159,25 +159,25 @@ Circle CI: [![CircleCI](https://circleci.com/gh/BOC-CornflowerBlue/Streamfinder/
 <!--
 Coveralls: [![Coverage Status](https://coveralls.io/repos/github/rpp29-fec-gouda/atelier/badge.svg)](https://coveralls.io/github/rpp29-fec-gouda/atelier) -->
 
-<!-- # SonarCloud (IP)
+# SonarCloud (IP)
 Additionally, [SonarCloud](https://sonarcloud.io/projects) is used for an overall check of code quality.
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=alert_status)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Quality: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=alert_status)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+<!-- Quality: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=alert_status)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews) -->
 
-Maintainability: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+Maintainability: [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Reliability: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+Reliability: [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Security: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=security_rating)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+Security: [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Lines of Code: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=ncloc)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+Lines of Code: [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Coverage: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=coverage)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+Coverage: [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=coverage)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Bugs: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=bugs)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+Bugs: [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=bugs)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Code Smells: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=code_smells)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+Code Smells: [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Technical Debt: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=sqale_index)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews) -->
+Technical Debt: [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
