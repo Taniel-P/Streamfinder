@@ -1,5 +1,4 @@
 import React from 'react';
-import MovieDetail from './MovieDetail.jsx';
 import './Search.css';
 
 class Search extends React.Component {
@@ -18,9 +17,7 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div id="Search">
-        <MovieDetail />
-      </div>
+      <div id="Search">Search</div>
     );
   }
 }
