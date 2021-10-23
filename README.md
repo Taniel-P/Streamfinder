@@ -4,7 +4,7 @@
 
 ## Team Members
 - [Chris Monteilh]() - [Engineering Journal]()
-- [Jaimie Diemer]() - [Engineering Journal]()
+- [Jaimie Diemer]() - [Engineering Journal](https://gist.github.com/PBandJaimie/e722b5382f8ad89001c2546d41b50b6a)
 - [Mark Thomas](https://github.com/MarkPThomas) - [Engineering Journal](https://gist.github.com/MarkPThomas/11067bca74b4361ebe8f4c0129fbfa0e)
 - [Robert Lawrence]() - [Engineering Journal]()
 - [Steven Harder](https://github.com/stevenharderjr) - [Engineering Journal](https://gist.github.com/stevenharderjr/f99e9c7c05ac97e7f5d20e8212320884)
@@ -84,7 +84,7 @@
 Basic test of JavaScript continuous integration uses [CircleCI](https://circleci.com/) to run the tests, and [Coveralls](https://coveralls.io/) for reporting test coverage.
 
 Circle CI: [![CircleCI](https://circleci.com/gh/BOC-CornflowerBlue/Streamfinder/tree/main.svg?style=svg)](https://circleci.com/gh/BOC-CornflowerBlue/Streamfinder/tree/main)
-<!-- 
+<!--
 Coveralls: [![Coverage Status](https://coveralls.io/repos/github/rpp29-fec-gouda/atelier/badge.svg)](https://coveralls.io/github/rpp29-fec-gouda/atelier) -->
 
 <!-- # SonarCloud (IP)
