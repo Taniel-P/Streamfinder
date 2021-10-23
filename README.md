@@ -7,7 +7,7 @@
 - [Jaimie Diemer]() - [Engineering Journal]()
 - [Mark Thomas](https://github.com/MarkPThomas) - [Engineering Journal](https://gist.github.com/MarkPThomas/11067bca74b4361ebe8f4c0129fbfa0e)
 - [Robert Lawrence]() - [Engineering Journal]()
-- [Steven Harder]() - [Engineering Journal]()
+- [Steven Harder](https://github.com/stevenharderjr) - [Engineering Journal](https://gist.github.com/stevenharderjr/f99e9c7c05ac97e7f5d20e8212320884)
 - [Taniel Pogharian]() - [Engineering Journal]()
 
 ## Introduction
