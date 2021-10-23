@@ -9,7 +9,7 @@ import {
 import Auth from '../features/auth/Auth';
 import Home from '../features/home/Home';
 import Search from '../features/search/Search';
-import MovieDetail from '../features/movie/MovieDetail';
+import MediaDetail from '../features/media/MediaDetail';
 import './Streamfinder.css';
 
 class Streamfinder extends React.Component {
@@ -53,7 +53,7 @@ class Streamfinder extends React.Component {
               <Link to="/search">Search</Link>
             </li>
             <li>
-              <Link to="/movie">Movie</Link>
+              <Link to="/media">Media</Link>
             </li>
           </ul>
 
@@ -76,8 +76,8 @@ class Streamfinder extends React.Component {
             <Route path="/search">
               <Search />
             </Route>
-            <Route path="/movie">
-              <MovieDetail />
+            <Route path="/media">
+              <MediaDetail />
             </Route>
           </Switch>
         </div>

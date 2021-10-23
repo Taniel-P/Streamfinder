@@ -1,7 +1,7 @@
 import React from 'react';
-import './MovieDetail.css';
+import './MediaDetail.css';
 
-const MovieDetail = props => (
+const MediaDetail = props => (
   <div id="MovieDetail">
         <div className="overview-header">
       <h1 className="overview-title">Streamfinder</h1>
@@ -38,4 +38,4 @@ const MovieDetail = props => (
   </div>
 );
 
-export default MovieDetail;
+export default MediaDetail;
