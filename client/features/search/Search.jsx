@@ -1,8 +1,28 @@
 import React from 'react';
+import MovieDetail from './MovieDetail.jsx';
 import './Search.css';
 
-const Search = props => (
-  <div id="Search">Search</div>
-);
+class Search extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+
+    this.state = {
+
+    }
+  }
+  handleClick(e) {
+
+  }
+
+  render() {
+    return (
+      <div id="Search">
+        <MovieDetail />
+      </div>
+    );
+  }
+}
 
 export default Search;

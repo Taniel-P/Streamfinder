@@ -16,6 +16,14 @@ h2 {
   font-weight: 200;
 }
 
+a {
+  color: cornflowerblue;
+}
+
+a:visited {
+  color: coral;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color: #ccc;

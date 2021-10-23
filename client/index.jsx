@@ -4,7 +4,7 @@ import Streamfinder from './app/Streamfinder';
 // import style from './style.css';
 
 window.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.hydrate(
+  ReactDOM.render(
     <Streamfinder />,
     document.getElementById('ssr-app')
   );
