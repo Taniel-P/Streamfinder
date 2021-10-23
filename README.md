@@ -3,12 +3,12 @@
 ## Catchy headline / cool graphic
 
 ## Team Members
-- [Chris Monteilh]() - [Engineering Journal]()
-- [Jaimie Diemer]() - [Engineering Journal]()
+- [Chris Monteilh](https://github.com/cmonteilh) - [Engineering Journal]()
+- [Jaimie Diemer](https://github.com/PBandJaimie) - [Engineering Journal]()
 - [Mark Thomas](https://github.com/MarkPThomas) - [Engineering Journal](https://gist.github.com/MarkPThomas/11067bca74b4361ebe8f4c0129fbfa0e)
-- [Robert Lawrence]() - [Engineering Journal]()
+- [Robert Lawrence](https://github.com/rlawrence9) - [Engineering Journal]()
 - [Steven Harder](https://github.com/stevenharderjr) - [Engineering Journal](https://gist.github.com/stevenharderjr/f99e9c7c05ac97e7f5d20e8212320884)
-- [Taniel Pogharian]() - [Engineering Journal]()
+- [Taniel Pogharian](https://github.com/Taniel-P) - [Engineering Journal]()
 
 ## Introduction
 > This was a month long project where our team completed an MVP full stack application for an external user (Jane Doe)
@@ -74,13 +74,13 @@
 - See the [web style guide](./docs/web-style-guide.md) for the standards we are following for coding and project organization.
 
 
-## Testing (IP)
+## Testing
 - [Jest](https://jestjs.io/) is the framework chosen to test React and probably all JavaScript code in the app.
 - Tests are located in the **`./tests`** directory of the app for integration tests and global files, and are stored with the associated component or * .js file.
 - Naming convention of unit test files: ```{filename}.test.js``` for every ```{filename}.js``` file, or ```index.test.js``` for a testing file for an entire component.
 - ```npm test``` to run the tests
 
-# Continuous Integration (IP)
+# Continuous Integration
 Basic test of JavaScript continuous integration uses [CircleCI](https://circleci.com/) to run the tests, and [Coveralls](https://coveralls.io/) for reporting test coverage.
 
 Circle CI: [![CircleCI](https://circleci.com/gh/BOC-CornflowerBlue/Streamfinder/tree/main.svg?style=svg)](https://circleci.com/gh/BOC-CornflowerBlue/Streamfinder/tree/main)
