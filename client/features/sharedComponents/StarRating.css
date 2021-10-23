@@ -17,11 +17,21 @@
   overflow: hidden;
 }
 
+.interactive:hover {
+  color: #333;
+}
+
 .sc-stars a {
   text-decoration: none;
 }
 
+.sc-star {
+  color: transparent;
+  background-clip: text;
+}
+
 .sc-star:hover {
+  color: cornflowerblue;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: 666;
 }

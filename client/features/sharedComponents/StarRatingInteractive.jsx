@@ -27,7 +27,7 @@ class StarRatingInteractive extends React.Component {
 
     return (
       <>
-        <StarRating avgRating={rating} interact={undefined} />
+        <StarRating avgRating={rating} interact={this.handleRatingChange} />
       </>
     )
   }
