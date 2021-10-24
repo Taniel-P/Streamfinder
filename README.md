@@ -30,6 +30,7 @@ In addition to usage history providing a basis for feedback to the user, the com
 
 ## See It Live!
 The app is currently being hosted live as we push updates on Amazon Web Services, [here](http://34.198.201.182:3000/).
+
 You can also see our interactive wireframe concept [here](https://balsamiq.cloud/s4fh9u8/p6ql8za/r2278?f=N4IgUiBcAMA0IDkpxAYWfAMhkAhHAsjgFo4DSUA2gLoC%2BQA%3D)
 
 ## Tech Stack ( you can include logos)
@@ -94,14 +95,17 @@ For managing the development of the app, we chose to utilize the [Agile](https:/
 
 Additionally, the development cycles for the spec and code base were comprise of the following iterative steps/components:
 
+----
 #### User Stories
 For each feature to be developed, at least one user story must be written that closely describes the simple flow of the user from their need to achieving some result with the program. This is ultimately used for groups of tests.
 
+----
 #### Acceptance Criteria
 For each user story (or set of stories), more concise lists of acceptance criteria are written out. These are simple criteria that determine whether a given test result is considered to pass, based on the goals/requirements of the product. These criteria ultimately comprise the specific test assertions that check if a set of actions achieve the desired state/result in the app.
 
 Once `user stories` and `acceptance criteria` are defined (or selected for features partially complete), unit or integration tests are written. These also serve as the basis for defining specific tickets for development.
 
+----
 #### Ticketing
 A ticketing process was used in order to define work chunks in advance, set due dates, and track progress. They also served as a convenient way to compile notes related to development, bug reports, and bug fixes.
 
@@ -115,23 +119,30 @@ Developers could then make custom filters to easily see all open tickets relevan
 
 Trello is really pretty small for development like this. Honestly, [JIRA](https://www.atlassian.com/software/jira) paired with [Confluence](https://www.atlassian.com/software/confluence) would have been better for a team and project of this size.
 
+----
 #### Paired Programming
 Where helpful, team members pair programmed together.
 
+----
 #### Testing
 We strived to maintain at least 60% line coverage for testing of our app throughout the development process. Developers strive to write tests first, and use the tests as a guide in developing app features. Utilizing this test-driven development (TDD), not only is good code coverage maintained, but more thought is given to the needs and structure of the code, and programming is kept more confined to the immediate needs of development. Risk of feature creep and going down rabbit holes is reduced.
 
+----
 #### Code Review
 All pull requests require a peer review from another team member before the code is merged to the main code base.
 
+----
 #### Continuous Integration (CI)
 All commits to a branch in the code repository is automatically checked by several testing and code auditing services. These automatically run associated tests and 'sniff' the code and return reports as to whether any tests are failing, how many lines of code are covered by tests, and a variety of other metrics. These all factor into consideration of the quality of the code being committed, with the tests themselves being strict gatekeepers for only merging code to the code base that is working and compatible with the existing app.
 
+----
 #### Continuous Deployment (CD)
 Once code is merged to the `main` branch, we have a system set up that automatically pushes updates to our deployed app online with the code changes. In this way, the production app automatically updates itself as we make small iterative developments to the app.
 
+
 ### Feature Freeze
 One week before release, we enacted a 'feature freeze', whereby no development could begin on new features. Some features are audited and might even be dropped if there are too many bugs that cannot be resolved before release. Freezing development in this way allows the team time to fix all outstanding bugs, find more bugs through expanded tests, refactor code to reduce technical debt, and finalize superficial aspects of the program, such as fine tuning CSS. This self-control is important in making sure the product that is release is itself complete and reliable, even if not everything on the wish-list as been included.
+
 
 ## Git Workflow
 ### Style Guides
@@ -143,13 +154,14 @@ Each developer cuts a separate branch from `main` for their work, which they ult
 
 ### Commit Guides
 We have a standardized process and criteria for merging code branches with the `main` branch:
+
 1. A pull request (PR) is submitted
- a. This is followed up by notifying the team on Slack (since GitHub email notifications are too numerous & quiet)
- b. Someone else volunteers to review the PR and anounces this on Slack so that the team is aware that the PR is being attended to.
+ - This is followed up by notifying the team on Slack (since GitHub email notifications are too numerous & quiet)
+ - Someone else volunteers to review the PR and anounces this on Slack so that the team is aware that the PR is being attended to.
 2. PR is reviewed
- a. Code is commented as is appropriate and helpful
- b. All file changes are reviewed
- c. If everything is at least functionally OK, PR is approved & code is merged to `main`, possiby with some requested changes for the developer to attend to, but which are not serious enough to deny a merge.
+ - Code is commented as is appropriate and helpful
+ - All file changes are reviewed
+ - If everything is at least functionally OK, PR is approved & code is merged to `main`, possiby with some requested changes for the developer to attend to, but which are not serious enough to deny a merge.
 3. If PRs contain files covered by tests, all tests MUST pass before merge. The CI testing service will have run automatically and indicated this to the reviewer. Even if the reviewer is satisfied with their code review, **NO** PR is to be merged to `main` until all tests are passing. Even if the tests are bad/incomplete. In this case, at the very least the developer needs to turn off or not check in these tests in order to maintain a testing suite that only contains passing tests on `main`.
 4. If the reviewer approves the PR, it is the reviewer's responsibility to immediately merge the PR. 
 
