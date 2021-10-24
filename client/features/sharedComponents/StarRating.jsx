@@ -17,7 +17,7 @@ const StarRating = ({ avgRating, interact }) => {
     <div className="sc-star-rating-display">
       { interact ? (
         <span className='sc-stars interactive' style={starFillOffset}>
-          {starValues.map(value => (<a className="sc-star" key={value} href={value} onClick={interact}>{starChar}</a>))}
+          {starValues.map(value => (<a className="sc-star" key={value} href={`http://${value}`} onClick={interact}>{starChar}</a>))}
         </span>
       ) : (
         avgRating ? <span className='sc-stars' style={starFillOffset}>{starString}</span> : null
