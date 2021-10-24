@@ -3,7 +3,7 @@ import './StarRating.css';
 
 const starChar = String.fromCharCode(9733);
 const starString = starChar + starChar + starChar + starChar + starChar;
-const starValues = ['1', '2', '3', '4', '5'];
+const starValues = [1, 2, 3, 4, 5];
 
 const StarRating = ({ avgRating, interact }) => {
 
