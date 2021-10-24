@@ -110,8 +110,9 @@ Once `user stories` and `acceptance criteria` are defined (or selected for featu
 A ticketing process was used in order to define work chunks in advance, set due dates, and track progress. They also served as a convenient way to compile notes related to development, bug reports, and bug fixes.
 
 For ticketing we used [Trello](https://trello.com/) for both the initial app R&D and design phase, as well as feature/component development and bug fixes.
+<img width="1432" alt="Screen Shot 2021-10-23 at 10 37 41 PM" src="https://user-images.githubusercontent.com/6684303/138581049-12da84a3-d463-4295-8648-74f0cb4607e8.png">
 
-[Project Board](https://trello.com/rpp29boccornflowerblue)
+**[Project Board](https://trello.com/rpp29boccornflowerblue)**
 
 For each stage of deliverables for the project, we made a separate board for tracking tickets. Each developer then made a personal board where the appropriate ticket could then be copied down. Smaller tickets that developers generated for their own private R&D and testing would be generated and kept on their personal boards. All tickets could have due dates assigned, and multiple people assigned to them. In this way, it was easier to see what each state of development entailed, everyone was kept on the same page with overall development flow, but we weren't overwhelmed with the noise of so many tickets.
 
