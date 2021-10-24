@@ -9,16 +9,12 @@
   display: block;
   min-width: 100%;
   max-width: 100%;
-  background-image: linear-gradient(to right, cornflowerblue 5em, #333 5em);
+  background-image: linear-gradient(to right, cornflowerblue 5em, #0003 5em);
   background-repeat: repeat;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   overflow: hidden;
-}
-
-.interactive:hover {
-  color: #333;
 }
 
 .sc-stars a {
@@ -32,6 +28,12 @@
 
 .sc-star:hover {
   color: cornflowerblue;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: 666;
+  text-shadow: 0 0 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Modifications for dark mode go here */
+  .sc-stars {
+    background-image: linear-gradient(to right, cornflowerblue 5em, #fff3 5em);
+  }
 }

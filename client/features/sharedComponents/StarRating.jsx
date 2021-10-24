@@ -3,7 +3,7 @@ import './StarRating.css';
 
 const starChar = String.fromCharCode(9733);
 const starString = starChar + starChar + starChar + starChar + starChar;
-const starValues = ['1', '2', '3', '4', '5'];
+const starValues = [1, 2, 3, 4, 5];
 
 const StarRating = ({ avgRating, interact }) => {
 
@@ -17,7 +17,7 @@ const StarRating = ({ avgRating, interact }) => {
     <div className="sc-star-rating-display">
       { interact ? (
         <span className='sc-stars interactive' style={starFillOffset}>
-          {starValues.map(value => (<a className="sc-star" key={value} href={value} onClick={interact}>{starChar}</a>))}
+          {starValues.map(value => (<a className="sc-star" key={value} name={value} onClick={interact}>{starChar}</a>))}
         </span>
       ) : (
         avgRating ? <span className='sc-stars' style={starFillOffset}>{starString}</span> : null
