@@ -15,10 +15,8 @@ class StarRatingInteractive extends React.Component {
   handleRatingChange(e) {
     e.preventDefault();
 
-    const rating = e.currentTarget.href.slice(-2, -1);
-
     this.setState({
-      rating: rating
+      rating: e.currentTarget.name
     });
   }
 
