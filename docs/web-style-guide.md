@@ -145,6 +145,7 @@ The following is the typical layout for our React app:
             {ComponentName}.model.js        // Model associated with the React component (optional)
             {ComponentName}.model.test.js   // Tests for React component model (if model present)
             {ComponentName}.test.js         // Tests for React component
+    /model                                // For all model files used on the front end
 ```
 
 If we're using redux:
