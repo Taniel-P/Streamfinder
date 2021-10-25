@@ -39,12 +39,15 @@ class ErrorBoundary extends React.Component {
               </span>{' '}
             </p>
           </div>
+          {
+          process.env.NODE_ENV !== 'production' &&
           <div className="component-body">
             <details className="error-details">
               <summary>Tell me more</summary>
               {errorInfo && errorInfo.componentStack.toString()}
             </details>
           </div>
+          }
         </div>
       );
     }
