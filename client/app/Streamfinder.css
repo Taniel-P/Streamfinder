@@ -16,6 +16,15 @@ h2 {
   font-weight: 200;
 }
 
+hr {
+  display: block;
+  height: 5px;
+  border: 0;
+  border-top: 1px solid cornflowerblue;
+  margin: 1em 0;
+  padding: 0;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color: #ccc;
