@@ -28,20 +28,20 @@ class ErrorBoundary extends React.Component {
         <div className="component">
           <div className="component-header">
             <p>
-              There was an error in loading this page.{' '}
+            Problem loading component{' '}
               <span
                 style={{ cursor: 'pointer', color: '#0077FF' }}
                 onClick={() => {
                   window.location.reload();
                 }}
               >
-                Reload this page
+                Reload
               </span>{' '}
             </p>
           </div>
           <div className="component-body">
             <details className="error-details">
-              <summary>Click for error details</summary>
+              <summary>Tell me more</summary>
               {errorInfo && errorInfo.componentStack.toString()}
             </details>
           </div>
