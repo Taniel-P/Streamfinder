@@ -15,3 +15,28 @@ describe('Test Component entry point', function () {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
+
+describe('Test if State', function () {
+  it('rHas State', () => {
+    class Auth extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          foo: false,
+        };
+      }
+
+      render() {
+        return (
+          <div />
+        );
+      }
+    }
+
+    const wrapper = mount(<Auth />); // mount/render/shallow when applicable
+
+    expect(wrapper).toHaveState('foo');
+    expect(wrapper).toHaveState('foo', false);
+    expect(wrapper).toHaveState({ foo: false });
+  });
+});
