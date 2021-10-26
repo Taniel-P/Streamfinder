@@ -7,7 +7,7 @@ Watch your favorite movies and T.V. shows cheaply, easily, and on demand. No fis
 - Chris Monteilh
 - Jaimie Diemer - [Engineering Journal](https://gist.github.com/PBandJaimie/e722b5382f8ad89001c2546d41b50b6a)
 - [Mark Thomas](https://github.com/MarkPThomas) - [Engineering Journal](https://gist.github.com/MarkPThomas/11067bca74b4361ebe8f4c0129fbfa0e)
-- [Robert Lawrence](https://github.com/rlawrence9) 
+- [Robert Lawrence](https://github.com/rlawrence9) - [Engineering Journal](https://docs.google.com/document/d/160HoQLM2U_NombzwS5TFBo6Lx2uWAFDPhy6L-QYQGuU/edit?usp=sharing)
 - [Steven Harder](https://github.com/stevenharderjr) - [Engineering Journal](https://gist.github.com/stevenharderjr/f99e9c7c05ac97e7f5d20e8212320884)
 - [Taniel Pogharian](https://github.com/Taniel-P)
 

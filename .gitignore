@@ -114,6 +114,7 @@ login.sh
 # Testing
 testResults
 sonar-report.xml
+__snapshots__
 
 # Compilation
 build/

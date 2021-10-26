@@ -9,14 +9,30 @@
     "start:server": "node build/server/bundle.js",
     "dev:server": "nodemon --ignore build --exec 'run-s clear build:server start:server'",
     "dev:client": "webpack server --config webpack.client.config.js",
-    "dev": "run-p dev:client dev:server",
-    "test": "jest"
+    "dev": "export NODE_ENV='development' & run-p dev:client dev:server",
+    "test-old": "jest",
+    "test": "export NODE_ENV='test' & jest --coverage --testResultsProcessor=jest-sonar-reporter",
+    "test-updateSnapshot": "export NODE_ENV='test' & jest --updateSnapshot --coverage --testResultsProcessor=jest-sonar-reporter",
+    "test:model": "export NODE_ENV='test' & jest --coverage --testPathPattern=client/model --testResultsProcessor=jest-sonar-reporter --watch",
+    "coveralls": "export NODE_ENV='test' & jest --coverage && cat ./testsResults/coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BOC-CornflowerBlue/Streamfinder.git"
   },
-  "keywords": [],
+  "keywords": [
+    "movies",
+    "T.V.",
+    "TV",
+    "shows",
+    "Hack Reactor",
+    "Streamfinder",
+    "BOC",
+    "Blue Ocean Capstone",
+    "React",
+    "Mongo",
+    "Redis"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -25,22 +41,30 @@
   "homepage": "https://github.com/BOC-CornflowerBlue/Streamfinder#readme",
   "dependencies": {
     "axios": "^0.23.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-router-dom": "^5.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
+    "@babel/eslint-parser": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
     "@babel/runtime": "^7.15.4",
     "babel-loader": "^8.2.2",
+    "coveralls": "^3.1.1",
     "css-loader": "^6.4.0",
     "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
     "jest": "^27.3.1",
+    "jest-cli": "^27.3.1",
+    "jest-css-modules-transform": "^4.3.0",
+    "jest-sonar-reporter": "^2.0.0",
     "mini-css-extract-plugin": "^2.4.2",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
@@ -52,5 +76,11 @@
     "webpack-dev-server": "^4.3.1",
     "webpack-merge": "^5.8.0",
     "webpack-node-externals": "^3.0.0"
+  },
+  "jestSonar": {
+    "sonar56x": true,
+    "reportPath": "testResults",
+    "reportFile": "sonar-report.xml",
+    "indent": 4
   }
 }
