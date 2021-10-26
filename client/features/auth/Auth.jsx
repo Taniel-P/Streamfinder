@@ -78,7 +78,6 @@ class Auth extends React.Component {
           {this.state.platforms.map((platform, i) =>
           <button id={platform.id} key={i} onClick={this.handleMovieSelect}>{platform.name}</button>
           )}
-
         </div>
         <button onClick={this.onSubmit}>Submit</button>
       </div>

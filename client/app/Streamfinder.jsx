@@ -11,6 +11,7 @@ import SignIn from '../features/auth/SignIn';
 import Home from '../features/home/Home';
 import Search from '../features/search/Search';
 import MediaDetail from '../features/media/MediaDetail';
+import Account from '../features/accountPage/Account';
 import './Streamfinder.css';
 
 class Streamfinder extends React.Component {
@@ -59,6 +60,9 @@ class Streamfinder extends React.Component {
             <li>
               <Link to="/media">Media</Link>
             </li>
+            <li>
+              <Link to="/account">User</Link>
+            </li>
           </ul>
 
           <hr />
@@ -85,6 +89,9 @@ class Streamfinder extends React.Component {
             </Route>
             <Route path="/media">
               <MediaDetail />
+            </Route>
+            <Route path="/account">
+              <Account />
             </Route>
           </Switch>
         </div>
