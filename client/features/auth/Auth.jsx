@@ -7,13 +7,15 @@ class Auth extends React.Component {
     super(props);
     this.state = {
       name: null,
-      userName: null,
+      username: null,
       email: null,
       password: null,
-      netflix: null,
-      amazon: null,
-      hbo: null,
-      disney: null
+      platforms: [
+        {name: 'Netflix', id: 'netflix', isSelected: false},
+        {name: 'Amazon', id: 'amazon', isSelected: false},
+        {name: 'HBO', id: 'hbo', isSelected: false},
+        {name: 'Disney', id: 'disney', isSelected: false}
+      ]
     }
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -27,10 +29,14 @@ class Auth extends React.Component {
   };
 
   handleMovieSelect(e) {
-    console.log('id', e.target.id)
-    console.log('Target', e.target)
+    let stateCopy = this.state.platforms;
+    for (let i = 0; i < stateCopy.length; i++) {
+      if (stateCopy[i].id === e.target.id) {
+        stateCopy[i].isSelected = !stateCopy[i].isSelected;
+      }
+    }
     this.setState({
-      [e.target.id]: e.target.id
+      platforms: stateCopy
     })
   }
 
@@ -56,8 +62,8 @@ class Auth extends React.Component {
         <div className="auth-name">
           <input type="text" id="name" placeholder="Name" onChange={this.handleChange}></input>
         </div>
-        <div className="auth-userName">
-          <input type="text" id="userName" placeholder="Username" onChange={this.handleChange}></input>
+        <div className="auth-username">
+          <input type="text" id="username" placeholder="Username" onChange={this.handleChange}></input>
         </div>
         <div className="auth-email">
           <input type="text" id="email" placeholder="Email" onChange={this.handleChange}></input>
@@ -69,10 +75,10 @@ class Auth extends React.Component {
           <label>Select Your Subscriptions</label>
         </div>
         <div className="auth-subscriptionIcons">
-          <button id="netflix" onClick={this.handleMovieSelect}>Netflix</button>
-          <button id="amazon" onClick={this.handleMovieSelect}>Amazon</button>
-          <button id="hbo" onClick={this.handleMovieSelect}>HBO Max</button>
-          <button id="disney" onClick={this.handleMovieSelect}>Disney+</button>
+          {this.state.platforms.map((platform, i) =>
+          <button id={platform.id} key={i} onClick={this.handleMovieSelect}>{platform.name}</button>
+          )}
+
         </div>
         <button onClick={this.onSubmit}>Submit</button>
       </div>

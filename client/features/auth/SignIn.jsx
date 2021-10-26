@@ -13,7 +13,7 @@ class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: null,
+      username: null,
       password: null
     }
     this.handleChange = this.handleChange.bind(this);
@@ -25,14 +25,6 @@ class SignIn extends React.Component {
       [e.target.id]: e.target.value
     })
   };
-
-  handleMovieSelect(e) {
-    console.log('id', e.target.id)
-    console.log('Target', e.target)
-    this.setState({
-      [e.target.id]: e.target.id
-    })
-  }
 
   handleSubmit() {
     axios.post('/login', this.state)
@@ -48,8 +40,8 @@ class SignIn extends React.Component {
     return (
       <div className="signInPage" >
       <h1 className="signInHeader">Sign In</h1>
-      <div className="signIn-userName">
-        <input type="text" id="userName" placeholder="Username" onChange={this.handleChange}></input>
+      <div className="signIn-username">
+        <input type="text" id="username" placeholder="Username" onChange={this.handleChange}></input>
       </div>
       <div className="signIn-password">
         <input type="text" id="password" placeholder="Password" onChange={this.handleChange}></input>
