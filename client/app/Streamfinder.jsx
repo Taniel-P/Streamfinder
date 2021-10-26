@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import Auth from '../features/auth/Auth';
+import SignIn from '../features/auth/SignIn';
 import Home from '../features/home/Home';
 import Search from '../features/search/Search';
 import MediaDetail from '../features/media/MediaDetail';
@@ -50,6 +51,9 @@ class Streamfinder extends React.Component {
               <Link to="/auth">Auth</Link>
             </li>
             <li>
+              <Link to="/signIn">SignIn</Link>
+            </li>
+            <li>
               <Link to="/search">Search</Link>
             </li>
             <li>
@@ -72,6 +76,9 @@ class Streamfinder extends React.Component {
             </Route>
             <Route path="/auth">
               <Auth />
+            </Route>
+            <Route exact path="/signIn">
+              <SignIn />
             </Route>
             <Route path="/search">
               <Search />
