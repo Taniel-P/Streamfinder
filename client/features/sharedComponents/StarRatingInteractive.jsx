@@ -40,7 +40,7 @@ class StarRatingInteractive extends React.Component {
 
     return (
       <div id="StarRatingInteractive" className="container" onMouseLeave={ this.handleBlur }>
-        <StarRating avgRating={ hover || rating } interact={{ action: this.handleRatingChange, hover: this.handleHover }} />
+        <StarRating avgRating={ hover || rating } interaction={{ preview: this.handleHover, select: this.handleRatingChange }} />
       </div>
     )
   }
