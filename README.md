@@ -1,29 +1,71 @@
 # Streamfinder
 
-## Catchy headline / cool graphic
+## This Ain't No Fishing App
+Watch your favorite movies and T.V. shows cheaply, easily, and on demand. No fishing around to catch that perfect show. Once you use our app, you'll be hooked!
 
 ## Team Members
-- [Chris Monteilh]() - [Engineering Journal]()
-- [Jaimie Diemer]() - [Engineering Journal](https://gist.github.com/PBandJaimie/e722b5382f8ad89001c2546d41b50b6a)
+- Chris Monteilh
+- Jaimie Diemer - [Engineering Journal](https://gist.github.com/PBandJaimie/e722b5382f8ad89001c2546d41b50b6a)
 - [Mark Thomas](https://github.com/MarkPThomas) - [Engineering Journal](https://gist.github.com/MarkPThomas/11067bca74b4361ebe8f4c0129fbfa0e)
-- [Robert Lawrence](https://github.com/rlawrence9) - [Engineering Journal]()
+- [Robert Lawrence](https://github.com/rlawrence9) - [Engineering Journal](https://docs.google.com/document/d/160HoQLM2U_NombzwS5TFBo6Lx2uWAFDPhy6L-QYQGuU/edit?usp=sharing)
 - [Steven Harder](https://github.com/stevenharderjr) - [Engineering Journal](https://gist.github.com/stevenharderjr/f99e9c7c05ac97e7f5d20e8212320884)
-- [Taniel Pogharian](https://github.com/Taniel-P) - [Engineering Journal]()
+- [Taniel Pogharian](https://github.com/Taniel-P)
 
 ## Introduction
-> This was a month long project where our team completed an MVP full stack application for an external user (Jane Doe)
->
-> Add any additional content here pertaining to the timeline, any personal goals, etc.
+Streamfinder is a full stack app that our team of 6 developers made over a 4 week long project at Hack Reactor for Kage Enterprises, LLC, a theoretical client. The app serves to aggregate media data and subscription service data to help users select shows to watch and save money based on subscription usage, show availability, and social input from app users in the form of ratings, reviews, and likes.
 
 ## What This App Does
-> * What problem does it solve? Who uses it?
-> * Why was it built?
-> * User Inputs and Outputs
+This app shows users a list of movies and T.V. shows to select from for watching based on the following criteria:
+* Trending (based on community popularity)
+* Recommended (based on user history)
+* History (what the user has watched)
+
+There is also a search feature where a user can look up movies.
+
+The features listed are derived from various streaming services, emphasizing services that the user has subscriptions to. The app also tracks the user's engagement with various subscription services to help them see when they are underutilizing a given subscription.
+
+The app was built in order to streamline and consolidate the user's media streaming experience and help them save money by seeing what services they actually use.
+
+In addition to usage history providing a basis for feedback to the user, the community aspect of the app means that users can consume and contribute helpful information about shows in the form of ratings, reviews, and liking reviews.
+
+## See It Live!
+The app is currently being hosted live as we push updates on Amazon Web Services, [here](http://34.198.201.182:3000/).
+
+You can also see our interactive wireframe concept [here](https://balsamiq.cloud/s4fh9u8/p6ql8za/r2278?f=N4IgUiBcAMA0IDkpxAYWfAMhkAhHAsjgFo4DSUA2gLoC%2BQA%3D)
 
 ## Tech Stack ( you can include logos)
 
+The app is built using the following tools and tech stack:
+
+* UX
+  * [Balsamiq](https://balsamiq.com/wireframes/) (wireframing)
+  * [Figma](https://www.figma.com/) (other diagrams)
+  * [Adobe Photoshop](https://www.adobe.com/products/photoshop.html) (icons, placeholder images) (pending)
+  * [Adobe Illustrator](https://www.adobe.com/products/illustrator.html) (icons, placeholder images) (pending)
+* RMERN Stack
+  * [Redis](https://redis.io/) (for caching)
+  * [Mongo](https://www.mongodb.com/) (database)
+  * [Express](https://expressjs.com/) (backend server)
+  * [React](https://reactjs.org/) (front end UX)
+  * [Node JS](https://nodejs.org/en/) (backend language)
+* API
+  * [RapidAPI](https://rapidapi.com/movie-of-the-night-movie-of-the-night-default/api/streaming-availability) (fetching media data)  
+* Continuous Integration
+  * [Jest](https://jestjs.io/) (local testing)
+  * [Enzyme](https://enzymejs.github.io/enzyme/) (React testing) 
+  * [CircleCI](https://circleci.com/) (continuous integration testing)
+  * [Sonar Cloud](https://sonarcloud.io/) (app quality assessments as part of CI, code coverate)
+* Hosting
+  * [Amazon Web Services](https://aws.amazon.com/) (AWS) EC2 Instance  
+
 ## Anticipated Technical Challenges and Research
-> * Why, what was the plan to overcome those challenges?
+* Gathering the data. We aren't sure whether or not we can find an appropriate API to use out of the box, or if we need to develop a web scraper in order to gather the data. 
+> * What did you learn?
+* Keeping the service lightweight but robust with caching and databases.
+> * What did you learn?
+* Structuring the app so as to minimize redundant coding and testing, and maximize development flexibility and extension.
+> * What did you learn?
+* Making this a progressive web app (PWA) in order to allow it to work well on mobile devices.
 > * What did you learn?
 
 ## Unexpected Challenges
@@ -39,18 +81,98 @@
 > * Optionally include a diagram
 > * How does the tech stack come together?
 
-## Research Required
-> * Workflow and Key lessons from your team - specifically those related to: Agile, CI/CD, testing, working with external stakeholders, ticketing, and user stories.
-> * Your git workflow, style guides, commit guides, etc
+## Workflow
+The following is a brief example of our spec, testing, and coding development process. Mark created this graphic and shared it with the team as a reference to help implement & maintain some of the workflow described below.
+<img width="4073" alt="Agile_TDD Workflow_Cropped" src="https://user-images.githubusercontent.com/6684303/138580314-3e2f558e-e19c-45b0-ab2b-b48ec00e8fe8.png">
+
+### External Stakeholders
+We had a mock client to roughly guide the process. The project started by having a meeting with the client where they outlined their wants and needs, and we asked additional questions in order to create an initial spec. After working out a wireframe scheme, user stories and feature criteria, a [project proposal](https://docs.google.com/document/d/1bstKWtm06AKcyQmNuf1cBzCsZz_KYJE1L_GLMCli4JI/edit?usp=sharing) was written up and presented to the client to finalize expectations for the app development, deliverables, and deadlines.
+
+One aspect of drawing up the project proposal was in identifying what would suffice for a minimum viable product (MVP) and what development is considered 'reach' development. This allowed us to prioritize developing MVP first, and only then working on features that we deemed 'reach' development.
+
+### Agile
+For managing the development of the app, we chose to utilize the [Agile](https://www.atlassian.com/agile) method of development. This was comprised of team standup meetings 3 times a week in order to quickly identify choke points, blockers, off track development, etc. as well as keeping everyone up to date with what the team as a whole is doing and what upcoming needs will be. 
+
+Additionally, the development cycles for the spec and code base were comprise of the following iterative steps/components:
+
+----
+#### User Stories
+For each feature to be developed, at least one user story must be written that closely describes the simple flow of the user from their need to achieving some result with the program. This is ultimately used for groups of tests.
+
+----
+#### Acceptance Criteria
+For each user story (or set of stories), more concise lists of acceptance criteria are written out. These are simple criteria that determine whether a given test result is considered to pass, based on the goals/requirements of the product. These criteria ultimately comprise the specific test assertions that check if a set of actions achieve the desired state/result in the app.
+
+Once `user stories` and `acceptance criteria` are defined (or selected for features partially complete), unit or integration tests are written. These also serve as the basis for defining specific tickets for development.
+
+----
+#### Ticketing
+A ticketing process was used in order to define work chunks in advance, set due dates, and track progress. They also served as a convenient way to compile notes related to development, bug reports, and bug fixes.
+
+For ticketing we used [Trello](https://trello.com/) for both the initial app R&D and design phase, as well as feature/component development and bug fixes.
+<img width="1432" alt="Screen Shot 2021-10-23 at 10 37 41 PM" src="https://user-images.githubusercontent.com/6684303/138581049-12da84a3-d463-4295-8648-74f0cb4607e8.png">
+
+**[Project Board](https://trello.com/rpp29boccornflowerblue)**
+
+For each stage of deliverables for the project, we made a separate board for tracking tickets. Each developer then made a personal board where the appropriate ticket could then be copied down. Smaller tickets that developers generated for their own private R&D and testing would be generated and kept on their personal boards. All tickets could have due dates assigned, and multiple people assigned to them. In this way, it was easier to see what each state of development entailed, everyone was kept on the same page with overall development flow, but we weren't overwhelmed with the noise of so many tickets.
+
+Developers could then make custom filters to easily see all open tickets relevant to them, sorted by labels and due dates.
+
+Trello is really pretty small for development like this. Honestly, [JIRA](https://www.atlassian.com/software/jira) paired with [Confluence](https://www.atlassian.com/software/confluence) would have been better for a team and project of this size.
+
+----
+#### Paired Programming
+Where helpful, team members pair programmed together.
+
+----
+#### Testing
+We strived to maintain at least 60% line coverage for testing of our app throughout the development process. Developers strive to write tests first, and use the tests as a guide in developing app features. Utilizing this test-driven development (TDD), not only is good code coverage maintained, but more thought is given to the needs and structure of the code, and programming is kept more confined to the immediate needs of development. Risk of feature creep and going down rabbit holes is reduced.
+
+----
+#### Code Review
+All pull requests require a peer review from another team member before the code is merged to the main code base.
+
+----
+#### Continuous Integration (CI)
+All commits to a branch in the code repository is automatically checked by several testing and code auditing services. These automatically run associated tests and 'sniff' the code and return reports as to whether any tests are failing, how many lines of code are covered by tests, and a variety of other metrics. These all factor into consideration of the quality of the code being committed, with the tests themselves being strict gatekeepers for only merging code to the code base that is working and compatible with the existing app.
+
+----
+#### Continuous Deployment (CD)
+Once code is merged to the `main` branch, we have a system set up that automatically pushes updates to our deployed app online with the code changes. In this way, the production app automatically updates itself as we make small iterative developments to the app.
+
+
+### Feature Freeze
+One week before release, we enacted a 'feature freeze', whereby no development could begin on new features. Some features are audited and might even be dropped if there are too many bugs that cannot be resolved before release. Freezing development in this way allows the team time to fix all outstanding bugs, find more bugs through expanded tests, refactor code to reduce technical debt, and finalize superficial aspects of the program, such as fine tuning CSS. This self-control is important in making sure the product that is release is itself complete and reliable, even if not everything on the wish-list as been included.
+
+
+## Git Workflow
+### Style Guides
+To maintain uniformity of code and coordination of files and directory structures, we have a [team style guide](https://github.com/BOC-CornflowerBlue/Streamfinder/blob/main/docs/web-style-guide.md) that lays out the expections and standards for both. This covers HTML CSS, JavaScript, and React, from spelling cases to spaces. It isn't strictly enforced, but everyone can refer to it for guidance and checking code.
+
+We installed [Pomander](https://medium.com/@paulmarinaro/pomander-the-eslinter-ed6132e0dce7) and [ESLint](https://eslint.org/) in order to maintain some strict enforcement of coding standards updon checking in to git. The configuration of these frameworks is in alignment with the style guide. 
+
+Each developer cuts a separate branch from `main` for their work, which they ultimately merge with main. 
+
+### Commit Guides
+We have a standardized process and criteria for merging code branches with the `main` branch:
+
+1. A pull request (PR) is submitted
+ - This is followed up by notifying the team on Slack (since GitHub email notifications are too numerous & quiet)
+ - Someone else volunteers to review the PR and anounces this on Slack so that the team is aware that the PR is being attended to.
+2. PR is reviewed
+ - Code is commented as is appropriate and helpful
+ - All file changes are reviewed
+ - If everything is at least functionally OK, PR is approved & code is merged to `main`, possiby with some requested changes for the developer to attend to, but which are not serious enough to deny a merge.
+3. If PRs contain files covered by tests, all tests MUST pass before merge. The CI testing service will have run automatically and indicated this to the reviewer. Even if the reviewer is satisfied with their code review, **NO** PR is to be merged to `main` until all tests are passing. Even if the tests are bad/incomplete. In this case, at the very least the developer needs to turn off or not check in these tests in order to maintain a testing suite that only contains passing tests on `main`.
+4. If the reviewer approves the PR, it is the reviewer's responsibility to immediately merge the PR. 
+
 > * What did you learn from the process
 > * What were key takeaways from stand ups, code reviews, etc
-> * Writing tests
-> * Link to your project board, discuss completed tickets
 
 ## Any non-MVP tickets (optional)
 > * Code refactorings
 > * Performance Optimizations
-> * Additional features
+> * Additional features - Progressive Web App?
 > * etc
 
 ## Notes From Sprint Retro
@@ -87,25 +209,25 @@ Circle CI: [![CircleCI](https://circleci.com/gh/BOC-CornflowerBlue/Streamfinder/
 <!--
 Coveralls: [![Coverage Status](https://coveralls.io/repos/github/rpp29-fec-gouda/atelier/badge.svg)](https://coveralls.io/github/rpp29-fec-gouda/atelier) -->
 
-<!-- # SonarCloud (IP)
+# SonarCloud 
 Additionally, [SonarCloud](https://sonarcloud.io/projects) is used for an overall check of code quality.
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=alert_status)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Quality: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=alert_status)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+<!-- Quality: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=alert_status)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews) -->
 
-Maintainability: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+Maintainability: [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Reliability: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+Reliability: [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Security: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=security_rating)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+Security: [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Lines of Code: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=ncloc)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+Lines of Code: [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Coverage: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=coverage)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+Coverage: [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=coverage)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Bugs: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=bugs)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+Bugs: [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=bugs)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Code Smells: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=code_smells)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews)
+Code Smells: [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
-Technical Debt: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-ratings-reviews&metric=sqale_index)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-ratings-reviews) -->
+Technical Debt: [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)

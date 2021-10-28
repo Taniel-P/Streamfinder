@@ -1,5 +1,10 @@
 /* Please prefix class names with sa (e.g., sa-menu-item) to avoid conflicts with other features when CSS is bundled */
 
+#Auth {
+  color: cornflowerblue;
+  margin: 1em;
+}
+
 .mainCreateAccount {
   margin: 0;
   border: 3px solid cornflowerblue;
@@ -20,13 +25,13 @@
   text-align: center;
 }
 
-h1 {
+/* h1 {
   color: cornflowerblue;
 }
 
 h3 {
   color: cornflowerblue;
-}
+} */
 
 .createAccountHeader {
   color:cornflowerblue;
@@ -36,7 +41,7 @@ h3 {
   color: cornflowerblue;
 }
 
-.auth-userName {
+.auth-username {
   padding-top: 1em;
   color: cornflowerblue;
 }

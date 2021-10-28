@@ -114,6 +114,7 @@ login.sh
 # Testing
 testResults
 sonar-report.xml
+__snapshots__
 
 # Compilation
 build/
@@ -134,4 +135,3 @@ __notes__
 *.DS_Store
 .vscode
 .config.js
-
