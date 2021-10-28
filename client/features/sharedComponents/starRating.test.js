@@ -9,9 +9,18 @@ import StarRating from './StarRating.jsx';
 // For Jest usage, see: https://jestjs.io/docs/getting-started
 // For Enzyme usage, see: https://github.com/enzymejs/enzyme-matchers/tree/master/packages/jest-enzyme
 
-describe('Test Component entry point', function () {
+describe('Test StarRating Component', function () {
+  const wrapper = shallow(<StarRating />);
+
   it('renders without crashing given the required props', () => {
-    const wrapper = shallow(<StarRating />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchInlineSnapshot();
+  });
+
+  it('Should return a value from 1-5 when clicked', function () {
+
+  });
+
+  it('Should return a preview value on hover', function () {
+
   });
 });

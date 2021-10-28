@@ -12,6 +12,7 @@ import Home from '../features/home/Home';
 import Search from '../features/search/Search';
 import MediaDetail from '../features/media/MediaDetail';
 import Account from '../features/accountPage/Account';
+import ErrorBoundary from '../features/sharedComponents/ErrorBoundary';
 import './Streamfinder.css';
 
 class Streamfinder extends React.Component {
@@ -85,7 +86,9 @@ class Streamfinder extends React.Component {
               <SignIn />
             </Route>
             <Route path="/search">
-              <Search />
+              <ErrorBoundary>
+                <Search />
+              </ErrorBoundary>
             </Route>
             <Route path="/media">
               <MediaDetail />
