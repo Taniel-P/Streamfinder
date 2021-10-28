@@ -11,7 +11,7 @@ import Account from './Account.jsx';
 
 describe('Test Component entry point', function () {
   it('renders without crashing given the required props', () => {
-    const wrapper = shallow(<User />);
+    const wrapper = shallow(<Account />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
