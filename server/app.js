@@ -5,7 +5,7 @@ const routes = require('./routes');
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 // require('./cacheManager');
 // parse application/json
 app.use(express.json())
