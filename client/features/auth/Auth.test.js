@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
+require('dotenv').config()
 import Auth from './Auth.jsx';
-
 // ==== Test Template ====
 // ====== index.jsx ======
 // For Jest usage, see: https://jestjs.io/docs/getting-started
@@ -25,7 +25,7 @@ describe('Should have correct state when information is provided', function () {
           name: 'John',
           username: 'Doe',
           email: 'jd@gmail.com',
-          password: 'password',
+          password: process.env.temp_db_pass,
           platforms: [
             { name: 'Netflix', id: 'netflix', isSelected: false },
             { name: 'Amazon', id: 'amazon', isSelected: false },
