@@ -5,6 +5,7 @@ const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const {default: Streamfinder} = require('../../client/app/Streamfinder.jsx');
 require('dotenv').config()
+const {db} = require('../database/database')
 const clientBundleScript = `<script src="http://localhost:8080/scripts/bundle.js"></script>`;
 const clientBundleStyle = `<link rel="stylesheet" href="http://localhost:8080/styles/bundle.css">`;
 router.get('*', (req, res) => {

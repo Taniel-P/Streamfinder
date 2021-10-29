@@ -1,4 +1,5 @@
 const app = require('./app.js');
+const {db} = require('./database/database')
 // const config = require('./config/config');
 
 app.listen(3000, () => {
