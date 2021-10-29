@@ -51,7 +51,7 @@ describe('Should have correct state when information is provided', function () {
         name: 'John',
         username: 'Doe',
         email: 'jd@gmail.com',
-        password: 'password',
+        password: config.temp_db_pass,
         platforms: [
           { name: 'Netflix', id: 'netflix', isSelected: false },
           { name: 'Amazon', id: 'amazon', isSelected: false },
