@@ -31,7 +31,6 @@ jobs:
       #     pkg-manager: yarn
       - run:
           name: Run tests
-          command: npm test
           command: jest --collectCoverage=true
       - store_artifacts:
           path: coverage
