@@ -32,6 +32,7 @@ exports.getUser = (req, res, next) => {
 
 exports.postUser = (req, res, next) => {
   const user = req.body;
+  console.log('User', user)
   if (user) {
     authService.postUser(user)
     .then(result => sendResponse({ res, responseBody: result.data }))

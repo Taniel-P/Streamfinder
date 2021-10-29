@@ -16,8 +16,12 @@ app.use(express.static(path.join(__dirname, 'staticAssets')));
 
 routes(app);
 
+
+
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
+	console.log('REQ==', req)
 	const error = new Error('Not Found')
 	console.log(error)
 	error.status = 404

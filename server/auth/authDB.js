@@ -1,4 +1,4 @@
-const database = {};
+const database = require('../database/database.js');
 
 database.getUserLogin = (/* { params } */) => {
   return new Promise((resolve, reject) => {
@@ -28,8 +28,9 @@ database.getUser = (/* { params } */) => {
 };
 
 
-database.addUser = (/* { params } */) => {
+database.addUser = (userObj) => {
   return new Promise((resolve, reject) => {
+    console.log('USEROBJ=' ,database)
     resolve();
     // db.getUserLogin(reviewIdFilter)
     // .then(() => resolve())
