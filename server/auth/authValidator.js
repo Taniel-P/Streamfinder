@@ -4,6 +4,7 @@ const {
 
 exports.validateLogin = (req, res, next) => {
   const login = req.body;
+  console.log('REQ.BODY' ,req.body)
   let message = '';
 
   // TODO: Complete placeholder function below
@@ -19,7 +20,7 @@ exports.validateLogin = (req, res, next) => {
 exports.validateUser = (req, res, next) => {
   const user = req.body;
   let message = '';
-
+console.log('user', user)
   // TODO: Complete placeholder function below
   const isValidUser = (user) => true;
 

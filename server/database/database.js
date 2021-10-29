@@ -19,8 +19,9 @@ const MovieSchema = mongoose.Schema({
 })
 
 const ReviewSchema = mongoose.Schema({
-  
+
 })
+
 module.exports = {
   db
 }
