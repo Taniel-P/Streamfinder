@@ -7,7 +7,7 @@
     "clear": "rimraf build",
     "build:server": "webpack --config webpack.server.config.js",
     "start:server": "node build/server/bundle.js",
-    "dev:server": "nodemon --ignore build --exec 'run-s clear build:server start:server'",
+    "dev:server": "nodemon --ignore build --exec 'run-s build:server start:server'",
     "dev:client": "webpack server --config webpack.client.config.js",
     "dev": "export NODE_ENV='development' & run-p dev:client dev:server",
     "test-old": "jest",
@@ -41,8 +41,10 @@
   "homepage": "https://github.com/BOC-CornflowerBlue/Streamfinder#readme",
   "dependencies": {
     "axios": "^0.23.0",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "mongoose": "^6.0.12",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.3.0"
