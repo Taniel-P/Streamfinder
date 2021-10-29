@@ -1,8 +1,8 @@
 const app = require('./app.js');
-const config = require('./config/config');
+// const config = require('./config/config');
 
-app.listen(config.port, () => {
-  console.log(`NSA is listening in on ${process.env.APP_BASE_URL}`);
+app.listen(3000, () => {
+  console.log(`NSA is listening in on ${3000}`);
 })
 
 module.exports = app;

@@ -3,16 +3,12 @@
 const router = require('express').Router();
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-const Streamfinder = require('../../client/app/Streamfinder');
+const {default: Streamfinder} = require('../../client/app/Streamfinder.jsx');
 require('dotenv').config()
-
-const clientBundleScript = `<script src="${process.env.baseUrl}/scripts/bundle.js"></script>`;
-const clientBundleStyle = `<link rel="stylesheet" href="${process.env.baseUrl}/styles/bundle.css">`;
-
+const clientBundleScript = `<script src="http://localhost:8080/scripts/bundle.js"></script>`;
+const clientBundleStyle = `<link rel="stylesheet" href="http://localhost:8080/styles/bundle.css">`;
 router.get('*', (req, res) => {
-  const jsx = ReactDOMServer.renderToString(
-    <Streamfinder />
-  );
+  const jsx = ReactDOMServer.renderToString(<Streamfinder/>);
 
   res.send(`
     <!DOCTYPE html>
