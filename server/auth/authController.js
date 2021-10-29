@@ -32,11 +32,14 @@ exports.getUser = (req, res, next) => {
 
 exports.postUser = (req, res, next) => {
   const user = req.body;
-  console.log('User', user)
   if (user) {
     authService.postUser(user)
-    .then(result => sendResponse({ res, responseBody: result.data }))
-    .catch(error => sendErrorResponse({ res, statusCode: error.statusCode, message: error.message }));
+    .then((result) => {
+      res.status(200).send(result);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    })
   } else {
     return sendErrorResponse({res, statusCode: 400, message: ''});
   }

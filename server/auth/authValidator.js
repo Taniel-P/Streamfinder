@@ -20,7 +20,6 @@ exports.validateLogin = (req, res, next) => {
 exports.validateUser = (req, res, next) => {
   const user = req.body;
   let message = '';
-console.log('user', user)
   // TODO: Complete placeholder function below
   const isValidUser = (user) => true;
 
