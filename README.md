@@ -219,12 +219,18 @@ We have a standardized process and criteria for merging code branches with the `
 - See the [web style guide](./docs/web-style-guide.md) for the standards we are following for coding and project organization.
 
 ### Front End Diagrams
-> TBA
+The following diagram shows the general arrangement of React app components with the page flow, state, props, and sub-component derivations.
+[Client Diagram](https://www.figma.com/file/ZLu2MtqT5Cd7Cew9ykgoRI/Front-End?node-id=0%3A1)
+<img width="7344" alt="Diagram_Client" src="https://user-images.githubusercontent.com/6684303/139557558-0efa64c2-29b4-4db7-9344-a639c2a2dac5.png">
 
 ### Back End Diagrams
-> TBA
+The back end skeleton was carefully created to simplify workflow, maintain SRP & DRY principles in the overall system, and abstract implementations well enough to make it easy to add/remove/change parts of the system, such as the caching and data stores. The downside to this refined development was that it made the system rather complex, but it is easy enough to understand with a diagram.
+[Server Diagram](https://www.figma.com/file/x5VLB1r0nFazNrZKATSKE6/Server?node-id=0%3A1)
+<img width="4165" alt="Diagram_Server" src="https://user-images.githubusercontent.com/6684303/139557016-c590e654-ebe3-4254-8b17-9d01c35b1cd4.png">
 
 ### Web Sequence Diagrams
+The following diagram shows the methodology of how user interactions are handled for different scenarios within our overall app.
+[Web Sequence Diagram]()
 > TBA
 
 ## Testing
