@@ -42,9 +42,9 @@ class Auth extends React.Component {
 
   onSubmit() {
     console.log('Clicked')
-    axios.post('/user', this.state)
+    axios.post('/auth/user', this.state)
     .then((res) => {
-      console.log('/user Res', res);
+      console.log('/auth Res', res);
     })
     .catch((err) => {
       console.log('/user Err', err);
