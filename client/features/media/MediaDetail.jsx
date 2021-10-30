@@ -2,6 +2,15 @@ import React from 'react';
 import StarRatingInteractive from '../sharedComponents/StarRatingInteractive';
 import './MediaDetail.css';
 
+class MediaDetail extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
+    //bind
+  }
+}
 const MediaDetail = props => (
   <div id="MovieDetail">
         <div className="overview-header">

@@ -3,25 +3,45 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 import MediaDetail from './MediaDetail.jsx';
+import AboutMedia from './MediaDetail.jsx';
+import WatchSubscriptions from './MediaDetail.jsx';
+import WatchOthers from './MediaDetail.jsx';
+import Reviews from './../reviews/Reviews.jsx';
+import Ratings from './MediaDetail.jsx';
 
 // ==== Test Template ====
 // ====== index.jsx ======
 // For Jest usage, see: https://jestjs.io/docs/getting-started
 // For Enzyme usage, see: https://github.com/enzymejs/enzyme-matchers/tree/master/packages/jest-enzyme
 
-describe('Test Component entry point', function () {
+
+
+describe('<MediaDetail />', () => {
   it('renders without crashing given the required props', () => {
     const wrapper = shallow(<MediaDetail />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+
+  it('should render <AboutMedia />, <WatchSubscriptions />, <WatchOthers />, <Reviews />, and <Ratings /> subcomponents', () => {
+    const wrapper = shallow(<MediaDetail />);
+    expect(wrapper.find(AboutMedia)).toHaveLength(1);
+    expect(wrapper.find(WatchSubscriptions)).toHaveLength(1);
+    expect(wrapper.find(WatchOthers)).toHaveLength(1);
+    expected(wrapper.find(Reviews)).toHaveLength(1);
+    expected(wrapper.find(Ratings)).toHaveLength(1);
+  });
+
+
+
 });
+
+
 
 /*tests that need to be written:
 
-
 describe: MEDIA DETAIL COMPONENT
 As a user, I would like to be able to find out more about a video by clicking on its thumbnail tile.
-A component containing an ‘about video’ subcomponent,
+A component containing an ‘about media’ subcomponent,
 a ‘watch with your subscriptions’ subcomponent,
 a ‘watch on other platforms’ subcomponent,
 a ‘reviews’ subcomponent,
