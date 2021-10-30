@@ -34,14 +34,14 @@ class SearchBar extends React.Component {
 
     return (
       <div id="SearchBar">
-        <form onSubmit={ handleSubmit }>
+        <form id="ss-search-form" onSubmit={ handleSubmit }>
         <input className="ss-search-bar" type="text"
           placeholder={ this.props.placeholder }
           value={ this.state.searchTerm }
           onChange={ handleChange }
           onKeyPress={ handleKeyPress }
         />
-        <input type="submit" value="Search" />
+        <input id="ss-submit" type="submit" value="Search" />
         </form>
       </div>
     );

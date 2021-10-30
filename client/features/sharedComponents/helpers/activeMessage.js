@@ -5,7 +5,6 @@ let cb = undefined;
 const clear = () => {
   clearTimeout(timeLimit);
   clearInterval(interval);
-  console.log('Timer canceled');
   cb('');
 };
 
@@ -23,8 +22,7 @@ const activeMessage = (message, callback, frameRate = 200, timeout = 8000) => {
     ''
   ];
 
-  let frame = dotMatrix.length;
-
+  let frameIndex = dotMatrix.length;
   cb = callback;
 
   interval && clear();
@@ -32,13 +30,14 @@ const activeMessage = (message, callback, frameRate = 200, timeout = 8000) => {
   timeLimit = setTimeout(clear, timeout);
 
   interval = setInterval(() => {
-    if (--frame < 0) {
-      frame = dotMatrix.length - 1;
+    if (--frameIndex < 0) {
+      frameIndex = dotMatrix.length - 1;
     }
-
     // console.log(`${message}${dotMatrix[frame]}`, `frame: ${frame}`);
-    callback(`${message}${dotMatrix[frame]}`);
+    callback(message + dotMatrix[frameIndex]);
   }, frameRate);
+
+  callback(message + dotMatrix[frameIndex--]);
 
   return () => { clearInterval(interval) };
 };

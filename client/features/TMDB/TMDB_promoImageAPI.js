@@ -1,4 +1,4 @@
-class TMDB_promoImageAPI {
+export default class TMDB_promoImageAPI {
   constructor(endpoint) {
     this.endpoint = endpoint;
     this.baseURL = 'https://image.tmdb.org/t/p/';
@@ -11,5 +11,3 @@ class TMDB_promoImageAPI {
     return `${this.baseURL}${this[key]}${this.endpoint}`;
   }
 };
-
-export default TMDB_promoImageAPI;

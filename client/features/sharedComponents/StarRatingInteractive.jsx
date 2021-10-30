@@ -11,7 +11,7 @@ class StarRatingInteractive extends React.Component {
 
     this.state = {
       rating: 0,
-      hover: 0
+      preview: 0
     }
   }
 
@@ -22,25 +22,25 @@ class StarRatingInteractive extends React.Component {
   }
 
   handleHover(e) {
-    const { hover } = this.state;
-    const newHover = event.currentTarget.name;
-    if (newHover === hover) return;
+    const { preview } = this.state;
+    const hover = event.currentTarget.name;
+    if (preview === hover) return;
 
     this.setState({
-      hover: e.currentTarget.name
-    })
+      preview: hover
+    });
   }
 
   handleBlur(e) {
-    this.setState({ hover: 0 });
+    this.setState({ preview: 0 });
   }
 
   render() {
-    const { rating, hover } = this.state;
+    const { rating, preview } = this.state;
 
     return (
       <div id="StarRatingInteractive" className="container" onMouseLeave={ this.handleBlur }>
-        <StarRating avgRating={ hover || rating } interaction={{ preview: this.handleHover, select: this.handleRatingChange }} />
+        <StarRating avgRating={ preview || rating } interaction={{ preview: this.handleHover, select: this.handleRatingChange }} />
       </div>
     )
   }
