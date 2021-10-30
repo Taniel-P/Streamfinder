@@ -81,6 +81,29 @@ The app is built using the following tools and tech stack:
 > * Optionally include a diagram
 > * How does the tech stack come together?
 
+## Roles
+In the beginning of the project as a team we elected 3 developers to managerial roles to help oversee and coordinate specific parts of the product development:
+* Product Manager - [Mark Thomas](https://github.com/MarkPThomas)
+* Architecture Owner - [Steven Harder](https://github.com/stevenharderjr)
+* UI Owner - [Taniel Pogharian](https://github.com/Taniel-P)
+
+In addition to the roles described below, the product manager decided to make these roles more managerial roles, with Architect Owner overseeing back end development, and UI Owner overseeing front end development. This was helpful in delegating and coordinating tasks among 6 people, as well as better strategizing implementation within each realm and the communication between them.
+
+### Product Manager
+The product manager helps facilitate work efforts, manages tickets, and tracks progress towards completing all tasks scheduled for the current sprint. More specifically, major responsibilities include:
+* Run standups
+* Oversee the ticketing system
+* Meet with clients
+* Guide User Story & Product Acceptance Criteria creation
+
+### Architecture Owner
+The architecture owner helps the team agree upon the overall tech stack and makes sure the team is informed of any system changes. They also ensure that team members are consistent with build tools, linters, workflow, and commits.
+
+The architecture owner is responsible for ensuring the project is set up for continuous integration, continuous deploymnet, and ensuring the engineering team meets 60% test coverage.
+
+### UI
+The UI owner is responsible for the deliverable of the initial wireframes that will help generate and ultimately accompany the user stories. They also facilitate and delegate among team members to have wireframes ready to present during the client proposal meeting.
+
 ## Workflow
 The following is a brief example of our spec, testing, and coding development process. Mark created this graphic and shared it with the team as a reference to help implement & maintain some of the workflow described below.
 <img width="4073" alt="Agile_TDD Workflow_Cropped" src="https://user-images.githubusercontent.com/6684303/138580314-3e2f558e-e19c-45b0-ab2b-b48ec00e8fe8.png">
@@ -195,6 +218,14 @@ We have a standardized process and criteria for merging code branches with the `
 - Documentation such as diagrams for the app and UX styling guidelines are stored in the **`./docs`** directory.
 - See the [web style guide](./docs/web-style-guide.md) for the standards we are following for coding and project organization.
 
+### Front End Diagrams
+> TBA
+
+### Back End Diagrams
+> TBA
+
+### Web Sequence Diagrams
+> TBA
 
 ## Testing
 - [Jest](https://jestjs.io/) is the framework chosen to test React and probably all JavaScript code in the app.
