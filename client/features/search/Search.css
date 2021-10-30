@@ -4,19 +4,19 @@
   color: cornflowerblue;
   margin: 1em;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  border-bottom: .15em solid cornflowerblue;
+
  
 }
 .search-button {
   margin-left: 1rem;
   font-size: x-large;
-  height: 1.5em;
+  height: 1.25em;
   
 }
 .search-box {
   width: 40%;
-  height: 1.5em;
+  height: 1em;
   margin-left: 1rem;
   font-size: x-large;
 }
@@ -25,6 +25,10 @@
   flex-direction: row;
 
 
+}
+.search-header {
+  align-items: start;
+  
 }
 .provider-thumbnail {
   width: 2em;
@@ -40,7 +44,8 @@
 }
 .temp-container {
   display: flex;
-
+  padding: .25rem;
+  border-bottom: .1em solid cornflowerblue;
 
   justify-content: space-between;
   /* width: 50vw; */
