@@ -1,5 +1,5 @@
 # Streamfinder
-
+[![CircleCI](https://circleci.com/gh/BOC-CornflowerBlue/Streamfinder/tree/main.svg?style=svg)](https://circleci.com/gh/BOC-CornflowerBlue/Streamfinder/tree/main) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder) <!-- Coverage: [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=coverage)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder) -->
 ## This Ain't No Fishing App
 Watch your favorite movies and T.V. shows cheaply, easily, and on demand. No fishing around to catch that perfect show. Once you use our app, you'll be hooked!
 
@@ -262,7 +262,7 @@ Reliability: [![Reliability Rating](https://sonarcloud.io/api/project_badges/mea
 Security: [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
 
 Lines of Code: [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
-<!-- commetted out coverage till it can be fixed -->
+<!-- commented out coverage till it can be fixed -->
 <!-- Coverage: [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=coverage)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder) -->
 
 Bugs: [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=BOC-CornflowerBlue_Streamfinder&metric=bugs)](https://sonarcloud.io/summary/new_code?id=BOC-CornflowerBlue_Streamfinder)
