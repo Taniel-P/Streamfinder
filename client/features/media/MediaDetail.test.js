@@ -27,8 +27,8 @@ describe('<MediaDetail />', () => {
     expect(wrapper.find(AboutMedia)).toHaveLength(1);
     expect(wrapper.find(WatchSubscriptions)).toHaveLength(1);
     expect(wrapper.find(WatchOthers)).toHaveLength(1);
-    expected(wrapper.find(Reviews)).toHaveLength(1);
-    expected(wrapper.find(Ratings)).toHaveLength(1);
+    expect(wrapper.find(Reviews)).toHaveLength(1);
+    expect(wrapper.find(Ratings)).toHaveLength(1);
   });
 
 
