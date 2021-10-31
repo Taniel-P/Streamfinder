@@ -21,7 +21,7 @@ class Search extends React.Component {
   }
   handle_search(e) {
     //sets up search_val state to be sent to server for processing
-    let search_value = e.target.value 
+    let search_value = e.target.value
     this.setState({
       search_val: search_value
     })
@@ -43,14 +43,14 @@ class Search extends React.Component {
       <div>
         <div id="Search">
           <h1 className='search-header'>Stream Finder</h1>
-          <input 
-            className='search-box' 
+          <input
+            className='search-box'
             type="text"
-            placeholder='search a movie to display streaming providers 🎣' 
+            placeholder='search a movie to display streaming providers 🎣'
             value={this.state.search_val}
             onChange={this.handle_search}
           />
-          <button 
+          <button
             onClick={this.handleClick}
             className='search-button'>Search
           </button>
