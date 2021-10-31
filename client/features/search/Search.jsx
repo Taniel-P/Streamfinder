@@ -1,4 +1,6 @@
 import React from 'react';
+import SearchBar from '../sharedComponents/SearchBar';
+import activeMessage from '../sharedComponents/helpers/activeMessage';
 import './Search.css';
 import axios from 'axios'
 import { iron_man } from './tempData';
@@ -9,6 +11,7 @@ import TempDisplay2 from './TempDisplay2';
 class Search extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       search_val:'',
       search_display: []
@@ -18,11 +21,12 @@ class Search extends React.Component {
   }
   handle_search(e) {
     //sets up search_val state to be sent to server for processing
-    let search_value = e.target.value 
+    let search_value = e.target.value
     this.setState({
       search_val: search_value
     })
   }
+
   handleClick(e) {
     //sends search value state/updates state
     //do stuff with server
@@ -32,18 +36,21 @@ class Search extends React.Component {
     })
   }
   render() {
+    const { searchTerm, placeholder } = this.state;
+    const { handleSearch } = this;
+
     return (
       <div>
         <div id="Search">
           <h1 className='search-header'>Stream Finder</h1>
-          <input 
-            className='search-box' 
+          <input
+            className='search-box'
             type="text"
-            placeholder='search a movie to display streaming providers 🎣' 
+            placeholder='search a movie to display streaming providers 🎣'
             value={this.state.search_val}
             onChange={this.handle_search}
           />
-          <button 
+          <button
             onClick={this.handleClick}
             className='search-button'>Search
           </button>

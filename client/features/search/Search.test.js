@@ -11,12 +11,6 @@ import Search from './Search.jsx';
 // For Jest usage, see: https://jestjs.io/docs/getting-started
 // For Enzyme usage, see: https://github.com/enzymejs/enzyme-matchers/tree/master/packages/jest-enzyme
 
-// describe('Test Component entry point', function () {
-//   it('renders without crashing given the required props', () => {
-//     const wrapper = shallow(<Search />);
-//     expect(toJson(wrapper)).toMatchSnapshot();
-//   });
-// });
 describe('Search Display', () => {
   it('updates search_value state when user types', () => {
     const wrapper = mount(<Search />)
