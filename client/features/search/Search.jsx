@@ -1,7 +1,6 @@
 import React from 'react';
 import SearchBar from '../sharedComponents/SearchBar';
 import activeMessage from '../sharedComponents/helpers/activeMessage';
-import { TMDB_promoImageAPI as promoImage } from '../TMDB/TMDB_promoImageAPI';
 import './Search.css';
 
 class Search extends React.Component {
