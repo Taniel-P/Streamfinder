@@ -14,7 +14,7 @@ class Search extends React.Component {
     this.revertPlaceholder = this.revertPlaceholder.bind(this);
 
     this.placeholder = 'Search content by title';
-    this.cancelActiveMessage;
+    this.cancelActiveMessage = undefined;
 
     this.state = {
       searchResults: [],

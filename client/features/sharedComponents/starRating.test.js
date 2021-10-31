@@ -1,5 +1,6 @@
-import React from 'react';
+import Adapter from 'enzyme-adapter-react-16';
 import { shallow } from 'enzyme';
+import React from 'react';
 import toJson from 'enzyme-to-json';
 
 import StarRating from './StarRating.jsx';
@@ -10,13 +11,9 @@ import StarRating from './StarRating.jsx';
 // For Enzyme usage, see: https://github.com/enzymejs/enzyme-matchers/tree/master/packages/jest-enzyme
 
 describe('Test StarRating Component', function () {
-  const wrapper = shallow(<StarRating />);
-
-  it('renders without crashing given the required props', () => {
-    expect(toJson(wrapper)).toMatchInlineSnapshot();
-  });
 
   it('Should return a value from 1-5 when clicked', function () {
+    const wrapper = shallow(<StarRating />);
 
   });
 
