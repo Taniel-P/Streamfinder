@@ -2,60 +2,62 @@ import React from 'react';
 import SearchBar from '../sharedComponents/SearchBar';
 import activeMessage from '../sharedComponents/helpers/activeMessage';
 import './Search.css';
+import axios from 'axios'
+import { iron_man } from './tempData';
+import TempDisplay1 from './TempDisplay1';
+import TempDisplay2 from './TempDisplay2';
+//remove once carosel can be installed/replace in Search class
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleSearch = this.handleSearch.bind(this);
-    this.activePlaceholder = this.activePlaceholder.bind(this);
-    this.updatePlaceholder = this.updatePlaceholder.bind(this);
-    this.revertPlaceholder = this.revertPlaceholder.bind(this);
-
-    this.placeholder = 'Search content by title';
-    this.cancelActiveMessage = undefined;
-
     this.state = {
-      searchResults: [],
-      placeholder: this.placeholder,
-      activeMessage: undefined
+      search_val:'',
+      search_display: []
     }
+    this.handleClick = this.handleClick.bind(this);
+    this.handle_search = this.handle_search.bind(this);
+  }
+  handle_search(e) {
+    //sets up search_val state to be sent to server for processing
+    let search_value = e.target.value 
+    this.setState({
+      search_val: search_value
+    })
   }
 
   handleClick(e) {
-
+    //sends search value state/updates state
+    //do stuff with server
+    //set state with results
+    this.setState({
+      search_display: iron_man
+    })
   }
-
-  handleKeyPress(e) {
-    e.key === 'Enter' && this.handleSubmit(e);
-  }
-
-  handleSearch(searchTerm) {
-    this.cancelActiveMessage = activeMessage(`Searching for content entitled "${searchTerm}"`, this.updatePlaceholder);
-    // setTimeout(this.revertPlaceholder, 2000);
-  }
-
-  revertPlaceholder() {
-    this.cancelActiveMessage();
-    this.setState({ placeholder: this.placeholder });
-  }
-
-  updatePlaceholder(message) {
-    this.setState({ placeholder: message || this.placeholder });
-  }
-
-  activePlaceholder(message) {
-    setInterval(this.updatePlaceholder, 200);
-  }
-
   render() {
     const { searchTerm, placeholder } = this.state;
     const { handleSearch } = this;
 
     return (
-      <div id="Search">
-        <h1 className="home-title">Streamfinder</h1>
-        <SearchBar placeholder={ placeholder } handleSearch={ handleSearch } />
+      <div>
+        <div id="Search">
+          <h1 className='search-header'>Stream Finder</h1>
+          <input 
+            className='search-box' 
+            type="text"
+            placeholder='search a movie to display streaming providers 🎣' 
+            value={this.state.search_val}
+            onChange={this.handle_search}
+          />
+          <button 
+            onClick={this.handleClick}
+            className='search-button'>Search
+          </button>
+        </div>
+        <TempDisplay1 data={this.state.search_display}/>
+        <TempDisplay2 data={this.state.search_display}/>
+
       </div>
     );
   }
