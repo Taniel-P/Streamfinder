@@ -67,7 +67,7 @@ class Reviews extends React.Component {
   render() {
     const { reviewedByUser, userReview, reviews, userStarRating } = this.state;
     if (reviews.length > 0 ) {
-      reviews.map((review, i) => {
+      reviews.forEach((review, i) => {
         return <ReviewCard
           key={i}
           userId={review.userId}
