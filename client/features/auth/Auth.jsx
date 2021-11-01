@@ -45,9 +45,13 @@ class Auth extends React.Component {
     axios.post('/auth/user', this.state)
     .then((res) => {
       console.log('/auth Res', res);
+      //Redirect to Signin page
     })
     .catch((err) => {
       console.log('/user Err', err);
+      if (err) {
+        alert('Username or email is not available')
+      }
     })
   }
 

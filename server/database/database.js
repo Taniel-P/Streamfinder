@@ -11,9 +11,11 @@ const db = mongoose.connection
 //create your schemas here
 
 const UserSchema = mongoose.Schema({
+  name: String,
   username: String,
   pass: String,
   email: String,
+  platforms: Array
 })
 
 const User = mongoose.model('User', UserSchema);

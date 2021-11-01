@@ -27,7 +27,7 @@ class SignIn extends React.Component {
   };
 
   handleSubmit() {
-    axios.post('/login', this.state)
+    axios.post('/auth/login', this.state)
     .then((res) => {
       console.log('/login Res', res);
     })

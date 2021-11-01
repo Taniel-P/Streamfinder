@@ -5,7 +5,8 @@ const { database } = require('./authDB');
 const { api } = require('./authAPI');
 
 exports.login = (username, password) => {
-  return cache.cacheRoute('productReviews', { productId, page, count, sortBy }, database.getUserLogin);
+  return database.login(user);
+  // return cache.cacheRoute('productReviews', { productId, page, count, sortBy }, database.getUserLogin);
 };
 
 exports.getUser = (userId) => {
