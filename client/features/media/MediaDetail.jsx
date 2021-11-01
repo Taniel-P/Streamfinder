@@ -101,8 +101,8 @@ class MediaDetail extends React.Component {
       </a>;
     });
 
-    let subLengthStatement;
-    unsubLengthStatement;
+    let subLengthStatement,
+      unsubLengthStatement;
     if (this.state.watchWithSubscribed.length === 0) {
       subLengthStatement = 'Not available to watch on any of your subscriptions';
     } else if (this.state.watchWithSubscribed.length === 1) {
