@@ -16,7 +16,7 @@ class Reviews extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchReviews;
+    this.fetchReviews();
   }
 
   fetchReviews() {

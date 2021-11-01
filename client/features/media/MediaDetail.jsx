@@ -152,10 +152,11 @@ class MediaDetail extends React.Component {
         </div>
         <hr/>
         <div className="Reviews">
-          <Reviews
+          {/* cannot render reviews until I have this.props.userId passed to me
+           <Reviews
             userId={this.props.userId}
             mediaId={this.state.id}
-          />
+          /> */}
         </div>
       </div>
     );
