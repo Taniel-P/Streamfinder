@@ -23,7 +23,7 @@ const User = mongoose.model('User', UserSchema);
 const ReviewSchema = mongoose.Schema({
   username: String,
   rating: Number,
-  date: {type : Date, default: Date.now},
+  date: {type: Date, default: Date.now},
   content: String
 });
 const Review = mongoose.model('Review', ReviewSchema);

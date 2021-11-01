@@ -77,14 +77,14 @@ class MediaDetail extends React.Component {
         key={`subscribed-${i}`}
         href={`//www.${name}.com`}
         target='_blank'>
-          <img
-            className='streamingLogo'
-            src={`${test.logos[name]}`}
-            key={`subscribed-${i}`}
-            alt={`${name} logo`}
-            onClick={this.handleLogoClick}
-          />
-      </a>
+        <img
+          className='streamingLogo'
+          src={`${test.logos[name]}`}
+          key={`subscribed-${i}`}
+          alt={`${name} logo`}
+          onClick={this.handleLogoClick}
+        />
+      </a>;
     });
 
     let unsubscribed = this.state.watchWithUnsubscribed.map((name, i) => {
@@ -92,31 +92,31 @@ class MediaDetail extends React.Component {
         key={`unsubscribed-${i}`}
         href={`//www.${name}.com`}
         target='_blank'>
-          <img
-            className='streamingLogo'
-            src={`${test.logos[name]}`}
-            alt={`${name} logo`}
-            onClick={this.handleLogoClick}
-          />
-      </a>
+        <img
+          className='streamingLogo'
+          src={`${test.logos[name]}`}
+          alt={`${name} logo`}
+          onClick={this.handleLogoClick}
+        />
+      </a>;
     });
 
     let subLengthStatement;
+    unsubLengthStatement;
     if (this.state.watchWithSubscribed.length === 0) {
-      subLengthStatement = 'Not available to watch on any of your subscriptions'
+      subLengthStatement = 'Not available to watch on any of your subscriptions';
     } else if (this.state.watchWithSubscribed.length === 1) {
-      subLengthStatement = 'Watch with your subscription on:'
+      subLengthStatement = 'Watch with your subscription on:';
     } else {
-      subLengthStatement = 'Watch with your subscriptions on:'
+      subLengthStatement = 'Watch with your subscriptions on:';
     }
 
-    let unsubLengthStatement;
     if (this.state.watchWithUnsubscribed.length === 0) {
-      unsubLengthStatement = 'Not available to watch on any other providers'
+      unsubLengthStatement = 'Not available to watch on any other providers';
     } else if (this.state.watchWithUnubscribed.length === 1) {
-      unsubLengthStatement = 'Also available on this other provider:'
+      unsubLengthStatement = 'Also available on this other provider:';
     } else {
-      unsubLengthStatement = 'Also available on these other providers:'
+      unsubLengthStatement = 'Also available on these other providers:';
     }
 
     return (
@@ -155,7 +155,7 @@ class MediaDetail extends React.Component {
           <Reviews
             userId={this.props.userId}
             mediaId={this.state.id}
-            />
+          />
         </div>
       </div>
     );
