@@ -20,11 +20,11 @@ class Reviews extends React.Component {
   }
 
   fetchReviews() {
-    const { userId, movieId } = this.props;
+    const { userId, mediaId } = this.props;
     axios.get('/get-review', {
       params: {
         userId,
-        movieId
+        mediaId
       }
     }).then((response) => {
       const { reviewedByUser, userReview, reviews } = response;
@@ -51,9 +51,9 @@ class Reviews extends React.Component {
   }
 
   handleSubmit() {
-    const { movieId, userId } = this.props;
+    const { mediaId, userId } = this.props;
     axios.post('/submit-review', {
-      movideId: movieId,
+      mediaId: mediaId,
       userId: userId,
       userReview: this.state.userReview
     }).then((response) => {

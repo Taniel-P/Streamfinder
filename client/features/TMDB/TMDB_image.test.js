@@ -1,4 +1,4 @@
-import TMDBimage from './TMDBimage.js';
+import TMDBimage from './TMDB_image.js';
 import 'regenerator-runtime/runtime';
 
 describe('Test TMDBimage class', () => {

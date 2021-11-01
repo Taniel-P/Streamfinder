@@ -12,24 +12,24 @@ import Search from './Search.jsx';
 // For Enzyme usage, see: https://github.com/enzymejs/enzyme-matchers/tree/master/packages/jest-enzyme
 
 describe('Search Display', () => {
-  it('updates search_value state when user types', () => {
+  it('updates searchValue state when user types', () => {
     const wrapper = mount(<Search />);
     const component = wrapper.instance();
-    jest.spyOn(component, 'handle_search');
+    jest.spyOn(component, 'handleSearch');
     let testSearch = {target: {value: 'test'}};
 
-    component.handle_search(testSearch);
-    expect(component.state.search_val).toEqual('test');
+    component.handleSearch(testSearch);
+    expect(component.state.searchVal).toEqual('test');
     jest.clearAllMocks();
 
   });
-  it('updates search_display state when handleClick is fired', () => {
+  it('updates searchDisplay state when handleClick is fired', () => {
     const wrapper = mount(<Search></Search>);
     const component = wrapper.instance();
     jest.spyOn(component, 'handleClick');
     component.handleClick();
 
-    expect(component.state.search_display.length).toBe(10);
+    expect(component.state.searchDisplay.length).toBe(10);
     jest.clearAllMocks();
   });
 });

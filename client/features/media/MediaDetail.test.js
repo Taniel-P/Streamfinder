@@ -3,11 +3,10 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 import MediaDetail from './MediaDetail.jsx';
-import AboutMedia from './MediaDetail.jsx';
-import WatchSubscriptions from './MediaDetail.jsx';
-import WatchOthers from './MediaDetail.jsx';
+import SearchBar from './../sharedComponents/SearchBar.jsx';
+import StarRating from './../sharedComponents/StarRating.jsx';
 import Reviews from './../reviews/Reviews.jsx';
-import Ratings from './MediaDetail.jsx';
+
 
 // ==== Test Template ====
 // ====== index.jsx ======
@@ -22,16 +21,12 @@ describe('<MediaDetail />', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('should render <AboutMedia />, <WatchSubscriptions />, <WatchOthers />, <Reviews />, and <Ratings /> subcomponents', () => {
+  it('should render <SearchBar />, <StarRating />, and <Reviews /> components', () => {
     const wrapper = shallow(<MediaDetail />);
-    expect(wrapper.find(AboutMedia)).toHaveLength(1);
-    expect(wrapper.find(WatchSubscriptions)).toHaveLength(1);
-    expect(wrapper.find(WatchOthers)).toHaveLength(1);
+    expect(wrapper.find(SearchBar)).toHaveLength(1);
+    expect(wrapper.find(StarRating)).toHaveLength(1);
     expect(wrapper.find(Reviews)).toHaveLength(1);
-    expect(wrapper.find(Ratings)).toHaveLength(1);
   });
-
-
 
 });
 
@@ -113,6 +108,5 @@ and an interactive star rating subcomponent.
   *Below this is 5 stars.
   *The user can interact with the five stars and click on the star corresponding to his/her/their feelings about the movie.
   *Once clicked, the rating is submitted to the database and the user cannot click again.
-
 
   */

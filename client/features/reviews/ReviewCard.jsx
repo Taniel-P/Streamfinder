@@ -1,7 +1,7 @@
 import React from 'react';
 import StarRatingInteractive from '../sharedComponents/StarRatingInteractive';
 import Reviews from '../reviews/Reviews.jsx';
-import './MediaDetail.css';
+import './../media/MediaDetail.css';
 
 const ReviewCard = props => {
   const { userId, username, starRating, userReview, key } = this.props;

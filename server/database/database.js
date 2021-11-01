@@ -14,24 +14,38 @@ const UserSchema = mongoose.Schema({
   username: String,
   pass: String,
   email: String,
+  subscriptions: [String]
 });
 
 const User = mongoose.model('User', UserSchema);
 
 
+const ReviewSchema = mongoose.Schema({
+  username: String,
+  rating: Number,
+  date: {type : Date, default: Date.now},
+  content: String
+});
+const Review = mongoose.model('Review', ReviewSchema);
+
 const MovieSchema = mongoose.Schema({
+  id: Number,
+  mediaType: String,
   title: String,
+  rating: Number,
+  summary: String,
+  reviews: [ReviewSchema],
   imgUrl: String,
   hulu: Boolean,
-  disney: Boolean,
+  disneyPlus: Boolean,
   netflix: Boolean,
+  hboMax: Boolean,
+  appleTvPlus: Boolean,
+  amazonPrimeVideo: Boolean
 });
 const Movie = mongoose.model('Movie', MovieSchema);
 
-const ReviewSchema = mongoose.Schema({
-
-});
 
 module.exports = {
-  db, User, Movie
+  db, User, Review, Movie
 };
