@@ -1,0 +1,21 @@
+{
+  "mediaId": 0,
+  "title": "",
+  "thumbnailUrl": "",
+  "mediaType": "from enum of movie, show, which can be expanded later to other media",
+  "rating": 0,
+  "platforms":[
+    {
+      "id": 0,
+      "siteUrl": "",
+      "mediaUrl": "",
+      "iconSVG": ""
+    },
+    {
+      "id": 1,
+      "siteUrl": "",
+      "mediaUrl": "",
+      "iconSVG": ""
+    }
+  ]
+}

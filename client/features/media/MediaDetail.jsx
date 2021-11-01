@@ -60,15 +60,15 @@ class MediaDetail extends React.Component {
     let unsubscribed = [];
     for (let i = 0; i < this.state.subscriptions.length; i++) {
       if (userSubs.includes(this.state.subscriptions[i])) {
-        subscribed.push(this.state.subscriptions[i])
+        subscribed.push(this.state.subscriptions[i]);
       } else {
-        unsubscribed.push(this.state.subscriptions[i])
+        unsubscribed.push(this.state.subscriptions[i]);
       }
     }
     this.setState({
       watchWithSubscribed: subscribed,
       watchWithUnsubscribed: unsubscribed
-    })
+    });
   }
 
   render() {

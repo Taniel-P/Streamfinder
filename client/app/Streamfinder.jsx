@@ -4,7 +4,8 @@ import {
   Switch,
   Route,
   Link
-} from "react-router-dom";
+} from 'react-router-dom';
+import data from '../features/home/tempHomeData';
 
 import Auth from '../features/auth/Auth';
 import SignIn from '../features/auth/SignIn';
@@ -12,6 +13,7 @@ import Home from '../features/home/Home';
 import Search from '../features/search/Search';
 import MediaDetail from '../features/media/MediaDetail';
 import Account from '../features/accountPage/Account';
+import ErrorBoundary from '../features/sharedComponents/ErrorBoundary';
 import './Streamfinder.css';
 
 class Streamfinder extends React.Component {
@@ -22,8 +24,11 @@ class Streamfinder extends React.Component {
     this.state = {
       isClient: false,
       message: 'hello user',
-      buttonLabel: 'Hello'
-    }
+      buttonLabel: 'Hello',
+      suggested: data.suggested,
+      history: data.history,
+      trending: data.trending
+    };
   }
 
   handleClick(e) {
@@ -76,7 +81,7 @@ class Streamfinder extends React.Component {
           */}
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Home suggested={this.state.suggested} trending={this.state.trending} history={this.state.history}/>
             </Route>
             <Route path="/auth">
               <Auth />
@@ -85,7 +90,9 @@ class Streamfinder extends React.Component {
               <SignIn />
             </Route>
             <Route path="/search">
-              <Search />
+              <ErrorBoundary>
+                <Search />
+              </ErrorBoundary>
             </Route>
             <Route path="/media">
               <MediaDetail />
@@ -97,9 +104,9 @@ class Streamfinder extends React.Component {
         </div>
       </Router>
     ) : (
-      <Home />
-    )
+      <Home suggested={this.state.suggested} trending={this.state.trending} history={this.state.history} />
+    );
   }
-};
+}
 
 export default Streamfinder;
