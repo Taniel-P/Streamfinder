@@ -16,7 +16,7 @@ database.getUserLogin = (/* { params } */) => {
 };
 
 
-database.getUser = (/* { params } */) => {
+database.getUser = (user) => {
   return new Promise((resolve, reject) => {
     resolve();
     // db.getUserLogin(reviewIdFilter)
@@ -28,6 +28,12 @@ database.getUser = (/* { params } */) => {
     // });
   });
 };
+
+database.login = (username, password) => {
+  return new Promise((resolve, reject) => {
+
+  })
+}
 
 
 database.addUser = (userObj) => {

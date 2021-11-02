@@ -26,13 +26,20 @@ exports.login = (req, res, next) => {
 
 exports.getUser = (req, res, next) => {
   const username = req.query.review_id;
-  if (username) {
-    authService.getUser(username)
-    .then(result => sendResponse({ res, responseBody: result.data }))
-    .catch(error => sendErrorResponse({ res, statusCode: error.statusCode, message: error.message }));
-  } else {
-    return sendErrorResponse({res, statusCode: 400, message: ''});
-  }
+  console.log('HEREEEEE', req)
+  authService(req.query)
+  .then((res) => {
+    console.log('Query Res', res)
+    res.status(200).send(res)
+  })
+  // res.status(201).send('THIS IS THE RES')
+  // if (username) {
+  //   authService.getUser(username)
+  //   .then(result => sendResponse({ res, responseBody: result.data }))
+  //   .catch(error => sendErrorResponse({ res, statusCode: error.statusCode, message: error.message }));
+  // } else {
+  //   return sendErrorResponse({res, statusCode: 400, message: ''});
+  // }
 };
 
 exports.postUser = (req, res, next) => {

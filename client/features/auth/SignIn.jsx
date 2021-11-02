@@ -30,6 +30,7 @@ class SignIn extends React.Component {
     axios.post('/auth/login', this.state)
     .then((res) => {
       console.log('/login Res', res);
+
     })
     .catch((err) => {
       console.log('/login Err', err);
