@@ -4,7 +4,7 @@ import {
   Switch,
   Route,
   Link
-} from "react-router-dom";
+} from 'react-router-dom';
 import data from '../features/home/tempHomeData';
 
 import Auth from '../features/auth/Auth';
@@ -28,7 +28,7 @@ class Streamfinder extends React.Component {
       suggested: data.suggested,
       history: data.history,
       trending: data.trending
-    }
+    };
   }
 
   handleClick(e) {
@@ -105,8 +105,8 @@ class Streamfinder extends React.Component {
       </Router>
     ) : (
       <Home suggested={this.state.suggested} trending={this.state.trending} history={this.state.history} />
-    )
+    );
   }
-};
+}
 
 export default Streamfinder;

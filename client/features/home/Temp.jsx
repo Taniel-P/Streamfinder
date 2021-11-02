@@ -3,8 +3,8 @@ const Temp = (props) => {
   // console.log(props.data)
 
   return (
-   <div className='temp-container'>
-     {props.data.map((values, i)=>
+    <div className='temp-container'>
+      {props.data.map((values, i)=>
         <div key={values.title} className='temp-sl'>
           <h1>{values.title}</h1>
           <img className='temp' src={values.img_url} alt="" />
@@ -13,11 +13,11 @@ const Temp = (props) => {
             <img className='provider-thumbnail' src='https://www.themoviedb.org/t/p/original/aS2zvJWn9mwiCOeaaCkIh4wleZS.jpg'/>
             <img className='provider-thumbnail' src='https://www.themoviedb.org/t/p/original/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg'/>
           </div>
-        </div> 
-     
-     )}
-   </div>
-  )
-}
+        </div>
 
-export default Temp
+      )}
+    </div>
+  );
+};
+
+export default Temp;
