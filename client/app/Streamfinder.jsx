@@ -5,7 +5,6 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import data from '../features/home/tempHomeData';
 
 import Auth from '../features/auth/Auth';
 import SignIn from '../features/auth/SignIn';
@@ -19,34 +18,10 @@ import './Streamfinder.css';
 class Streamfinder extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
-
-    this.state = {
-      isClient: false,
-      message: 'hello user',
-      buttonLabel: 'Hello',
-      suggested: data.suggested,
-      history: data.history,
-      trending: data.trending
-    };
-  }
-
-  handleClick(e) {
-    if (this.state.message.length) {
-      this.setState({ message: '', buttonLabel: '' });
-      alert('Introduction completed');
-    }
-  }
-
-  componentDidMount() {
-    if (!this.state.isClient) {
-      this.setState({ isClient: true });
-    }
   }
 
   render() {
-    const { buttonLabel, message, isClient } = this.state;
-    return isClient ? (
+    return (
       <Router>
         <div>
           <ul>
@@ -81,7 +56,7 @@ class Streamfinder extends React.Component {
           */}
           <Switch>
             <Route exact path="/">
-              <Home suggested={this.state.suggested} trending={this.state.trending} history={this.state.history}/>
+              <Home />
             </Route>
             <Route path="/auth">
               <Auth />
@@ -103,8 +78,6 @@ class Streamfinder extends React.Component {
           </Switch>
         </div>
       </Router>
-    ) : (
-      <Home suggested={this.state.suggested} trending={this.state.trending} history={this.state.history} />
     );
   }
 }
