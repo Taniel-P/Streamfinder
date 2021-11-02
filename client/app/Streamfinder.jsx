@@ -21,7 +21,6 @@ class Streamfinder extends React.Component {
   }
 
   render() {
-    const { buttonLabel, message, isClient } = this.state;
     return (
       <Router>
         <div>
@@ -57,7 +56,7 @@ class Streamfinder extends React.Component {
           */}
           <Switch>
             <Route exact path="/">
-              <Home suggested={this.state.suggested} trending={this.state.trending} history={this.state.history}/>
+              <Home />
             </Route>
             <Route path="/auth">
               <Auth />

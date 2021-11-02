@@ -22,21 +22,21 @@ class MediaTileCarousel extends React.Component {
 
     this.state = {
       showLeftNav: false,
-      showRighttNav: false
+      showRightNav: false
     };
   }
 
   resetState() {
     this.setState({
       showLeftNav: false,
-      showRightNav: false
+      showRightNav: this.maxScroll > 0
     });
   }
 
   refreshState(scrollPosition) {
     this.setState({
       showLeftNav: scrollPosition !== 0,
-      showRightNav: scrollPosition !== this.maxScroll
+      showRightNav: scrollPosition < this.maxScroll
     });
   }
 
@@ -86,11 +86,14 @@ class MediaTileCarousel extends React.Component {
       this.tileWidth = tileContainer.firstChild.offsetWidth;
       console.log('242?', this.tileWidth);
       this.containerWidth = tileContainer.scrollWidth;
+      console.log(this.containerWidth);
       if (this.containerWidth > window.innerWidth) {
-        this.maxScroll = tileContainer.scrollWidth - this.containerWidth;
+        this.maxScroll = this.containerWidth - window.innerWidth;
         this.setState({
           showRightNav: true
         });
+      } else {
+        this.maxScroll = 0;
       }
     }
   }

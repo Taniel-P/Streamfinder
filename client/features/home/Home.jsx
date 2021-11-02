@@ -41,9 +41,9 @@ class Home extends React.Component {
 
         <h2 className='h-header-home'>History</h2>
         <Temp data={this.state.history}/>
-        {/* {Object.keys(data).map((carousel, i) => (
+        {Object.keys(data).map((carousel, i) => (
           <MediaTileCarousel key={`mtc${i}`} tempData={data[carousel]} label={ carousel } />
-        ))} */}
+        ))}
       </div>
     );
   }
