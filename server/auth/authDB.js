@@ -31,14 +31,25 @@ database.getUser = (user) => {
 
 database.login = (username, password) => {
   return new Promise((resolve, reject) => {
-
+    database.User.find({username: username})
+    .then((res) => {
+      bcrypt.compare(password, res[0].pass, (err, result) => {
+        if (err) {
+          throw err;
+        }
+        resolve(result);
+      })
+    })
+    .catch((err) => {
+      console.log('DB Signin Err', err)
+      reject(err);
+    })
   })
 }
 
 
 database.addUser = (userObj) => {
   return new Promise((resolve, reject) => {
-    console.log('USER OBJ', userObj)
     const filter = {$or:[{username: userObj.username}, {email: userObj.email}]};
     bcrypt.hash(userObj.password, saltRounds, function(err, hash) {
       const newUser = new database.User({
@@ -50,7 +61,6 @@ database.addUser = (userObj) => {
       })
       database.User.updateMany(filter, newUser, {upsert: true})
       .then((user) => {
-        console.log('USER=', user)
         resolve(user);
       })
       .catch((err) => {

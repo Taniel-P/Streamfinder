@@ -5,6 +5,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Streamfinder from '../../app/Streamfinder';
 import axios from 'axios';
 import './signIn.css';
@@ -14,7 +15,8 @@ class SignIn extends React.Component {
     super(props);
     this.state = {
       username: null,
-      password: null
+      password: null,
+      redirect: null
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,6 +32,13 @@ class SignIn extends React.Component {
     axios.post('/auth/login', this.state)
     .then((res) => {
       console.log('/login Res', res);
+      if (!res.data) {
+        alert('Incorrect password')
+      } else {
+        this.setState({
+          redirect: '/account'
+        })
+      }
 
     })
     .catch((err) => {
@@ -38,6 +47,9 @@ class SignIn extends React.Component {
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
     return (
       <div className="signInPage" >
       <h1 className="signInHeader">Sign In</h1>

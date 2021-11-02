@@ -9,15 +9,14 @@ const {
 
 exports.login = (req, res, next) => {
   const username = req.body.username;
-  const password = req.query.password;
-  console.log('Auth Controller', username)
+  const password = req.body.password;
   if (username && password) {
     authService.login(username, password)
     .then((result) => {
       res.status(200).send(result);
     })
     .catch((err) => {
-      res.status(500).send(err);
+      res.status(500).send('Incorrect password');
     })
   } else {
     return sendErrorResponse({res, statusCode: 400, message: ''});

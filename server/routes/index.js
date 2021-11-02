@@ -1,11 +1,11 @@
 'use strict';
 
-const rootRouter = require('./root');
 const homeRouter = require('./home');
 const searchRouter = require('./search');
 const authorizationRouter = require('./auth');
 const accountInfoRouter = require('./accountInfo');
 // const ratingsReviewsRouter = require('./ratingsReviews');
+const rootRouter = require('./root');
 
 module.exports = (app) => {
   app.use('/', rootRouter);
@@ -15,3 +15,4 @@ module.exports = (app) => {
   app.use('/accountInfo', accountInfoRouter);
   // app.use('/reviews', ratingsReviewsRouter);
 };
+
