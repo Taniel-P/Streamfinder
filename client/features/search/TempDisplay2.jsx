@@ -7,7 +7,7 @@ const TempDisplay2 = (props) => {
       {secondFive.map((values, i)=>
         <div key={i} className='temp-sl'>
           <h1>{values.title}</h1>
-          <img className='temp' src={values.img_url} alt="" />
+          <img className='temp' src={values.imgUrl} alt="" />
           <div className='provider'>
             <img className='provider-thumbnail' src='https://www.themoviedb.org/t/p/original/dgPueyEdOwpQ10fjuhL2WYFQwQs.jpg'/>
             <img className='provider-thumbnail' src='https://www.themoviedb.org/t/p/original/aS2zvJWn9mwiCOeaaCkIh4wleZS.jpg'/>
