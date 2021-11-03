@@ -1,4 +1,12 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import Home from '../home/Home';
 import axios from 'axios';
 import './Auth.css';
 
@@ -11,11 +19,12 @@ class Auth extends React.Component {
       email: null,
       password: null,
       platforms: [
-        {name: 'Netflix', id: 'netflix', isSelected: false},
-        {name: 'Amazon', id: 'amazon', isSelected: false},
-        {name: 'HBO', id: 'hbo', isSelected: false},
-        {name: 'Disney', id: 'disney', isSelected: false}
-      ]
+        {name: 'Netflix', id: 'netflix', isSelected: false, cost: 17.99},
+        {name: 'Amazon', id: 'amazon', isSelected: false, cost: 16.99},
+        {name: 'HBO', id: 'hbo', isSelected: false, cost: 15.99},
+        {name: 'Disney', id: 'disney', isSelected: false, cost: 17.99}
+      ],
+      redirect: null
     }
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -45,13 +54,24 @@ class Auth extends React.Component {
     axios.post('/auth/user', this.state)
     .then((res) => {
       console.log('/auth Res', res);
+      this.setState({
+        redirect: '/account'
+      })
+
+      //Redirect to Signin page
     })
     .catch((err) => {
       console.log('/user Err', err);
+      if (err) {
+        alert('Username or email is not available')
+      }
     })
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
     return (
       <div id="Auth">
       <div className="auth-titleHeader">
