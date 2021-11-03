@@ -8,7 +8,7 @@ class Account extends React.Component {
     this.state = {
       username: 'userjkhjkhName',
       email: 'emajnknil',
-      password: 'paskjnjknsword',
+      password: null,
       platforms: [
         {name: 'Netflix', id: 'netflix', isSelected: true, cost: 17.99},
         {name: 'Amazon', id: 'amazon', isSelected: false, cost: 16.99},
