@@ -4,6 +4,7 @@ const cors = require('cors');
 // const routes = require('./routes');
 const router = require('express').Router();
 const app = express();
+app.disable("x-powered-by");
 const homeRouter = require('./routes/home');
 const searchRouter = require('./routes/search');
 const authorizationRouter = require('./routes/auth');
