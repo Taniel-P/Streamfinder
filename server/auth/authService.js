@@ -8,7 +8,7 @@ exports.login = (username, password) => {
   return database.login(username, password);
 };
 
-exports.getUser = (userId) => {
+exports.getUser = (user) => {
   return database.getUser(user);
 };
 
