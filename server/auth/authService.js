@@ -5,11 +5,11 @@ const { database } = require('./authDB');
 const { api } = require('./authAPI');
 
 exports.login = (username, password) => {
-  return cache.cacheRoute('productReviews', { productId, page, count, sortBy }, database.getUserLogin);
+  return database.login(username, password);
 };
 
 exports.getUser = (userId) => {
-  return cache.cacheRoute('user', { userId }, database.getUser);
+  return database.getUser(user);
 };
 
 exports.postUser = (user) => {

@@ -2,9 +2,9 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const routes = require('./routes');
-
+const router = require('express').Router();
 const app = express();
-
+const authorizationRouter = require('./routes/auth');
 // app.use(cors());
 // require('./cacheManager');
 // parse application/json
@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'staticAssets')));
 
 routes(app);
 
-
+app.use('/auth', authorizationRouter);
 
 
 // catch 404 and forward to error handler
@@ -28,5 +28,7 @@ app.use((req, res, next) => {
 	res.send('Route not found')
 	next(error)
 });
+
+
 
 module.exports = app;

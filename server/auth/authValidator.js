@@ -4,7 +4,6 @@ const {
 
 exports.validateLogin = (req, res, next) => {
   const login = req.body;
-  console.log('REQ.BODY' ,req.body)
   let message = '';
 
   // TODO: Complete placeholder function below

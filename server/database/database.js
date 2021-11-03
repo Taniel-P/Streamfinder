@@ -11,6 +11,7 @@ const db = mongoose.connection;
 //create your schemas here
 
 const UserSchema = mongoose.Schema({
+  name: String,
   username: String,
   pass: String,
   email: String,
