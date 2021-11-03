@@ -19,7 +19,7 @@ class Account extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/auth/user', this.state)
+    axios.get('/auth/user', {params: this.state})
     .then((res) => {
       console.log('ACCOUNT GET', res);
     })
@@ -46,7 +46,8 @@ class Account extends React.Component {
           <h2>Member Info</h2>
           <ul>Username: {this.state.username}</ul>
           <ul>Email: {this.state.email}</ul>
-          <ul>Password: {this.state.password}</ul>
+          <ul>Password: ********</ul>
+          <button>Change password</button>
         </div>
         <hr />
         <div className="subscriptionInfo">
