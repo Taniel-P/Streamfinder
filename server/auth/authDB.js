@@ -17,7 +17,6 @@ database.getUserLogin = (/* { params } */) => {
 
 
 database.getUser = (user) => {
-  console.log('DB getUser', user)
   return new Promise((resolve, reject) => {
     resolve();
     // db.getUserLogin(reviewIdFilter)

@@ -24,11 +24,10 @@ exports.login = (req, res, next) => {
 };
 
 exports.getUser = (req, res, next) => {
-  console.log('QUERY=', req.query)
   const username = req.query.username;
   authService.getUser(req.query)
   .then((res) => {
-    console.log('Query Res', res)
+    // console.log('Query Res', res)
     // res.status(200).send(res)
   })
   // res.status(201).send('THIS IS THE RES')
@@ -43,7 +42,6 @@ exports.getUser = (req, res, next) => {
 
 exports.postUser = (req, res, next) => {
   const user = req.body;
-  console.log('USER=', user)
   if (user.name === null) {
     res.status(201).send('Name empty');
   }
