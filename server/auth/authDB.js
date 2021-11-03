@@ -17,6 +17,7 @@ database.getUserLogin = (/* { params } */) => {
 
 
 database.getUser = (user) => {
+  console.log('DB getUser', user)
   return new Promise((resolve, reject) => {
     resolve();
     // db.getUserLogin(reviewIdFilter)
@@ -31,27 +32,27 @@ database.getUser = (user) => {
 
 database.login = (username, password) => {
   return new Promise((resolve, reject) => {
-    database.User.find({username: username})
-    .then((res) => {
-      bcrypt.compare(password, res[0].pass, (err, result) => {
-        if (err) {
-          throw err;
-        }
-        resolve(result);
+    database.User.find({ username: username })
+      .then((res) => {
+        bcrypt.compare(password, res[0].pass, (err, result) => {
+          if (err) {
+            throw err;
+          }
+          resolve(result);
+        })
       })
-    })
-    .catch((err) => {
-      console.log('DB Signin Err', err)
-      reject(err);
-    })
+      .catch((err) => {
+        console.log('DB Signin Err', err)
+        reject(err);
+      })
   })
 }
 
 
 database.addUser = (userObj) => {
   return new Promise((resolve, reject) => {
-    const filter = {$or:[{username: userObj.username}, {email: userObj.email}]};
-    bcrypt.hash(userObj.password, saltRounds, function(err, hash) {
+    const filter = { $or: [{ username: userObj.username }, { email: userObj.email }] };
+    bcrypt.hash(userObj.password, saltRounds, function (err, hash) {
       const newUser = new database.User({
         name: userObj.name,
         username: userObj.username,
@@ -59,14 +60,15 @@ database.addUser = (userObj) => {
         email: userObj.email,
         platforms: userObj.platforms
       })
-      database.User.updateMany(filter, newUser, {upsert: true})
-      .then((user) => {
-        resolve(user);
-      })
-      .catch((err) => {
-        console.log('DB ERR', err)
-        reject(err);
-      })
+      database.User.updateMany(filter, newUser, { upsert: true })
+        .then((user) => {
+          console.log('RESOLVE', user)
+          resolve(user);
+        })
+        .catch((err) => {
+          console.log('DB ERR', err)
+          reject(err);
+        })
     });
   });
 };

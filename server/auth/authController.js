@@ -24,12 +24,12 @@ exports.login = (req, res, next) => {
 };
 
 exports.getUser = (req, res, next) => {
-  const username = req.query.review_id;
-  console.log('HEREEEEE', req)
-  authService(req.query)
+  console.log('QUERY=', req.query)
+  const username = req.query.username;
+  authService.getUser(req.query)
   .then((res) => {
     console.log('Query Res', res)
-    res.status(200).send(res)
+    // res.status(200).send(res)
   })
   // res.status(201).send('THIS IS THE RES')
   // if (username) {
@@ -43,7 +43,20 @@ exports.getUser = (req, res, next) => {
 
 exports.postUser = (req, res, next) => {
   const user = req.body;
-  if (user) {
+  console.log('USER=', user)
+  if (user.name === null) {
+    res.status(201).send('Name empty');
+  }
+  if (user.username === null) {
+    res.status(201).send('Username Empty');
+  }
+  if (user.email === null) {
+    res.status(201).send('Username email');
+  }
+  if (user.password === null) {
+    res.status(201).send('Password empty');
+  }
+  if (user.name && user.username && user.email && user.password) {
     authService.postUser(user)
     .then((result) => {
       res.status(200).send(result);
