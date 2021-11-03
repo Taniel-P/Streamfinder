@@ -26,11 +26,13 @@ class Streamfinder extends React.Component {
     this.cache = new Map();
 
     this.state = {
-      sessionToken: null
+      sessionToken: this.props.sessionToken || null
     }
   }
 
   updateSession(token) {
+    console.log(token);
+    window.localStorage.setItem('sessionToken', 'fakehash');
     this.setState({ sessionToken: token });
   }
 
@@ -46,7 +48,9 @@ class Streamfinder extends React.Component {
     const { sessionToken } = this.state;
     const { updateSession, checkCache, updateCache } = this;
 
-    return !sessionToken ? <SignIn updateSession={ updateSession } /> : (
+    return !sessionToken ? (
+      <SignIn updateSession={ updateSession } />
+      ) : (
       <Router>
         {/* <div>
           <ul>
@@ -81,6 +85,9 @@ class Streamfinder extends React.Component {
           */}
           <Switch>
             <Route exact path="/">
+              <Home checkCache={ checkCache } updateCache={ updateCache } />
+            </Route>
+            <Route exact path="/home">
               <Home checkCache={ checkCache } updateCache={ updateCache } />
             </Route>
             <Route path="/auth">
