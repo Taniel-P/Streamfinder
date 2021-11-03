@@ -18,12 +18,37 @@ import './Streamfinder.css';
 class Streamfinder extends React.Component {
   constructor(props) {
     super(props);
+
+    this.updateSession = this.updateSession.bind(this);
+    this.checkCache = this.checkCache.bind(this);
+    this.updateCache = this.updateCache.bind(this);
+
+    this.cache = new Map();
+
+    this.state = {
+      sessionToken: null
+    }
+  }
+
+  updateSession(token) {
+    this.setState({ sessionToken: hash });
+  }
+
+  checkCache(id) {
+    return this.cache.get(id);
+  }
+
+  updateCache(id, data) {
+    this.cache.set(id, data);
   }
 
   render() {
-    return (
+    const { sessionToken } = this.state;
+    const { updateSession, checkCache, updateCache } = this;
+
+    return !sessionToken ? <SignIn updateSession={ updateSession } /> : (
       <Router>
-        <div>
+        {/* <div>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -45,7 +70,7 @@ class Streamfinder extends React.Component {
             </li>
           </ul>
 
-          <hr />
+          <hr /> */}
 
           {/*
             A <Switch> looks through all its children <Route>
@@ -56,27 +81,27 @@ class Streamfinder extends React.Component {
           */}
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Home checkCache={ checkCache } updateCache={ updateCache } />
             </Route>
             <Route path="/auth">
-              <Auth />
+              <Auth updateSession={ updateSession } />
             </Route>
             <Route exact path="/signIn">
-              <SignIn />
+              <SignIn updateSession={ updateSession } />
             </Route>
             <Route path="/search">
               <ErrorBoundary>
-                <Search />
+                <Search checkCache={ checkCache } updateCache={ updateCache } />
               </ErrorBoundary>
             </Route>
             <Route path="/media">
-              <MediaDetail />
+              <MediaDetail checkCache={ checkCache } updateCache={ updateCache } />
             </Route>
             <Route path="/account">
               <Account />
             </Route>
           </Switch>
-        </div>
+        {/* </div> */}
       </Router>
     );
   }

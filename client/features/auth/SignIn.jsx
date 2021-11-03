@@ -48,7 +48,11 @@ class SignIn extends React.Component {
       </div>
       <button onClick={this.handleSubmit}>Sign in</button>
       <div className="signIn-signInLink">
-        <div><Link to="/auth">New to Streamfinder? Sign up now!</Link></div>
+        <Router>
+          <div>
+            <Link to="/auth">New to Streamfinder? Sign up now!</Link>
+          </div>
+        </Router>
       </div>
     </div>
     )
