@@ -31,7 +31,7 @@ class Streamfinder extends React.Component {
   }
 
   updateSession(token) {
-    this.setState({ sessionToken: hash });
+    this.setState({ sessionToken: token });
   }
 
   checkCache(id) {
