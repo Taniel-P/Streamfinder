@@ -6,13 +6,13 @@ class Account extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'userjkhjkhName',
+      username: 'taniel',
       email: 'emajnknil',
       password: null,
       platforms: [
         {name: 'Netflix', id: 'netflix', isSelected: true, cost: 17.99},
-        {name: 'Amazon', id: 'amazon', isSelected: false, cost: 16.99},
-        {name: 'HBO', id: 'hbo', isSelected: true, cost: 15.99},
+        {name: 'Amazon', id: 'amazon', isSelected: true, cost: 16.99},
+        {name: 'HBO', id: 'hbo', isSelected: false, cost: 15.99},
         {name: 'Disney', id: 'disney', isSelected: false, cost: 17.99}
       ]
     }
@@ -21,7 +21,13 @@ class Account extends React.Component {
   componentDidMount() {
     axios.get('/auth/user', {params: this.state})
     .then((res) => {
-      console.log('ACCOUNT GET', res);
+      console.log('ACCOUNT GET', res.data);
+      this.setState({
+        username: res.data.username,
+        email: res.data.email,
+        password: null,
+        platforms: res.data.platforms
+      })
     })
     .catch((err) => {
       console.log('ACCOUNT GET ERR', err);
