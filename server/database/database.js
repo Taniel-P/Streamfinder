@@ -15,7 +15,8 @@ const UserSchema = mongoose.Schema({
   username: String,
   pass: String,
   email: String,
-  subscriptions: [String]
+  subscriptions: [String],
+  currentId: Number
 });
 
 const User = mongoose.model('User', UserSchema);
@@ -29,20 +30,26 @@ const ReviewSchema = mongoose.Schema({
 });
 const Review = mongoose.model('Review', ReviewSchema);
 
+
 const MovieSchema = mongoose.Schema({
   id: Number,
+  //need to modify later like reviews
+  suggested: Array,
+  trending: Array,
+  history: Array,
+  //modify --- needs to happen - rob being lazy atm
   mediaType: String,
   title: String,
   rating: Number,
   summary: String,
   reviews: [ReviewSchema],
   imgUrl: String,
-  hulu: Boolean,
-  disneyPlus: Boolean,
-  netflix: Boolean,
-  hboMax: Boolean,
-  appleTvPlus: Boolean,
-  amazonPrimeVideo: Boolean
+  hulu: String,
+  disney: String,
+  netflix: String,
+  hbo: String,
+  apple: String,
+  amazon: String
 });
 const Movie = mongoose.model('Movie', MovieSchema);
 
