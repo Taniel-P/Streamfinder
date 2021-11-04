@@ -6,6 +6,7 @@ import axios from 'axios';
 import { ironMan } from './tempData';
 import TempDisplay1 from './TempDisplay1';
 import TempDisplay2 from './TempDisplay2';
+//remove once carosel can be installed/replace in Search class
 
 class Search extends React.Component {
   constructor(props) {
@@ -32,12 +33,14 @@ class Search extends React.Component {
     //set state with results
     axios.post('/search/searchPost', {title: this.state.searchVal})
       .then(({data}) => {
-        console.log(data)
+
         this.setState({
           searchDisplay: data
         })
-
       })
+    // this.setState({
+    //   searchDisplay: ironMan
+    // });
   }
   render() {
     const { searchTerm, placeholder } = this.state;
