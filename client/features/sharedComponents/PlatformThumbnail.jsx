@@ -28,15 +28,15 @@ class PlatformThumbnail extends React.Component {
     // click on 'create account' selects subscription
     // click on 'account -> most used' goes to site
     // click on 'account -> subscriptions' goes to site. Changing subscription is from a different control
-    if (this.props.isSelectable) {
+    // if (this.props.isSelectable) {
 
-    } else {
+    // } else {
 
-    }
+    // }
 
-    this.setState({
-      rating: e.currentTarget.name
-    });
+    // this.setState({
+    //   rating: e.currentTarget.name
+    // });
   }
 
   render() {
