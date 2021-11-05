@@ -15,8 +15,8 @@ import Account from '../features/accountPage/Account';
 import ErrorBoundary from '../features/sharedComponents/ErrorBoundary';
 import './Streamfinder.css';
 /* the idea:
-upon auth being valid - 
-* auth will send username and current history ids (from user schema) to StreamerFinder 
+upon auth being valid -
+* auth will send username and current history ids (from user schema) to StreamerFinder
   and state will bet set
 * Each component can use component did update for when their props
   change.  upon this happening they can make an ajax request to server
@@ -93,8 +93,8 @@ class Streamfinder extends React.Component {
             <Route path="/media">
               <MediaDetail />
             </Route>
-            <Route path="/account">
-              <Account />
+            <Route path="/account" render={(props) => <Account {...props} /> }>
+
             </Route>
           </Switch>
         </div>

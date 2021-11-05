@@ -24,9 +24,9 @@ exports.login = (req, res, next) => {
 };
 
 exports.getUser = (req, res, next) => {
-  const username = req.query.username;
+  const username = req.query['0'];
   if (username) {
-    authService.getUser(req.query)
+    authService.getUser(username)
     .then((user) => {
       res.status(200).send(user)
     })

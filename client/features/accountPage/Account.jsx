@@ -1,4 +1,13 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useLocation,
+  useHistory,
+  Redirect
+} from "react-router-dom";
 import axios from 'axios';
 import './Account.css';
 
@@ -6,20 +15,15 @@ class Account extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'taniel',
-      email: 'emajnknil',
-      password: null,
-      platforms: [
-        {name: 'Netflix', id: 'netflix', isSelected: true, cost: 17.99},
-        {name: 'Amazon', id: 'amazon', isSelected: true, cost: 16.99},
-        {name: 'HBO', id: 'hbo', isSelected: false, cost: 15.99},
-        {name: 'Disney', id: 'disney', isSelected: false, cost: 17.99}
-      ]
+      username: 'placeholder',
+      email: 'placeholder',
+      password: 'placeholder',
+      platforms: []
     }
   }
 
   componentDidMount() {
-    axios.get('/auth/user', {params: this.state})
+    axios.get('/auth/user', {params: this.props.location.state.user})
     .then((res) => {
       console.log('ACCOUNT GET', res.data);
       this.setState({
@@ -35,6 +39,7 @@ class Account extends React.Component {
   }
 
   render() {
+    {console.log('MOUNT==', this.props.location.state)}
     return (
       <div className="accountPage">
         <div className="users-header">

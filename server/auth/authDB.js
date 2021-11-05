@@ -18,9 +18,8 @@ database.getUserLogin = (/* { params } */) => {
 
 database.getUser = (user) => {
   return new Promise((resolve, reject) => {
-    database.User.find({username: user.username})
+    database.User.find({username: user})
     .then((res) => {
-      console.log('HERE', res[0])
       const userObj = {
         username: res[0].username,
         email: res[0].email,
