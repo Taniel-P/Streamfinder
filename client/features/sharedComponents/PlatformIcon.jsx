@@ -1,7 +1,6 @@
 import React from 'react';
 import './PlatformIcon.css';
 
-// props: index, isCapped, max, min, stem
 class PlatformIcon extends React.Component {
   constructor({ platformName, platformUrl, movieUrl }) {
     super({ platformName, platformUrl, movieUrl });
