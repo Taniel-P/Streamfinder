@@ -17,7 +17,7 @@ class Account extends React.Component {
     this.state = {
       username: 'placeholder',
       email: 'placeholder',
-      password: 'placeholder',
+      password: null,
       platforms: []
     }
   }

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
-mongoose.connect('mongodb://127.0.0.1:27017/streamFinder');
+mongoose.connect(process.env.localDB);
 mongoose.connection.once('open', () => {
   console.log('Connected to Database');
 });
