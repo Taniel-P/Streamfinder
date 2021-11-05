@@ -39,12 +39,10 @@ class PlatformIcon extends React.Component {
   // Below should be fleshed out. Perhaps props takes in a platform name that corresponds to the key holding the SVG?
   render() {
     return (
-      <div class="platform-icon">
-          <div class={ this.decrementClass } onClick={ this.handleClickl }>
-            <svg viewBox={ this.getSvgData('viewBox') }>
-              <path d={ this.getSvgData('platform1') } />
-            </svg>
-          </div>
+      <div class="sc-platform-icon" onClick={ this.handleClickl }>
+        <svg viewBox={ this.getSvgData('viewBox') }>
+          <path d={ this.getSvgData('platform1') } />
+        </svg>
       </div>
     );
   }
