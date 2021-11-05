@@ -8,6 +8,17 @@ class VideoThumbnail extends React.Component {
   constructor({ id, imgData, name, rating, platformData }) {
     super({ id, imgData, name, rating, platformData });
 
+    // below are object properties to have at hand for using the async img thumbnail
+    // img: { }
+      // src={props.thumbnailUrl}
+      // alt={props.name}
+      // id={props.thumbnailUrl}
+      // class="sc-platform-thumbnail-image"
+      // data-style-id={props.id}
+      // onClick={handleClick}
+      // key={itemKey++}
+    // imageType
+
     this.state = {
       // Any state needed?
     };
