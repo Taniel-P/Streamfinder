@@ -11,6 +11,7 @@ class PlatformIcon extends React.Component {
     };
 
     this.getSvgData = this.getSvgData.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     // You can store SVGs of the platforms here
     this.svgs = {
@@ -24,25 +25,27 @@ class PlatformIcon extends React.Component {
     }
   }
 
-
   getSvgData(item) {
     // const typeKey = this.props.stem ? 'stem' : 'noStem';
     // Props could maybe select the appropriate SVG here?
     return this.svgs['platforms'][item];
   }
 
+  handleClick(e) {
+    // Icons should be clickable
+    // I'd expect to either have a URL to the movie associated with this plaform, handed down from the video thumbnail
+    // or as placeholder a url to the home page of the platform
+  }
+
   // Below should be fleshed out. Perhaps props takes in a platform name that corresponds to the key holding the SVG?
   render() {
     return (
       <div class="platform-icon">
-        {
-          !(this.props.isCapped && this.state.index === this.props.minIndex) &&
-          <div class={ this.decrementClass } onClick={ this.incrementIndexDown }>
+          <div class={ this.decrementClass } onClick={ this.handleClickl }>
             <svg viewBox={ this.getSvgData('viewBox') }>
               <path d={ this.getSvgData('platform1') } />
             </svg>
           </div>
-        }
       </div>
     );
   }
