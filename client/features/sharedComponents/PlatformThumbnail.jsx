@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorBoundary from 'ErrorBoundary.jsx';
 import './PlatformThumbnail.css';
 
 class PlatformThumbnail extends React.Component {
@@ -42,10 +43,12 @@ class PlatformThumbnail extends React.Component {
     const { rating } = this.state;
 
     return (
-      <div className="sc-platform-thumbnail" onClick={this.handleClick}>
-        <img src={props.thumbnailUrl} alt={props.name} />
-        <span>{props.name}</span>
-      </div>
+      <ErrorBoundary>
+        <div className="sc-platform-thumbnail" onClick={this.handleClick}>
+          <img src={props.thumbnailUrl} alt={props.name} />
+          <span>{props.name}</span>
+        </div>
+      </ErrorBoundary>
     )
   }
 }
