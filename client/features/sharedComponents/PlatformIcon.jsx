@@ -3,11 +3,11 @@ import './PlatformIcon.css';
 
 // props: index, isCapped, max, min, stem
 class PlatformIcon extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor({ platformName, platformUrl, movieUrl }) {
+    super({ platformName, platformUrl, movieUrl });
 
     this.state = {
-
+      // Any state needed?
     };
 
     this.getSvgData = this.getSvgData.bind(this);
