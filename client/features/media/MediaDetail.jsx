@@ -14,10 +14,10 @@ class MediaDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: '',
       mediaType: '',
       name: '',
       rating: '',
+      ratingCount: '',
       summary: '',
       subscriptions: [],
       reviews: [],
@@ -28,14 +28,17 @@ class MediaDetail extends React.Component {
     };
     this.getMediaAndUserDetails = this.getMediaAndUserDetails.bind(this);
     this.handleLogoClick = this.handleLogoClick.bind(this);
+    this.getLogoUrl = this.getLogoUrl.bind(this);
+    this.getServiceUrl = this.getServiceUrl.bind(this);
   }
 
   componentDidMount() {
-    console.log('inside componentDidMount');
     this.getMediaAndUserDetails();
   }
 
   getMediaAndUserDetails() {
+    let userSubs;
+    let subs = [];
     //userId should come from props, but for now
     let userId = 10130;
     //mediaId should come from props, but for now
@@ -43,59 +46,105 @@ class MediaDetail extends React.Component {
     //this will be a request to the db to get media info to apply to state
     axios.get(`/media/userSubs?${userId}`)
       .then(({data}) => {
-        let subs = data;
+        userSubs = data;
       })
       .then(() => {
         axios.get(`/media/mediaDetails?${mediaId}`)
           .then(({data}) => {
-            console.log('second data: ', data);
+            if (data.hulu) {
+              subs.push('Hulu');
+            }
+            if (data.disney) {
+              subs.push('Disney Plus');
+            }
+            if (data.netflix) {
+              subs.push('Netflix');
+            }
+            if (data.hbo) {
+              subs.push('HBO Max');
+            }
+            if (data.apple) {
+              subs.push('Apple TV Plus');
+            }
+            if (data.amazon) {
+              subs.push('Amazon Prime Video');
+            }
+
+            let services = [];
+            let nonservices = [];
+            for (let i = 0; i < subs.length; i++) {
+              if (userSubs.includes(subs[i])) {
+                services.push(subs[i]);
+              } else {
+                nonservices.push(subs[i]);
+              }
+            }
+
+            this.setState({
+              mediaType: data.mediaType,
+              name: data.title,
+              rating: (data.rating / 2),
+              ratingCount: data.ratingCount,
+              summary: data.summary,
+              subscriptions: subs,
+              reviews: data.reviews,
+              imgUrl: data.imgUrl,
+              userSubs: userSubs,
+              watchWithSubscribed: services,
+              watchWithUnsubscribed: nonservices
+            });
           });
       });
-    // let subs = test.subscriptions;
-
-    //on success, another request to db to find out what subscriptions the user has OR this can be passed to me in props
-    //I will need the userId passed to me in props
-    let userSubs = test.userSubs;
-
-    //on success do some logic
-    // let services = [];
-    // let nonservices = [];
-    // for (let i = 0; i < subs.length; i++) {
-    //   if (userSubs.includes(subs[i])) {
-    //     services.push(subs[i]);
-    //   } else {
-    //     nonservices.push(subs[i]);
-    //   }
-    // }
-
-    // this.setState({
-    //   id: test.id,
-    //   mediaType: test.mediaType,
-    //   name: test.name,
-    //   rating: test.rating,
-    //   summary: test.summary,
-    //   subscriptions: subs,
-    //   reviews: test.reviews,
-    //   imgUrl: test.thumbnail,
-    //   userSubs: userSubs,
-    //   watchWithSubscribed: services,
-    //   watchWithUnsubscribed: nonservices
-    // });
   }
 
   handleLogoClick() {
     //notify home component that user has watched the movie?
+    //add movie object to user history
+  }
+
+  getLogoUrl(name) {
+    if (name === 'Hulu') {
+      return 'https://www.themoviedb.org/t/p/original/giwM8XX4V2AQb9vsoN7yti82tKK.jpg';
+    } else if (name === 'Disney Plus') {
+      return 'https://www.themoviedb.org/t/p/original/dgPueyEdOwpQ10fjuhL2WYFQwQs.jpg';
+    } else if (name === 'Netflix') {
+      return 'https://www.themoviedb.org/t/p/original/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg';
+    } else if (name === 'HBO Max') {
+      return 'https://www.themoviedb.org/t/p/original/aS2zvJWn9mwiCOeaaCkIh4wleZS.jpg';
+    } else if (name === 'Apple TV Plus') {
+      return 'https://www.themoviedb.org/t/p/original/A3WLxoSkmuxwaQkpfwL6H8WwWwM.jpg';
+    } else if (name === 'Amazon Prime Video') {
+      return 'https://www.themoviedb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg';
+    }
+  }
+
+  getServiceUrl(name) {
+    if (name === 'Hulu') {
+      return 'www.hulu.com';
+    } else if (name === 'Disney Plus') {
+      return 'disneyplus.com';
+    } else if (name === 'Netflix') {
+      return 'netflix.com';
+    } else if (name === 'HBO Max') {
+      return 'hbomax.com';
+    } else if (name === 'Apple TV Plus') {
+      return 'appletvplus.com';
+    } else if (name === 'Amazon Prime Video') {
+      return 'amazonprimevideo.com';
+    }
   }
 
   render() {
     let subscribed = this.state.watchWithSubscribed.map((name, i) => {
+      let logo = this.getLogoUrl(name);
+      let website = this.getServiceUrl(name);
       return <a
         key={`subscribed-${i}`}
-        href={`//www.${name}.com`}
+        href={`//${website}`}
         target='_blank'>
         <img
           className='streamingLogo'
-          src={`${test.logos[name]}`}
+          src={`${logo}`}
           key={`subscribed-${i}`}
           alt={`${name} logo`}
           onClick={this.handleLogoClick}
@@ -104,13 +153,15 @@ class MediaDetail extends React.Component {
     });
 
     let unsubscribed = this.state.watchWithUnsubscribed.map((name, i) => {
+      let logo = this.getLogoUrl(name);
+      let website = this.getServiceUrl(name);
       return <a
         key={`unsubscribed-${i}`}
-        href={`//www.${name}.com`}
+        href={`${website}`}
         target='_blank'>
         <img
           className='streamingLogo'
-          src={`${test.logos[name]}`}
+          src={`${logo}`}
           alt={`${name} logo`}
           onClick={this.handleLogoClick}
         />
@@ -135,6 +186,7 @@ class MediaDetail extends React.Component {
       unsubLengthStatement = 'Also available on these other providers:';
     }
 
+    console.log('this.state: ', this.state);
     return (
       <div id="mediaDetail">
         <div className="overview-header">
