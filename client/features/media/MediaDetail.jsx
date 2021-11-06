@@ -39,8 +39,7 @@ class MediaDetail extends React.Component {
   getMediaAndUserDetails() {
     let userSubs;
     let subs = [];
-    //userId should come from props, but for now
-    let userId = 10130;
+    let userId = this.props.userId;
     //mediaId should come from props, but for now
     let mediaId = 10138;
     //this will be a request to the db to get media info to apply to state
@@ -190,13 +189,12 @@ class MediaDetail extends React.Component {
 
     if (this.state.watchWithUnsubscribed.length === 0) {
       unsubLengthStatement = 'Not available to watch on any other providers';
-    } else if (this.state.watchWithUnubscribed.length === 1) {
+    } else if (this.state.watchWithUnsubscribed.length === 1) {
       unsubLengthStatement = 'Also available on this other provider:';
     } else {
       unsubLengthStatement = 'Also available on these other providers:';
     }
 
-    console.log('this.state: ', this.state);
     return (
       <div id="mediaDetail">
         <div className="overview-header">
@@ -230,11 +228,13 @@ class MediaDetail extends React.Component {
         </div>
         <hr/>
         <div className="Reviews">
-          {/* cannot render reviews until I have this.props.userId passed to me
-           <Reviews
+          {/* cannot render reviews until I have this.props.userId passed to me */}
+          <Reviews
             userId={this.props.userId}
-            mediaId={this.state.id}
-          /> */}
+            // I need mediaId passed to me from the component opening it
+            mediaId={10138}
+            reviews={this.state.reviews}
+          />
         </div>
       </div>
     );

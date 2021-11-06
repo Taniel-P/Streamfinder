@@ -78,7 +78,7 @@ class Streamfinder extends React.Component {
           */}
           <Switch>
             <Route exact path="/home">
-              <Home user={this.state.user} userId={this.state.userId} />
+              <Home user={this.state.user} />
             </Route>
             <Route path="/auth">
               <Auth />
@@ -93,7 +93,9 @@ class Streamfinder extends React.Component {
               </ErrorBoundary>
             </Route>
             <Route path="/media">
-              <MediaDetail />
+              <ErrorBoundary>
+                <MediaDetail userId={this.state.userId}/>
+              </ErrorBoundary>
             </Route>
             <Route path="/account">
               <Account />

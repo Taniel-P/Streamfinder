@@ -15,7 +15,6 @@ module.exports = {
 
   getMediaDetails: (req, res, next) => {
     const mediaId = req.url.split('?')[1];
-    console.log('***', mediaId);
     getMediaInfo(mediaId).then((details) => {
       res.send(details);
     });
