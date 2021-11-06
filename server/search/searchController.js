@@ -21,3 +21,5 @@ exports.getSearchInfo = (req, res, next) => {
   //if it does not exist
   //sends request to api
 };
+
+

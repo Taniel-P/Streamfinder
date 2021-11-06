@@ -13,6 +13,47 @@ module.exports = {
       return finalObj
     })
     return finalSearchResponse
-  }
+  },
+  getUniqueIds: (historyObj, trendingArr, suggestedArr) => {
+    const uniqueHId = historyObj.id
+    const uniqueTId = trendingArr.map((obj) => obj.id)
+    const uniqueSid = suggestedArr.map((obj) => obj.id)
+
+    const combined = uniqueTId.concat(uniqueSid)
+    combined.push(uniqueHId)
+    const final = [...new Set(combined)]
+    return final
+ },
+ finalProviderData: (data) => {
+   let finalProviderData = data.map((obj) => {
+     const newObj = {}
+     let finalProviders = []
+     if (obj !== undefined) {
+       let split = obj.link.split('-')
+       split = split[0].split('movie/')
+       const id = Number(split[1])
+       let logoPaths= []
+       let providers = []
   
+    
+       newObj.id = id
+       if (obj.flatrate !== undefined) {
+         obj.flatrate.forEach((flatObj) => {
+           providers.push(flatObj.provider_name)
+           logoPaths.push(`https://www.themoviedb.org/t/p/w1280${flatObj.logo_path}`)
+         })
+         newObj.logo_paths = logoPaths
+         newObj.providers = providers
+       }
+       finalProviders.push(newObj)
+     }
+     return newObj
+   })
+   finalProviderData = finalProviderData.filter((obj) => {
+     if (Object.keys(obj).length) {
+       return obj
+     }
+   })
+   return finalProviderData
+  }
 }

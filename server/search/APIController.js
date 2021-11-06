@@ -95,5 +95,43 @@ module.exports = {
         return firstFive;
       });
 
+  },
+  getProviders: (idArr) => {
+    const arr = []
+    
+
+    const providers = new Promise((resolve, reject) => {
+      idArr.forEach((id) => {
+      const url = `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${API_KEY}`
+     
+   
+        const data = axios.get(url)
+          .then(({data}) => {
+            const results = data.results.US
+            arr.push(results)
+         
+            if(arr.length === idArr.length) {
+
+              return arr
+            }
+
+          
+          })
+
+        data.then((data) => {
+       
+          if (data !== undefined) {
+            // console.log(data)
+            resolve(data)
+          }
+       
+        })
+      })
+    })
+    providers.then((providerData) => {
+      return(providerData)
+
+    })
+    return providers    
   }
 };
