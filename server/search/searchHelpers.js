@@ -7,8 +7,6 @@ module.exports = {
       const finalProviderArr = [];
       // console.log(movie)
 
-
-
       finalObj.title = movie.title;
       finalObj.imgUrl = movie.imgUrl;
       finalObj.providers = [movie.hulu ? movie.hulu : null, movie.disney ? movie.disney : null, movie.netflix ? movie.netflix : null, movie.hbo ? movie.hbo : null, movie.apple ? movie.apple : null, movie.amazon ? movie.amazon : null];
@@ -99,9 +97,9 @@ module.exports = {
           }
         }
       });
-      return trending
+      return trending;
     });
-  }, 
+  },
   createFinalSuggestedArr: (suggested, finalProviders) => {
     suggested.forEach((movie) => {
       let movieId = movie.id;
@@ -127,6 +125,6 @@ module.exports = {
         }
       });
     });
-    return suggested
+    return suggested;
   }
 };

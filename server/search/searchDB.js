@@ -56,89 +56,72 @@ module.exports = {
                       userData[0].history.forEach((historyObj) => {
                         if (historyObj[0].title.toLowerCase() !== finalMovieObj.title.toLowerCase()) {
                           User.updateOne({username: user, $push: {history: finalMovieObj}}, (err, data) => {
-                            console.log('saved new record: ', data)
+                            console.log('saved new record: ', data);
                           });
                         } else {
-                          console.log('reocrd exists already yooo')
+                          console.log('record exists already yooo');
                         }
-                      })
+                      });
 
                     } else if (!userData[0].history.length) {
-                     User.updateOne({username: user, $push: {history: finalMovieObj}}, (err, data) => {
-                       console.log('saved new record: ', data)
-                     });
+                      User.updateOne({username: user, $push: {history: finalMovieObj}}, (err, data) => {
+                        console.log('saved new record: ', data);
+                      });
                     }
-                    return true
+                    return true;
 
-                  })
+                  });
                   checkAndUpdate.then((bool) => {
-      
-                  //create finalHistoryArr - adds providers to the movies in historyArr, providers based on movies id
-                  
-                  //create finalTrendingArr - adds providers to the movies in trendingArr, providers based on movies id
-                  const finalTrendingArr = createFinalTrendingArr(trending, finalProviders);
-                  //create finalSuggestedArr - adds providers to the movies in suggestedArr, providers based on movies id
-                  const finalSuggestedArr = createFinalSuggestedArr(suggested, finalProviders);
-                  //createDbObj - adds finalHistoryArr, finalTrendingArr, and finalSuggestedArr to finalMovieObj
-                  //create movieSave - saves new movie data to schema
 
-                  // let mO = {
-                  //   mediaType: 'movie',
-                  //   title: 'Elf',
-                  //   rating: 6.6,
-                  //   ratingCount: 2960,
-                  //   summary: 'When young Buddy falls into Santa\'s gift sack on Christmas Eve, he\'s transported back to the North Pole and raised as a toy-making elf by Santa\'s helpers. But as he grows into adulthood, he can\'t shake the nagging feeling that he doesn\'t belong. Buddy vows to visit Manhattan and find his real dad, a workaholic publisher.',
-                  //   imgUrl: 'https://www.themoviedb.org/t/p/w1280/zDHFQmaxlTIJGQDfTrLTL9RK2tQ.jpg',
-                  //   hulu: null,
-                  //   disney: null,
-                  //   netflix: null,
-                  //   hbo: null,
-                  //   apple: null,
-                  //   amazon: null
-                  // };
-                  // const movieSave = (movieObj) => {
-                  //   let filter = {id: movieObj.id};
-                  //   let update = {
-                  //     suggested: [],
-                  //     trending: [],
-                  //     history: [],
-                  //     mediaType: movieObj.mediaType,
-                  //     title: movieObj.title,
-                  //     rating: movieObj.rating,
-                  //     ratingCount: movieObj.ratingCount,
-                  //     summary: movieObj.summary,
-                  //     reviews: [],
-                  //     imgUrl: movieObj.imgUrl,
-                  //     hulu: movieObj.hulu,
-                  //     disney: movieObj.disney,
-                  //     netflix: movieObj.netflix,
-                  //     hbo: movieObj.hbo,
-                  //     apple: movieObj.apple,
-                  //     amazon: movieObj.amazon
-                  //   };
-                  //   let options = {
-                  //     new: true,
-                  //     upsert: true
-                  //   };
-                  //   Movie.findOneAndUpdate(filter, update, options, (err, data) => {
-                  //     if (err) {
-                  //       console.log('ERROR in movieSave: ', err);
-                  //     } else {
-                  //       console.log('SUCCESS saving movie: ', data);
-                  //     }
-                  //   });
-                  // };
-                  // movieSave(mO);
-                  //save (key) name and (value) id to redis
-                  //create finalSearch - use transformToSearchDisplay (to format for search componment)
+                    //create finalHistoryArr - adds providers to the movies in historyArr, providers based on movies id
 
-                  //resolve with finalSearch
-                  
-                  })
-                })
-              })
-            })
-          })
+                    //create finalTrendingArr - adds providers to the movies in trendingArr, providers based on movies id
+                    const finalTrendingArr = createFinalTrendingArr(trending, finalProviders);
+                    //create finalSuggestedArr - adds providers to the movies in suggestedArr, providers based on movies id
+                    const finalSuggestedArr = createFinalSuggestedArr(suggested, finalProviders);
+                    //createDbObj - adds finalHistoryArr, finalTrendingArr, and finalSuggestedArr to finalMovieObj
+                    //create movieSave - saves new movie data to schema
+                    const movieSave = (movieObj) => {
+                      let filter = {id: movieObj.id};
+                      let update = {
+                        suggested: finalSuggestedArr,
+                        trending: finalTrendingArr,
+                        mediaType: movieObj.mediaType,
+                        title: movieObj.title,
+                        rating: movieObj.rating,
+                        ratingCount: movieObj.ratingCount,
+                        summary: movieObj.summary,
+                        reviews: [],
+                        imgUrl: movieObj.imgUrl,
+                        hulu: movieObj.hulu,
+                        disney: movieObj.disney,
+                        netflix: movieObj.netflix,
+                        hbo: movieObj.hbo,
+                        apple: movieObj.apple,
+                        amazon: movieObj.amazon
+                      };
+                      let options = {
+                        new: true,
+                        upsert: true
+                      };
+                      Movie.findOneAndUpdate(filter, update, options, (err, data) => {
+                        if (err) {
+                          console.log('ERROR in movieSave: ', err);
+                        } else {
+                          console.log('SUCCESS saving movie: ', data);
+                        }
+                      });
+                    };
+                    //save (key) name and (value) id to redis
+                    //create finalSearch - use transformToSearchDisplay (to format for search componment)
+
+                    //resolve with finalSearch
+
+                  });
+                });
+              });
+            });
+          });
         }
       });
     });
