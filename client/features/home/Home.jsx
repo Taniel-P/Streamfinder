@@ -19,26 +19,26 @@ class Home extends React.Component {
 
   componentDidMount() {
     //if the prev props id is different from current and if id is not null
-    //when this page is hit - it should run a ajax request to server 
- 
-    //for the current id 
+    //when this page is hit - it should run a ajax request to server
+
+    //for the current id
 
 
     if (this.props.user !== null && this.props.user) {
       axios.get(`/home/homePage?${this.props.user}`)
         .then(({data}) => {
-          console.log('thyyyy data', data)
+          console.log('thyyyy data', data);
 
           this.setState({
             suggested: data.suggested,
             history: data.history,
             trending: data.trending
-          })
-        })
+          });
+        });
     }
 
-   
-    
+
+
   }
 
   render() {
@@ -58,14 +58,14 @@ class Home extends React.Component {
             className='search-button'>Search
           </button>
         </div> */}
-        <h2 className='s-header-home'>suggested</h2>
+        {/* <h2 className='s-header-home'>suggested</h2>
         <Temp data={this.state.suggested}/>
 
         <h2 className='t-header-home'>Trending</h2>
         <Temp data={this.state.trending}/>
 
         <h2 className='h-header-home'>History</h2>
-        <Temp data={this.state.history}/>
+        <Temp data={this.state.history}/> */}
         {Object.keys(data).map((carouselLabel, i) => (
           <MediaTileCarousel key={`mtc${i}`} tempData={data[carouselLabel]} label={ carouselLabel } />
         ))}
