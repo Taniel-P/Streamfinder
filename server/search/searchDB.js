@@ -37,11 +37,11 @@ module.exports = {
             getTrending().then((trending) => {
               //create trendingArr which holds data related to trending view
 
-   
+
               //create getSuggested - use searched movie response id to get suggested (movie get recommendations api request)
               getSuggested(id).then((suggested) => {
-             
-                //create suggestedArr which holds data related to the suggessted view 
+
+                //create suggestedArr which holds data related to the suggessted view
                 //create uniqueMovieIds - pull unique ids from historyArr, trendingArr, and suggestedArr
                 const uniqueMovieIds = getUniqueIds(history, trending, suggested)
                 //create providers - request providers for each id (with a promise all)
@@ -57,7 +57,7 @@ module.exports = {
 
                   //createDbObj - adds finalHistoryArr, finalTrendingArr, and finalSuggestedArr to finalMovieObj
                   //create movieSave - saves new movie data to schema
-                  
+
                   // let mO = {
                   //   mediaType: 'movie',
                   //   title: 'Elf',
@@ -105,7 +105,7 @@ module.exports = {
                   //   });
                   // };
                   // movieSave(mO);
-                  //save (key) name and (value) id to redis 
+                  //save (key) name and (value) id to redis
                   //create finalSearch - use transformToSearchDisplay (to format for search componment)
 
                   //resolve with finalSearch
