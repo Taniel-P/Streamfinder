@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import StarRatingInteractive from '../sharedComponents/StarRatingInteractive';
 import StarRating from '../sharedComponents/StarRating';
 import SearchBar from './../sharedComponents/SearchBar.jsx';
@@ -30,11 +31,23 @@ class MediaDetail extends React.Component {
   }
 
   componentDidMount() {
+    console.log('inside componentDidMount');
     this.getMediaAndUserDetails();
   }
 
   getMediaAndUserDetails() {
+    let userId = 10138;
     //this will be a request to the db to get media info to apply to state
+    axios.get(`/media/userSubs?${userId}`)
+      .then(({data}) => {
+        console.log('thyyyy data', data);
+
+        // this.setState({
+        //   suggested: data.suggested,
+        //   history: data.history,
+        //   trending: data.trending
+        // })
+      });
     let subs = test.subscriptions;
 
     //on success, another request to db to find out what subscriptions the user has OR this can be passed to me in props
@@ -120,7 +133,7 @@ class MediaDetail extends React.Component {
     }
 
     return (
-      <div id="MovieDetail">
+      <div id="mediaDetail">
         <div className="overview-header">
           <h1 className="overview-title">Streamfinder</h1>
           <SearchBar />

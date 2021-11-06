@@ -4,10 +4,11 @@ const cors = require('cors');
 // const routes = require('./routes');
 const router = require('express').Router();
 const app = express();
-app.disable("x-powered-by");
+app.disable('x-powered-by');
 const homeRouter = require('./routes/home');
 const searchRouter = require('./routes/search');
 const authorizationRouter = require('./routes/auth');
+const mediaDetailRouter = require('./routes/mediaDetail');
 
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
@@ -19,7 +20,7 @@ const clientBundleStyle = '<link rel="stylesheet" href="http://localhost:8080/st
 // app.use(cors());
 // require('./cacheManager');
 // parse application/json
-app.use(express.json())
+app.use(express.json());
 // parse application/x-www-form-urlencoded
 app.use(express.urlencoded({extended: true}));
 
@@ -28,9 +29,10 @@ app.use(express.static(path.join(__dirname, 'staticAssets')));
 // routes(app);
 
 
-	app.use('/home', homeRouter);
-	app.use('/search', searchRouter);
-	app.use('/auth', authorizationRouter);
+app.use('/home', homeRouter);
+app.use('/search', searchRouter);
+app.use('/auth', authorizationRouter);
+app.use('/media', mediaDetailRouter);
 
 
 
@@ -59,12 +61,12 @@ app.get('*', (req, res) => {
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-	console.log('REQ==', req)
-	const error = new Error('Not Found')
-	console.log(error)
-	error.status = 404
-	res.send('Route not found')
-	next(error)
+  console.log('REQ==', req);
+  const error = new Error('Not Found');
+  console.log(error);
+  error.status = 404;
+  res.send('Route not found');
+  next(error);
 });
 
 
