@@ -59,14 +59,14 @@ class Home extends React.Component {
             className='search-button'>Search
           </button>
         </div> */}
-        <h2 className='s-header-home'>suggested</h2>
+        {/* <h2 className='s-header-home'>suggested</h2>
         <Temp data={this.state.suggested}/>
 
         <h2 className='t-header-home'>Trending</h2>
         <Temp data={this.state.trending}/>
 
         <h2 className='h-header-home'>History</h2>
-        <Temp data={this.state.history}/>
+        <Temp data={this.state.history}/> */}
         {Object.keys(data).map((carouselLabel, i) => (
           <MediaTileCarousel key={`mtc${i}`} tempData={data[carouselLabel]} label={ carouselLabel } />
         ))}
