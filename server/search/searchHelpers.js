@@ -25,7 +25,7 @@ module.exports = {
   finalProviderData: (data) => {
     let finalProviderData = data.map((obj) => {
       const newObj = {};
-      // let finalProviders = [];
+      let finalProviders = [];
       if (obj !== undefined) {
         let split = obj.link.split('-');
         split = split[0].split('movie/');
@@ -43,7 +43,7 @@ module.exports = {
           newObj.logo_paths = logoPaths;
           newObj.providers = providers;
         }
-        // finalProviders.push(newObj);
+        finalProviders.push(newObj);
       }
       return newObj;
     });
