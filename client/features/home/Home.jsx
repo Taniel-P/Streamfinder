@@ -20,19 +20,19 @@ class Home extends React.Component {
   componentDidMount() {
     //if the prev props id is different from current and if id is not null
     //when this page is hit - it should run a ajax request to server 
-    console.log(this.props.currentId)
+ 
     //for the current id 
 
 
-    if (this.props.currentId !== null && this.props.currentId) {
-      axios.get(`/home/homePage?${this.props.currentId}`)
+    if (this.props.user !== null && this.props.user) {
+      axios.get(`/home/homePage?${this.props.user}`)
         .then(({data}) => {
           console.log('thyyyy data', data)
 
           this.setState({
-            suggested: data.homeSuggestedDisplay,
-            history: data.homeHistoryDisplay,
-            trending: data.homeTrendingDisplay
+            suggested: data.suggested,
+            history: data.history,
+            trending: data.trending
           })
         })
     }
@@ -44,7 +44,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <div id="Search">
+        {/* <div id="Search">
           <div className='test'>
             <h1 className='search-header'>Streamfinder</h1>
           </div>
@@ -57,7 +57,7 @@ class Home extends React.Component {
             // onClick={this.handleClick} - figure out something here
             className='search-button'>Search
           </button>
-        </div>
+        </div> */}
         <h2 className='s-header-home'>suggested</h2>
         <Temp data={this.state.suggested}/>
 
