@@ -1,6 +1,6 @@
 const {Movie} = require('../database/database.js');
 const redisClient = require('../cacheManager');
-const {transformToSearchDisplay, getUniqueIds, finalProviderData} = require('./searchHelpers')
+const {transformToSearchDisplay, getUniqueIds, finalProviderData, createFinalMovieObj} = require('./searchHelpers')
 
 const {getHistory, getTrending, getSuggested, getProviders} = require('./APIController')
 
@@ -36,21 +36,18 @@ module.exports = {
             //create getTrending - use searched movie response id to get trending (movie get popular api request)
             getTrending().then((trending) => {
               //create trendingArr which holds data related to trending view
-
-   
               //create getSuggested - use searched movie response id to get suggested (movie get recommendations api request)
               getSuggested(id).then((suggested) => {
-             
                 //create suggestedArr which holds data related to the suggessted view 
                 //create uniqueMovieIds - pull unique ids from historyArr, trendingArr, and suggestedArr
                 const uniqueMovieIds = getUniqueIds(history, trending, suggested)
                 //create providers - request providers for each id (with a promise all)
                 const providers = getProviders(uniqueMovieIds)
                 providers.then((data) => {
-                  const finalProviders = finalProviderData(data)
-                  //jaimieeeeee thisssssss
-                  console.log(finalProviders)
-                  //create finalMovieObj - adds providers to the movies in moviesArr, providers based on movies id
+                  const finalProviders = finalProviderData(data) //<----here jaimie
+
+                  //create finalMovieObj - adds providers to the history obj,  providers based on movies id
+                  const finalMovieObj = createFinalMovieObj(history, finalProviders);
                   //create finalHistoryArr - adds providers to the movies in historyArr, providers based on movies id
                   //create finalTrendingArr - adds providers to the movies in trendingArr, providers based on movies id
                   //create finalSuggestedArr - adds providers to the movies in suggestedArr, providers based on movies id
