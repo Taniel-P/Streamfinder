@@ -1,8 +1,8 @@
 const {Movie} = require('../database/database.js');
 const redisClient = require('../cacheManager');
-const {transformToSearchDisplay, getUniqueIds, finalProviderData} = require('./searchHelpers')
+const {transformToSearchDisplay, getUniqueIds, finalProviderData} = require('./searchHelpers');
 
-const {getHistory, getTrending, getSuggested, getProviders} = require('./APIController')
+const {getHistory, getTrending, getSuggested, getProviders} = require('./APIController');
 
 module.exports = {
   getMovie: (searchInputTitle) => {
@@ -43,13 +43,13 @@ module.exports = {
 
                 //create suggestedArr which holds data related to the suggessted view
                 //create uniqueMovieIds - pull unique ids from historyArr, trendingArr, and suggestedArr
-                const uniqueMovieIds = getUniqueIds(history, trending, suggested)
+                const uniqueMovieIds = getUniqueIds(history, trending, suggested);
                 //create providers - request providers for each id (with a promise all)
-                const providers = getProviders(uniqueMovieIds)
+                const providers = getProviders(uniqueMovieIds);
                 providers.then((data) => {
-                  const finalProviders = finalProviderData(data)
+                  const finalProviders = finalProviderData(data);
                   //jaimieeeeee thisssssss
-                  console.log(finalProviders)
+                  console.log(finalProviders);
                   //create finalMovieObj - adds providers to the movies in moviesArr, providers based on movies id
                   //create finalHistoryArr - adds providers to the movies in historyArr, providers based on movies id
                   //create finalTrendingArr - adds providers to the movies in trendingArr, providers based on movies id
@@ -109,10 +109,10 @@ module.exports = {
                   //create finalSearch - use transformToSearchDisplay (to format for search componment)
 
                   //resolve with finalSearch
-                })
-              })
-            })
-          })
+                });
+              });
+            });
+          });
         }
       });
     });
