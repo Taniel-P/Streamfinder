@@ -39,9 +39,9 @@ class MediaDetail extends React.Component {
   getMediaAndUserDetails() {
     let userSubs;
     let subs = [];
-    let userId = this.props.userId;
+    let userId = this.props.userId || 10130;
     //mediaId should come from props, but for now
-    let mediaId = 10138;
+    let mediaId = this.props.mediaId || 10138;
     //this will be a request to the db to get media info to apply to state
     axios.get(`/media/userSubs?${userId}`)
       .then(({data}) => {

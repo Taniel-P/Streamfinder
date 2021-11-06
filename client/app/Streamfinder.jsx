@@ -80,11 +80,6 @@ class Streamfinder extends React.Component {
     //sets currentId resets currentID state with received Id
   }
 
-
-  componentDidMount() {
-    console.log('session props: ', this.props.sessionToken)
-    console.log('session state: ', this.props.sessionState)
-  }
   // componentDidMount() {
   //   const token = window.localStorage.getItem('sessionToken');
   //   if (token !== this.sessionToken) {
