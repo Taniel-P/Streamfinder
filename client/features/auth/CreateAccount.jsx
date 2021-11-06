@@ -65,8 +65,9 @@ class CreateAccount extends React.Component {
           alert('Complete filling information');
         }
         if (res.status === 200) {
+          //Redirect to Signin page
+          this.setState({ redirect: '/login' })
         }
-        //Redirect to Signin page
       })
       .catch((err) => {
         console.log('/user Err', err);
@@ -93,16 +94,16 @@ class CreateAccount extends React.Component {
             <Link to="/login">Already have an account? Sign in here!</Link>
           </div>
           <div className="ca-name">
-            <input autoFocus type="text" id="name" placeholder="Name" onChange={this.handleChange}></input>
+            <input autoFocus type="text" name="fname" id="name" placeholder="Name" onChange={this.handleChange}></input>
           </div>
           <div className="ca-username">
-            <input type="text" id="username" placeholder="Username" onChange={this.handleChange}></input>
+            <input type="text" name="username" autocomplete="username" id="username" placeholder="Username" onChange={this.handleChange}></input>
           </div>
           <div className="ca-email">
-            <input type="email" id="email" placeholder="Email" onChange={this.handleChange}></input>
+            <input type="text" name="email" autocomplete="email" id="email" placeholder="Email" onChange={this.handleChange}></input>
           </div>
           <div className="ca-password">
-            <input type="password" id="password" placeholder="Password" onChange={this.handleChange}></input>
+            <input type="password" name="password" autocomplete="new-password" id="password" placeholder="Password" onChange={this.handleChange}></input>
           </div>
           <div className="ca-subscriptionOptions">
             <label>Select Your Subscriptions</label>
