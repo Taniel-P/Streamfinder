@@ -14,7 +14,14 @@ import MediaDetail from '../features/media/MediaDetail';
 import Account from '../features/accountPage/Account';
 import ErrorBoundary from '../features/sharedComponents/ErrorBoundary';
 import './Streamfinder.css';
-
+/* the idea:
+upon auth being valid -
+* auth will send username and current history ids (from user schema) to StreamerFinder
+and state will bet set
+* Each component can use component did update for when their props
+change.  upon this happening they can make an ajax request to server
+to pull data needed from MovieSchema
+*/
 class Streamfinder extends React.Component {
   constructor(props) {
     super(props);
@@ -22,11 +29,16 @@ class Streamfinder extends React.Component {
     this.updateSession = this.updateSession.bind(this);
     this.checkCache = this.checkCache.bind(this);
     this.updateCache = this.updateCache.bind(this);
+    this.handleSearchIdSwitch = this.handleSearchIdSwitch.bind(this)
 
     this.cache = new Map();
 
     this.state = {
-      sessionToken: this.props.sessionToken || null
+      sessionToken: this.props.sessionToken || null,
+            //user establish because this is prior to auth being hooked up
+      //this is under the impression auth was valid and currentId was sent
+      //to this component and updated via component did update.
+      currentId: 10138
     }
   }
 
@@ -42,6 +54,14 @@ class Streamfinder extends React.Component {
 
   updateCache(id, data) {
     this.cache.set(id, data);
+    this.state = {
+
+    }
+  }
+
+  handleSearchIdSwitch(id) {
+    //receives an id after search finishes retrieving new data
+    //sets currentId resets currentID state with received Id
   }
 
   render() {
@@ -55,7 +75,7 @@ class Streamfinder extends React.Component {
         {/* <div>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/home">Home</Link>
             </li>
             <li>
               <Link to="/auth">Auth</Link>
@@ -88,7 +108,7 @@ class Streamfinder extends React.Component {
               <Home checkCache={ checkCache } updateCache={ updateCache } />
             </Route>
             <Route exact path="/home">
-              <Home checkCache={ checkCache } updateCache={ updateCache } />
+              <Home checkCache={ checkCache } updateCache={ updateCache } currentId={this.state.currentId} />
             </Route>
             <Route path="/auth">
               <Auth updateSession={ updateSession } />
@@ -98,7 +118,8 @@ class Streamfinder extends React.Component {
             </Route>
             <Route path="/search">
               <ErrorBoundary>
-                <Search checkCache={ checkCache } updateCache={ updateCache } />
+                //search prolly only needs to update most recent id searched
+                <Search checkCache={ checkCache } updateCache={ updateCache } switch={this.handleSearchIdSwitch} />
               </ErrorBoundary>
             </Route>
             <Route path="/media">
