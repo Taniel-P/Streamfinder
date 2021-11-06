@@ -15,30 +15,33 @@ class Home extends React.Component {
       history: [],
       trending: []
     };
+    this.handleMediaClick = this.handleMediaClick.bind(this);
   }
 
   componentDidMount() {
+    console.log('thispropsuser: ', this.props);
     //if the prev props id is different from current and if id is not null
-    //when this page is hit - it should run a ajax request to server 
- 
-    //for the current id 
+    //when this page is hit - it should run a ajax request to server
+
+    //for the current id
 
 
     if (this.props.user !== null && this.props.user) {
       axios.get(`/home/homePage?${this.props.user}`)
         .then(({data}) => {
-          console.log('thyyyy data', data)
+          console.log('thyyyy data', data);
 
           this.setState({
             suggested: data.suggested,
             history: data.history,
             trending: data.trending
-          })
-        })
+          });
+        });
     }
+  }
 
-   
-    
+  handleMediaClick(event) {
+    console.log('event: ', event);
   }
 
   render() {
@@ -67,7 +70,7 @@ class Home extends React.Component {
         <h2 className='h-header-home'>History</h2>
         <Temp data={this.state.history}/>
         {Object.keys(data).map((carouselLabel, i) => (
-          <MediaTileCarousel key={`mtc${i}`} tempData={data[carouselLabel]} label={ carouselLabel } />
+          <MediaTileCarousel key={`mtc${i}`} tempData={data[carouselLabel]} label={ carouselLabel } onClick={this.handleMediaClick} />
         ))}
       </div>
     );

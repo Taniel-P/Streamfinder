@@ -41,7 +41,7 @@ class Streamfinder extends React.Component {
     this.updateSession = this.updateSession.bind(this);
     this.checkCache = this.checkCache.bind(this);
     this.updateCache = this.updateCache.bind(this);
-    this.handleSearchIdSwitch = this.handleSearchIdSwitch.bind(this)
+    this.handleSearchIdSwitch = this.handleSearchIdSwitch.bind(this);
 
     this.cache = new Map();
     this.sessionToken = this.props.sessionToken || null;
@@ -52,8 +52,8 @@ class Streamfinder extends React.Component {
       //this is under the impression auth was valid and currentId was sent
       //to this component and updated via component did update.
       // currentId: 10138,
-      user:'lil timmy'
-    }
+      user: 'lil timmy'
+    };
   }
 
   updateSession(token) {
@@ -70,7 +70,7 @@ class Streamfinder extends React.Component {
     this.cache.set(id, data);
     this.state = {
 
-    }
+    };
   }
 
   handleSearchIdSwitch(id) {

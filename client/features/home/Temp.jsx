@@ -5,7 +5,7 @@ const Temp = (props) => {
   return (
     <div className='temp-container'>
       {props.data.map((values, i)=>
-        <div key={values.title} className='temp-sl'>
+        <div key={`values.title-${i}`} className='temp-sl'>
           <h1>{values.title}</h1>
           <img className='temp' src={values.imgUrl} alt="" />
           <div className='provider'>

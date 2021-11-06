@@ -7,11 +7,11 @@ import {
 } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import Streamfinder from '../../app/Streamfinder';
-import CreateAccount from './CreateAccount';
+import Auth from './Auth';
 import axios from 'axios';
-import './Login.css';
+import './signIn.css';
 
-class Login extends React.Component {
+class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,6 @@ class Login extends React.Component {
       redirect: null
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -30,19 +29,7 @@ class Login extends React.Component {
     });
   }
 
-  handleKeyPress(e) {
-    if (e.key === 'Enter') {
-      this.handleSubmit();
-    }
-  }
-
   handleSubmit() {
-    // const { pathname } = this.props.location;
-    // if (pathname && pathname === '/auth' || pathname === '/login' || pathname === '/createAccount') {
-    //   this.setState({
-    //     redirect: '/'
-    //   });
-    // }
     this.props.updateSession('fakehash');
     axios.post('/auth/login', this.state)
       .then((res) => {
@@ -50,6 +37,9 @@ class Login extends React.Component {
         if (!res.data) {
           alert('Incorrect password');
         } else {
+          this.setState({
+            redirect: '/account'
+          });
         }
 
       })
@@ -60,25 +50,24 @@ class Login extends React.Component {
 
   render() {
     window.localStorage.removeItem('sessionToken');
-    // if (this.state.redirect) {
-    //   return <Redirect to={this.state.redirect} />
-    // }
-
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />;
+    }
     return (
       // <Router>
       //   <Switch>
       //     <Route path="/signIn">
-      <div className="loginPage" onKeyPress={ this.handleKeyPress }>
-        <h1 className="loginHeader">Sign In</h1>
-        <div className="login-username">
-          <input autoFocus type="text" id="username" placeholder="Username" onChange={this.handleChange}></input>
+      <div className="signInPage" >
+        <h1 className="signInHeader">Sign In</h1>
+        <div className="signIn-username">
+          <input type="text" id="username" placeholder="Username" onChange={this.handleChange}></input>
         </div>
-        <div className="login-password">
-          <input type="password" id="password" placeholder="Password" onChange={this.handleChange}></input>
+        <div className="signIn-password">
+          <input type="text" id="password" placeholder="Password" onChange={this.handleChange}></input>
         </div>
         <button onClick={this.handleSubmit}>Sign in</button>
         <div>
-          <Link to="/createAccount">New to Streamfinder? Sign up now!</Link>
+          {/* <Link to="/createAccount">New to Streamfinder? Sign up now!</Link> */}
         </div>
       </div>
       //     </Route>
@@ -91,4 +80,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default SignIn;
