@@ -3,11 +3,15 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from 'react-router-dom';
 
 import Auth from '../features/auth/Auth';
+import NewAuth from '../features/auth/NewAuth';
 import SignIn from '../features/auth/SignIn';
+import CreateAccount from '../features/auth/CreateAccount';
+import Login from '../features/auth/Login';
 import Home from '../features/home/Home';
 import Search from '../features/search/Search';
 import MediaDetail from '../features/media/MediaDetail';
@@ -32,10 +36,11 @@ class Streamfinder extends React.Component {
     this.handleSearchIdSwitch = this.handleSearchIdSwitch.bind(this)
 
     this.cache = new Map();
+    this.sessionToken = this.props.sessionToken || null;
 
     this.state = {
       sessionToken: this.props.sessionToken || null,
-            //user establish because this is prior to auth being hooked up
+      //user establish because this is prior to auth being hooked up
       //this is under the impression auth was valid and currentId was sent
       //to this component and updated via component did update.
       currentId: 10138
@@ -64,58 +69,38 @@ class Streamfinder extends React.Component {
     //sets currentId resets currentID state with received Id
   }
 
+  // componentDidMount() {
+  //   const token = window.localStorage.getItem('sessionToken');
+  //   if (token !== this.sessionToken) {
+  //     this.sessionToken = token;
+  //     this.setState({ sessionToken: token });
+  //   }
+  // }
+
   render() {
     const { sessionToken } = this.state;
     const { updateSession, checkCache, updateCache } = this;
 
     return !sessionToken ? (
-      <SignIn updateSession={ updateSession } />
+      <NewAuth updateSession={ updateSession } />
       ) : (
       <Router>
-        {/* <div>
-          <ul>
-            <li>
-              <Link to="/home">Home</Link>
-            </li>
-            <li>
-              <Link to="/auth">Auth</Link>
-            </li>
-            <li>
-              <Link to="/signIn">SignIn</Link>
-            </li>
-            <li>
-              <Link to="/search">Search</Link>
-            </li>
-            <li>
-              <Link to="/media">Media</Link>
-            </li>
-            <li>
-              <Link to="/account">User</Link>
-            </li>
-          </ul>
-
-          <hr /> */}
-
-          {/*
-            A <Switch> looks through all its children <Route>
-            elements and renders the first one whose path
-            matches the current URL. Use a <Switch> any time
-            you have multiple routes, but you want only one
-            of them to render at a time
-          */}
           <Switch>
-            <Route exact path="/">
-              <Home checkCache={ checkCache } updateCache={ updateCache } />
-            </Route>
             <Route exact path="/home">
               <Home checkCache={ checkCache } updateCache={ updateCache } currentId={this.state.currentId} />
             </Route>
             <Route path="/auth">
-              <Auth updateSession={ updateSession } />
+              <NewAuth updateSession={ updateSession } />
             </Route>
-            <Route exact path="/signIn">
+            {/* <Route exact path="/signIn">
               <SignIn updateSession={ updateSession } />
             </Route>
+            <Route path="/createAccount">
+              <CreateAccount updateSession={ updateSession } />
+            </Route>
+            <Route exact path="/login">
+              <Login updateSession={ updateSession } />
+            </Route> */}
             <Route path="/search">
               <ErrorBoundary>
                 //search prolly only needs to update most recent id searched
@@ -128,8 +113,10 @@ class Streamfinder extends React.Component {
             <Route path="/account">
               <Account />
             </Route>
+            <Route exact path="/*">
+              <Redirect to="/home" />
+            </Route>
           </Switch>
-        {/* </div> */}
       </Router>
     );
   }
