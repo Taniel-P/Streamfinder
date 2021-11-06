@@ -97,8 +97,8 @@ module.exports = {
           }
         }
       });
-      return trending;
     });
+    return trending;
   },
   createFinalSuggestedArr: (suggested, finalProviders) => {
     suggested.forEach((movie) => {

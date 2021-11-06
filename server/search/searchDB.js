@@ -77,21 +77,22 @@ module.exports = {
 
                     //create finalTrendingArr - adds providers to the movies in trendingArr, providers based on movies id
                     const finalTrendingArr = createFinalTrendingArr(trending, finalProviders);
+                    finalMovieObj.trending = finalTrendingArr;
                     //create finalSuggestedArr - adds providers to the movies in suggestedArr, providers based on movies id
                     const finalSuggestedArr = createFinalSuggestedArr(suggested, finalProviders);
+                    finalMovieObj.suggested = finalSuggestedArr;
                     //createDbObj - adds finalHistoryArr, finalTrendingArr, and finalSuggestedArr to finalMovieObj
                     //create movieSave - saves new movie data to schema
                     const movieSave = (movieObj) => {
                       let filter = {id: movieObj.id};
                       let update = {
-                        suggested: finalSuggestedArr,
-                        trending: finalTrendingArr,
+                        suggested: movieObj.suggested,
+                        trending: movieObj.trending,
                         mediaType: movieObj.mediaType,
                         title: movieObj.title,
                         rating: movieObj.rating,
                         ratingCount: movieObj.ratingCount,
                         summary: movieObj.summary,
-                        reviews: [],
                         imgUrl: movieObj.imgUrl,
                         hulu: movieObj.hulu,
                         disney: movieObj.disney,
@@ -112,6 +113,7 @@ module.exports = {
                         }
                       });
                     };
+                    movieSave(finalMovieObj);
                     //save (key) name and (value) id to redis
                     //create finalSearch - use transformToSearchDisplay (to format for search componment)
 
