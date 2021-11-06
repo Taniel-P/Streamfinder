@@ -5,7 +5,8 @@ const { getMovie } = require('./searchDB');
 
 exports.getSearchInfo = (req, res, next) => {
   const title = req.body.title
-  getMovie(title).then((searchDisplayData) => {
+  const username = req.body.user
+  getMovie(title, username).then((searchDisplayData) => {
     res.send(searchDisplayData)
   })
   //receives request for search
@@ -21,3 +22,5 @@ exports.getSearchInfo = (req, res, next) => {
   //if it does not exist
   //sends request to api
 };
+
+
