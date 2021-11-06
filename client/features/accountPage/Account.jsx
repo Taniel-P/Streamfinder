@@ -15,20 +15,12 @@ import './Account.css';
 class Account extends React.Component {
   constructor(props) {
     super(props);
-    if (props.serverResponse) {
-      this.state = {
-        username: props.serverResponse.username,
-        email: props.serverResponse.email,
-        password: props.serverResponse.password,
-        platforms: props.serverResponse.platforms
-      }
-    } else {
-      this.state = {
-        username: 'placeholder',
-        email: 'placeholder',
-        password: null,
-        platforms: []
-      }
+
+    this.state = {
+      username: 'placeholder',
+      email: 'placeholder',
+      password: null,
+      platforms: []
     }
   }
 
@@ -36,6 +28,12 @@ class Account extends React.Component {
     if (this.props.serverResponse) {
       // Logger.consoleLog()
       console.log('Server GET call for: ', this.props.location.state.user);
+      this.setState({
+        username: this.props.serverResponse.username,
+        email: this.props.serverResponse.email,
+        password: this.props.serverResponse.password,
+        platforms: this.props.serverResponse.platforms
+      });
     } else {
       axios.get('/auth/user', {params: this.props.location.state.user})
       .then((res) => {
