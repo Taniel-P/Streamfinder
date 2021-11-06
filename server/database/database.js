@@ -40,7 +40,8 @@ const MovieSchema = mongoose.Schema({
   //modify --- needs to happen - rob being lazy atm
   mediaType: String,
   title: String,
-  rating: Number,
+  //is this related to reviews? - if so pull the rating from the nested reviews schema
+  // rating: Number,
   summary: String,
   reviews: [ReviewSchema],
   imgUrl: String,
