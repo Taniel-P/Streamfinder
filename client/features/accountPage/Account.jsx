@@ -9,33 +9,48 @@ import {
   Redirect
 } from "react-router-dom";
 import axios from 'axios';
+// import Logger from '../../../logger.js'
 import './Account.css';
 
 class Account extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      username: 'placeholder',
-      email: 'placeholder',
-      password: null,
-      platforms: []
+    if (props.serverResponse) {
+      this.state = {
+        username: props.serverResponse.username,
+        email: props.serverResponse.email,
+        password: props.serverResponse.password,
+        platforms: props.serverResponse.platforms
+      }
+    } else {
+      this.state = {
+        username: 'placeholder',
+        email: 'placeholder',
+        password: null,
+        platforms: []
+      }
     }
   }
 
   componentDidMount() {
-    axios.get('/auth/user', {params: this.props.location.state.user})
-    .then((res) => {
-      console.log('ACCOUNT GET', res.data);
-      this.setState({
-        username: res.data.username,
-        email: res.data.email,
-        password: null,
-        platforms: res.data.platforms
+    if (this.props.serverResponse) {
+      // Logger.consoleLog()
+      console.log('Server GET call for: ', this.props.location.state.user);
+    } else {
+      axios.get('/auth/user', {params: this.props.location.state.user})
+      .then((res) => {
+        console.log('ACCOUNT GET', res.data);
+        this.setState({
+          username: res.data.username,
+          email: res.data.email,
+          password: null,
+          platforms: res.data.platforms
+        })
       })
-    })
-    .catch((err) => {
-      console.log('ACCOUNT GET ERR', err);
-    })
+      .catch((err) => {
+        console.log('ACCOUNT GET ERR', err);
+      })
+    }
   }
 
   render() {
