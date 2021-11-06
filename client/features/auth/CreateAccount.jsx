@@ -57,12 +57,6 @@ class CreateAccount extends React.Component {
   }
 
   onSubmit() {
-    const { pathname } = this.props.location;
-    if (pathname && pathname === '/auth' || pathname === '/login' || pathname === '/createAccount') {
-      this.setState({
-        redirect: '/'
-      });
-    }
     console.log('Clicked');
     axios.post('/auth/user', this.state)
       .then((res) => {
