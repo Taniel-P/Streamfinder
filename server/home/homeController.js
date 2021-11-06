@@ -9,7 +9,6 @@ exports.getHomeInfo = (req, res, next) => {
   const user = req.url.split('?')[1];
   let queryUser = user.replace('%20', ' ')
   getHistory(queryUser).then((historyData) => {
-    console.log(historyData)
     const finalData = {
       history: historyData,
       suggested: [],
