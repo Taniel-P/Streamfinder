@@ -1,3 +1,5 @@
+const { object } = require("../cacheManager")
+
 module.exports = {
   transformToSearchDisplay: (movieObj) => {
     const finalSearchResponse = movieObj.history.map((movie) => {
@@ -55,5 +57,22 @@ module.exports = {
      }
    })
    return finalProviderData
+  },
+  createFinalMovieObj: (movieObj, providersArr) => {
+    // console.log(movieObj)
+    const finalObj = Object.assign({}, movieObj)
+
+    providersArr.forEach((providerObj) => {
+      if (providerObj.id === movieObj.id) {
+        providerObj.providers.forEach((provider, i) => {
+          if (provider.toLowerCase().includes("disney")) {
+            finalObj.disney = providerObj.logo_paths[i]
+          }
+
+        })
+      }
+    })
+    return finalObj
+
   }
 }
