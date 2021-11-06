@@ -24,20 +24,19 @@ exports.login = (req, res, next) => {
 };
 
 exports.getUser = (req, res, next) => {
-  const username = req.query.username;
-  authService.getUser(req.query)
-  .then((res) => {
-    // console.log('Query Res', res)
-    // res.status(200).send(res)
-  })
-  // res.status(201).send('THIS IS THE RES')
-  // if (username) {
-  //   authService.getUser(username)
-  //   .then(result => sendResponse({ res, responseBody: result.data }))
-  //   .catch(error => sendErrorResponse({ res, statusCode: error.statusCode, message: error.message }));
-  // } else {
-  //   return sendErrorResponse({res, statusCode: 400, message: ''});
-  // }
+  const username = req.query['0'];
+  if (username) {
+    authService.getUser(username)
+    .then((user) => {
+      res.status(200).send(user)
+    })
+    .catch((err) => {
+      console.log('Server getUser Err', err);
+      res.status(500).send(err);
+    })
+  } else {
+    return sendErrorResponse({res, statusCode: 400, message: ''});
+  }
 };
 
 exports.postUser = (req, res, next) => {

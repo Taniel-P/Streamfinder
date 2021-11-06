@@ -31,7 +31,7 @@ import './Streamfinder.css';
 /* the idea:
 upon auth being valid -
 * auth will send username and current history ids (from user schema) to StreamerFinder
-and state will bet set
+  and state will bet set
 * Each component can use component did update for when their props
 change.  upon this happening they can make an ajax request to server
 to pull data needed from MovieSchema
@@ -121,8 +121,8 @@ class Streamfinder extends React.Component {
             <Route path="/media">
               <MediaDetail checkCache={ checkCache } updateCache={ updateCache } />
             </Route>
-            <Route path="/account">
-              <Account />
+            <Route path="/account" render={(props) => <Account {...props} /> }>
+
             </Route>
             <Route exact path="/*">
               <Redirect to="/home" />

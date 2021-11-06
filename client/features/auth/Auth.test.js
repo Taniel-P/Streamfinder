@@ -3,6 +3,13 @@ import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 const config =require('../../../sonar-temp-config')
 import Auth from './Auth.jsx';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 // ==== Test Template ====
 // ====== index.jsx ======
