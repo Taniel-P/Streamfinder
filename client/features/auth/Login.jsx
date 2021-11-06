@@ -71,10 +71,10 @@ class Login extends React.Component {
       <div className="loginPage" onKeyPress={ this.handleKeyPress }>
         <h1 className="loginHeader">Sign In</h1>
         <div className="login-username">
-          <input autoFocus type="text" id="username" placeholder="Username" onChange={this.handleChange}></input>
+          <input autoFocus type="text" name="username" autocomplete="username" id="username" placeholder="Username" onChange={this.handleChange}></input>
         </div>
         <div className="login-password">
-          <input type="password" id="password" placeholder="Password" onChange={this.handleChange}></input>
+          <input type="password" name="password" autocomplete="current-password" id="password" placeholder="Password" onChange={this.handleChange}></input>
         </div>
         <button onClick={this.handleSubmit}>Sign in</button>
         <div>
