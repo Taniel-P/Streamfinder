@@ -18,27 +18,28 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
+    console.log('thispropsuser: ', this.props.user);
     //if the prev props id is different from current and if id is not null
-    //when this page is hit - it should run a ajax request to server 
- 
-    //for the current id 
+    //when this page is hit - it should run a ajax request to server
+
+    //for the current id
 
 
     if (this.props.user !== null && this.props.user) {
       axios.get(`/home/homePage?${this.props.user}`)
         .then(({data}) => {
-          console.log('thyyyy data', data)
+          console.log('thyyyy data', data);
 
           this.setState({
             suggested: data.suggested,
             history: data.history,
             trending: data.trending
-          })
-        })
+          });
+        });
     }
 
-   
-    
+
+
   }
 
   render() {

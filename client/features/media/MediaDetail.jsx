@@ -97,9 +97,19 @@ class MediaDetail extends React.Component {
       });
   }
 
-  handleLogoClick() {
-    //notify home component that user has watched the movie?
-    //add movie object to user history
+  //this will be used to update user watch history
+  handleLogoClick(event) {
+    // //userId should come from props instead
+    // let userId = 10130;
+    // //mediaId should come from props instead
+    // let mediaId = 10138;
+    // axios.put(`/media/watchHistory?${userId}?${mediaId}`)
+    //   .then((data) => {
+    //     console.log('data: ', data)
+    //   })
+    // //notify home component that user has watched the movie?
+    // //add movie object to user history
+    console.log('logo clicked');
   }
 
   getLogoUrl(name) {

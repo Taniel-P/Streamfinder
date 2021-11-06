@@ -1,5 +1,5 @@
 'use strict';
-const {getUserSubs, getMediaInfo} = require('./mediaDetailDB.js');
+const {getUserSubs, getMediaInfo, putMediaObjInUserWatchHistory} = require('./mediaDetailDB.js');
 const {
   sendErrorResponse,
   sendResponse
@@ -18,6 +18,18 @@ module.exports = {
     console.log('***', mediaId);
     getMediaInfo(mediaId).then((details) => {
       res.send(details);
+    });
+  },
+
+  //will refactor once history is hashed out...
+  //are we showing search history or watch history
+  putMediaInHistory: (req, res, next) => {
+    const userId = req.url.split('?')[1];
+    const mediaId = req.url.split('?')[2];
+    getMediaInfo(mediaId).then((mediaObj) => {
+      putMediaObjInUserWatchHistory(userId, mediaObj).then((response) => {
+        console.log('response: ', response);
+      });
     });
   }
 };
