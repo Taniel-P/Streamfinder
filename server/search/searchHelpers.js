@@ -4,7 +4,6 @@ module.exports = {
   transformToSearchDisplay: (movieObj) => {
     const finalSearchResponse = movieObj.history.map((movie) => {
       const finalObj = {};
-      const finalProviderArr = [];
       // console.log(movie)
 
       finalObj.title = movie.title;
@@ -21,13 +20,12 @@ module.exports = {
 
     const combined = uniqueTId.concat(uniqueSid);
     combined.push(uniqueHId);
-    const final = [...new Set(combined)];
-    return final;
+    return [...new Set(combined)];
   },
   finalProviderData: (data) => {
     let finalProviderData = data.map((obj) => {
       const newObj = {};
-      let finalProviders = [];
+      // let finalProviders = [];
       if (obj !== undefined) {
         let split = obj.link.split('-');
         split = split[0].split('movie/');
@@ -45,7 +43,7 @@ module.exports = {
           newObj.logo_paths = logoPaths;
           newObj.providers = providers;
         }
-        finalProviders.push(newObj);
+        // finalProviders.push(newObj);
       }
       return newObj;
     });
