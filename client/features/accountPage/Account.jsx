@@ -1,34 +1,58 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useLocation,
+  useHistory,
+  Redirect
+} from "react-router-dom";
 import axios from 'axios';
+// import Logger from '../../../logger.js'
 import './Account.css';
 
 class Account extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      username: 'userjkhjkhName',
-      email: 'emajnknil',
+      username: 'placeholder',
+      email: 'placeholder',
       password: null,
-      platforms: [
-        {name: 'Netflix', id: 'netflix', isSelected: true, cost: 17.99},
-        {name: 'Amazon', id: 'amazon', isSelected: false, cost: 16.99},
-        {name: 'HBO', id: 'hbo', isSelected: true, cost: 15.99},
-        {name: 'Disney', id: 'disney', isSelected: false, cost: 17.99}
-      ]
+      platforms: []
     }
   }
 
   componentDidMount() {
-    axios.get('/auth/user', {params: this.state})
-    .then((res) => {
-      console.log('ACCOUNT GET', res);
-    })
-    .catch((err) => {
-      console.log('ACCOUNT GET ERR', err);
-    })
+    if (this.props.serverResponse) {
+      // Logger.consoleLog()
+      console.log('Server GET call for: ', this.props.location.state.user);
+      this.setState({
+        username: this.props.serverResponse.username,
+        email: this.props.serverResponse.email,
+        password: this.props.serverResponse.password,
+        platforms: this.props.serverResponse.platforms
+      });
+    } else {
+      axios.get('/auth/user', {params: this.props.location.state.user})
+      .then((res) => {
+        console.log('ACCOUNT GET', res.data);
+        this.setState({
+          username: res.data.username,
+          email: res.data.email,
+          password: null,
+          platforms: res.data.platforms
+        })
+      })
+      .catch((err) => {
+        console.log('ACCOUNT GET ERR', err);
+      })
+    }
   }
 
   render() {
+    {console.log('MOUNT==', this.props.location.state)}
     return (
       <div className="accountPage">
         <div className="users-header">

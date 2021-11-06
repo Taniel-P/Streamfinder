@@ -15,7 +15,7 @@ const UserSchema = mongoose.Schema({
   username: String,
   pass: String,
   email: String,
-  subscriptions: [String],
+  subscriptions: [],
   currentId: Number,
   history: [Array]
 });
