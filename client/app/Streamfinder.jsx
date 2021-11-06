@@ -1,3 +1,13 @@
+/*
+IMPORTANT NOTE ABOUT NEW AUTH RESTRICTIONS:
+Navigating to /auth will erase your surrent session
+This is so that you have an easy way to erase your session if you want to test the route restrictions
+
+BUT THERE IS A SIDE-EFFECT:
+For now, if you navigate to /auth you will be redirected to login indefinitely until you navigate somewhere else
+To erase your session and get a new one, navigate to auth, then to one of the normal routes, THEN enter dummy login credentials
+*/
+
 import React from 'react';
 import {
   BrowserRouter as Router,
