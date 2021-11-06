@@ -71,8 +71,8 @@ module.exports = {
     return finalObj;
 
   },
-  createFinalTrendingArr: (trending, finalProviders) => {
-    trending.forEach((movie) => {
+  createFinalArrays: (trendingOrSuggestedArr, finalProviders) => {
+    trendingOrSuggestedArr.forEach((movie) => {
       let movieId = movie.id;
       finalProviders.forEach((movieProvider) => {
         if (movieProvider.id === movieId && movieProvider.providers) {
@@ -96,33 +96,6 @@ module.exports = {
         }
       });
     });
-    return trending;
-  },
-  createFinalSuggestedArr: (suggested, finalProviders) => {
-    suggested.forEach((movie) => {
-      let movieId = movie.id;
-      finalProviders.forEach((movieProvider) => {
-        if (movieProvider.id === movieId && movieProvider.providers) {
-          for (let i = 0; i < movieProvider.providers.length; i++) {
-            let currentService = movieProvider.providers[i];
-            let currentLogo = movieProvider.logo_paths[i];
-            if (currentService === 'Hulu') {
-              movie.hulu = currentLogo;
-            } else if (currentService === 'Disney Plus') {
-              movie.disney = currentLogo;
-            } else if (currentService === 'Netflix') {
-              movie.netflix = currentLogo;
-            } else if (currentService === 'HBO Max') {
-              movie.hbo = currentLogo;
-            } else if (currentService === 'Apple TV Plus') {
-              movie.apple = currentLogo;
-            } else if (currentService === 'Amazon Prime Video') {
-              movie.amazon = currentLogo;
-            }
-          }
-        }
-      });
-    });
-    return suggested;
+    return trendingOrSuggestedArr;
   }
 };

@@ -1,6 +1,6 @@
 const {Movie, User, TempUser} = require('../database/database.js');
 const redisClient = require('../cacheManager');
-const {transformToSearchDisplay, getUniqueIds, finalProviderData, createFinalMovieObj, createFinalTrendingArr, createFinalSuggestedArr} = require('./searchHelpers');
+const {transformToSearchDisplay, getUniqueIds, finalProviderData, createFinalMovieObj, createFinalArrays} = require('./searchHelpers');
 const {transformHistoryResponse, transformSuggestedResponse} = require('../home/movieHelpers');
 const {getHistory, getTrending, getSuggested, getProviders} = require('./APIController');
 
@@ -79,10 +79,10 @@ module.exports = {
 
                     const finalHistory = User.find({username: user}, (err, data) => {
                       //create finalTrendingArr - adds providers to the movies in trendingArr, providers based on movies id
-                      const finalTrendingArr = createFinalTrendingArr(trending, finalProviders);
+                      const finalTrendingArr = createFinalArrays(trending, finalProviders);
                       finalMovieObj.trending = finalTrendingArr;
                       //create finalSuggestedArr - adds providers to the movies in suggestedArr, providers based on movies id
-                      const finalSuggestedArr = createFinalSuggestedArr(suggested, finalProviders);
+                      const finalSuggestedArr = createFinalArrays(suggested, finalProviders);
                       finalMovieObj.suggested = finalSuggestedArr;
                       //createDbObj - adds finalHistoryArr, finalTrendingArr, and finalSuggestedArr to finalMovieObj
                       //create movieSave - saves new movie data to schema
