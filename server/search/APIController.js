@@ -10,13 +10,15 @@ module.exports = {
     return axios.get(url)
       .then(({data}) => {
 
-        const {id, title, overview, poster_path} = data.results[0];
+        const {id, title, overview, poster_path, vote_average, vote_count} = data.results[0];
         const imgUrl = `https://www.themoviedb.org/t/p/w1280${poster_path}`;
         const movieObj =
         {
           id,
           mediaType: 'Movie',
           title,
+          rating: vote_average,
+          ratingCount: vote_count,
           summary: overview,
           imgUrl: imgUrl,
           hulu: null,
@@ -43,6 +45,8 @@ module.exports = {
               id: resultObj.id,
               mediaType: 'Movie',
               title: resultObj.title,
+              rating: resultObj.vote_average,
+              ratingCount: resultObj.vote_count,
               summary: resultObj.overview,
               imgUrl: `https://www.themoviedb.org/t/p/w1280${resultObj.poster_path}`,
               hulu: null,
@@ -60,7 +64,6 @@ module.exports = {
       });
   },
   getSuggested: (id) => {
-    //check here jaimie
     console.log(id);
     const url = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}`;
 
@@ -75,6 +78,8 @@ module.exports = {
               mediaType: 'Movie',
               title: resultObj.title,
               summary: resultObj.overview,
+              rating: resultObj.vote_average,
+              ratingCount: resultObj.vote_count,
               imgUrl: `https://www.themoviedb.org/t/p/w1280${resultObj.backdrop_path}`,
               hulu: null,
               disney: null,
