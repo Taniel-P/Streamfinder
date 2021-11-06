@@ -40,34 +40,3 @@ module.exports = {
     });
   }
 };
-
-const movieSave = (movieObj) => {
-  let filter = {id: movieObj.id};
-  let update = {
-    suggested: movieObj.suggested,
-    trending: movieObj.trending,
-    mediaType: movieObj.mediaType,
-    title: movieObj.title,
-    rating: movieObj.rating,
-    ratingCount: movieObj.ratingCount,
-    summary: movieObj.summary,
-    imgUrl: movieObj.imgUrl,
-    hulu: movieObj.hulu,
-    disney: movieObj.disney,
-    netflix: movieObj.netflix,
-    hbo: movieObj.hbo,
-    apple: movieObj.apple,
-    amazon: movieObj.amazon
-  };
-  let options = {
-    new: true,
-    upsert: true
-  };
-  Movie.findOneAndUpdate(filter, update, options, (err, data) => {
-    // if (err) {
-    //   console.log('ERROR in movieSave: ', err);
-    // } else {
-    //   console.log('SUCCESS saving movie: ', data);
-    // }
-  });
-};
