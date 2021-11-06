@@ -1,0 +1,71 @@
+/* Please prefix class names with sa (e.g., sa-menu-item) to avoid conflicts with other features when CSS is bundled */
+
+#NewAuth {
+  color: cornflowerblue;
+  margin: 1em;
+}
+
+.mainCreateAccount {
+  margin: 0;
+  border: 3px solid cornflowerblue;
+  border-radius: 1em;
+  width: 30em;
+  height: 20em;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  padding: 10px;
+}
+
+.na-titleHeader {
+  font-size: 2em;
+  text-align: center;
+}
+
+/* h1 {
+  color: cornflowerblue;
+}
+
+h3 {
+  color: cornflowerblue;
+} */
+
+.createAccountHeader {
+  color:cornflowerblue;
+}
+
+.na-name {
+  color: cornflowerblue;
+}
+
+.na-username {
+  padding-top: 1em;
+  color: cornflowerblue;
+}
+
+.na-email {
+  padding-top: 1em;
+  color: cornflowerblue;
+}
+.na-password {
+  padding-top: 1em;
+  color: cornflowerblue;
+}
+
+.na-subscriptionOptions {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  color: cornflowerblue;
+}
+
+.na-subscriptionIcons {
+  padding-bottom: 1em;
+}
+
+@media (prefers-color-scheme: dark) {
+/* Modifications for dark mode go here */
+
+}
