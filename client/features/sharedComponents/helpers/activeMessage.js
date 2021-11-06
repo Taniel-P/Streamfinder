@@ -25,6 +25,7 @@ const activeMessage = (message, callback, frameRate = 200, timeout = 8000) => {
   let frameIndex = dotMatrix.length;
   cb = callback;
 
+  // MPT: Is this somewhat redundant to clear() on line 12?
   interval && clear();
 
   timeLimit = setTimeout(clear, timeout);
