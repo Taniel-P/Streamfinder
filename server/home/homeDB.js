@@ -1,6 +1,6 @@
 
-const {Movie} = require('../database/database.js');
-const {transformToHomeResponse} = require('./movieHelpers')
+const {Movie, User} = require('../database/database.js');
+const {transformToHomeResponse, transformHistoryResponse} = require('./movieHelpers')
 // console.log(redisClient)
 module.exports = {
   getMovie:  (movieId) => {
@@ -16,5 +16,15 @@ module.exports = {
         })
       })
     }
+  },
+  getHistory: (user) => {
+
+    return new Promise((resolve, reject) => {
+      User.find({username:user})
+        .then((data) => {
+          const response = transformHistoryResponse(data[0])
+          resolve(response)
+        })
+    })
   }
 }

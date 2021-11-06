@@ -30,7 +30,8 @@ class Streamfinder extends React.Component {
       //user establish because this is prior to auth being hooked up
       //this is under the impression auth was valid and currentId was sent
       //to this component and updated via component did update.
-      currentId: 10138
+      // currentId: 10138,
+      user:'lil timmy'
     }
     this.handleSearchIdSwitch = this.handleSearchIdSwitch.bind(this)
   }
@@ -76,7 +77,7 @@ class Streamfinder extends React.Component {
           */}
           <Switch>
             <Route exact path="/home">
-              <Home currentId={this.state.currentId}/>
+              <Home user={this.state.user}/>
             </Route>
             <Route path="/auth">
               <Auth />
