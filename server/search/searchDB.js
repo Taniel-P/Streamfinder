@@ -1,7 +1,7 @@
 const {Movie, User, TempUser} = require('../database/database.js');
 const redisClient = require('../cacheManager');
 const {transformToSearchDisplay, getUniqueIds, finalProviderData, createFinalMovieObj, createFinalTrendingArr, createFinalSuggestedArr} = require('./searchHelpers');
-
+const {transformHistoryResponse, transformToHomeResponse} = require('../home/movieHelpers')
 const {getHistory, getTrending, getSuggested, getProviders} = require('./APIController');
 
 module.exports = {
@@ -56,7 +56,7 @@ module.exports = {
                       userData[0].history.forEach((historyObj) => {
                         if (historyObj[0].title.toLowerCase() !== finalMovieObj.title.toLowerCase()) {
                           User.updateOne({username: user, $push: {history: finalMovieObj}}, (err, data) => {
-                            console.log('saved new record: ', data);
+                            console.log('saved new record: User History');
                           });
                         } else {
                           console.log('record exists already yooo');
@@ -64,8 +64,9 @@ module.exports = {
                       });
 
                     } else if (!userData[0].history.length) {
+                
                       User.updateOne({username: user, $push: {history: finalMovieObj}}, (err, data) => {
-                        console.log('saved new record: ', data);
+                        console.log('saved new record: MovieSchema');
                       });
                     }
                     return true;
@@ -75,47 +76,65 @@ module.exports = {
 
                     //create finalHistoryArr - adds providers to the movies in historyArr, providers based on movies id
 
-                    //create finalTrendingArr - adds providers to the movies in trendingArr, providers based on movies id
-                    const finalTrendingArr = createFinalTrendingArr(trending, finalProviders);
-                    finalMovieObj.trending = finalTrendingArr;
-                    //create finalSuggestedArr - adds providers to the movies in suggestedArr, providers based on movies id
-                    const finalSuggestedArr = createFinalSuggestedArr(suggested, finalProviders);
-                    finalMovieObj.suggested = finalSuggestedArr;
-                    //createDbObj - adds finalHistoryArr, finalTrendingArr, and finalSuggestedArr to finalMovieObj
-                    //create movieSave - saves new movie data to schema
-                    const movieSave = (movieObj) => {
-                      let filter = {id: movieObj.id};
-                      let update = {
-                        suggested: movieObj.suggested,
-                        trending: movieObj.trending,
-                        mediaType: movieObj.mediaType,
-                        title: movieObj.title,
-                        rating: movieObj.rating,
-                        ratingCount: movieObj.ratingCount,
-                        summary: movieObj.summary,
-                        imgUrl: movieObj.imgUrl,
-                        hulu: movieObj.hulu,
-                        disney: movieObj.disney,
-                        netflix: movieObj.netflix,
-                        hbo: movieObj.hbo,
-                        apple: movieObj.apple,
-                        amazon: movieObj.amazon
+                    const finalHistory = User.find({username:user}, (err, data) => {
+                      //create finalTrendingArr - adds providers to the movies in trendingArr, providers based on movies id
+                      const finalTrendingArr = createFinalTrendingArr(trending, finalProviders);
+                      finalMovieObj.trending = finalTrendingArr;
+                      //create finalSuggestedArr - adds providers to the movies in suggestedArr, providers based on movies id
+                      const finalSuggestedArr = createFinalSuggestedArr(suggested, finalProviders);
+                      finalMovieObj.suggested = finalSuggestedArr;
+                      //createDbObj - adds finalHistoryArr, finalTrendingArr, and finalSuggestedArr to finalMovieObj
+                      //create movieSave - saves new movie data to schema
+                      const movieSave = (movieObj) => {
+                        let filter = {id: movieObj.id};
+                        let update = {
+                          suggested: movieObj.suggested,
+                          trending: movieObj.trending,
+                          mediaType: movieObj.mediaType,
+                          title: movieObj.title,
+                          rating: movieObj.rating,
+                          ratingCount: movieObj.ratingCount,
+                          summary: movieObj.summary,
+                          imgUrl: movieObj.imgUrl,
+                          hulu: movieObj.hulu,
+                          disney: movieObj.disney,
+                          netflix: movieObj.netflix,
+                          hbo: movieObj.hbo,
+                          apple: movieObj.apple,
+                          amazon: movieObj.amazon
+                        };
+                        let options = {
+                          new: true,
+                          upsert: true
+                        };
+                        Movie.findOneAndUpdate(filter, update, options, (err, data) => {
+                          // if (err) {
+                          //   console.log('ERROR in movieSave: ', err);
+                          // } else {
+                          //   console.log('SUCCESS saving movie: ', data);
+                          // }
+                        });
                       };
-                      let options = {
-                        new: true,
-                        upsert: true
-                      };
-                      Movie.findOneAndUpdate(filter, update, options, (err, data) => {
-                        if (err) {
-                          console.log('ERROR in movieSave: ', err);
-                        } else {
-                          console.log('SUCCESS saving movie: ', data);
-                        }
-                      });
-                    };
-                    movieSave(finalMovieObj);
+    
+                   
+                      movieSave(finalMovieObj)
+                      let finalResponse = {
+                        history: data[0].history,
+                        suggested: finalSuggestedArr
+
+                      }
+
+                      const movieSearchResponse = transformToHomeResponse(finalResponse)
+                      // finalMovieObj.history = movieHistoryResponse
+                      // console.log(finalMovieObj.history)
+                      // console.log(movieSearchResponse, "🚀")
+                      resolve(movieSearchResponse)
+                    })
+
+
                     //save (key) name and (value) id to redis
                     //create finalSearch - use transformToSearchDisplay (to format for search componment)
+                    // finalMovieObj.history = 
 
                     //resolve with finalSearch
 
