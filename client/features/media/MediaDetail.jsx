@@ -228,7 +228,6 @@ class MediaDetail extends React.Component {
         </div>
         <hr/>
         <div className="Reviews">
-          {/* cannot render reviews until I have this.props.userId passed to me */}
           <Reviews
             userId={this.props.userId}
             // I need mediaId passed to me from the component opening it
