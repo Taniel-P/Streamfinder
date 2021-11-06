@@ -1,7 +1,7 @@
 const {Movie, User, TempUser} = require('../database/database.js');
 const redisClient = require('../cacheManager');
-const {transformToSearchDisplay, getUniqueIds, finalProviderData, createFinalMovieObj, createFinalTrendingArr, createFinalSuggestedArr} = require('./searchHelpers');
-const {transformHistoryResponse, transformSuggestedResponse} = require('../home/movieHelpers')
+const {transformToSearchDisplay, getUniqueIds, finalProviderData, createFinalMovieObj, createFinalArrays} = require('./searchHelpers');
+const {transformHistoryResponse, transformSuggestedResponse} = require('../home/movieHelpers');
 const {getHistory, getTrending, getSuggested, getProviders} = require('./APIController');
 
 module.exports = {
@@ -45,6 +45,7 @@ module.exports = {
                 const providers = getProviders(uniqueMovieIds);
                 providers.then((data) => {
                   const finalProviders = finalProviderData(data); //<----here jaimie
+                  console.log('finalProviders: ', finalProviders);
 
                   //create finalMovieObj - adds providers to the history obj,  providers based on movies id
                   const finalMovieObj = createFinalMovieObj(history, finalProviders);
@@ -55,7 +56,7 @@ module.exports = {
                     if (userData[0].history.length) {
                       userData[0].history.forEach((historyObj) => {
                         if (historyObj[0].title.toLowerCase() !== finalMovieObj.title.toLowerCase()) {
-                          User.updateOne({username: user, $push: {history: finalMovieObj}, currentId:finalMovieObj.id}, (err, data) => {
+                          User.updateOne({username: user, $push: {history: finalMovieObj}, currentId: finalMovieObj.id}, (err, data) => {
                             console.log('saved new record: User History');
                           });
                         } else {
@@ -64,7 +65,7 @@ module.exports = {
                       });
 
                     } else if (!userData[0].history.length) {
-                
+
                       User.updateOne({username: user, $push: {history: finalMovieObj}}, (err, data) => {
                         console.log('saved new record: MovieSchema');
                       });
@@ -76,12 +77,12 @@ module.exports = {
 
                     //create finalHistoryArr - adds providers to the movies in historyArr, providers based on movies id
 
-                    const finalHistory = User.find({username:user}, (err, data) => {
+                    const finalHistory = User.find({username: user}, (err, data) => {
                       //create finalTrendingArr - adds providers to the movies in trendingArr, providers based on movies id
-                      const finalTrendingArr = createFinalTrendingArr(trending, finalProviders);
+                      const finalTrendingArr = createFinalArrays(trending, finalProviders);
                       finalMovieObj.trending = finalTrendingArr;
                       //create finalSuggestedArr - adds providers to the movies in suggestedArr, providers based on movies id
-                      const finalSuggestedArr = createFinalSuggestedArr(suggested, finalProviders);
+                      const finalSuggestedArr = createFinalArrays(suggested, finalProviders);
                       finalMovieObj.suggested = finalSuggestedArr;
                       //createDbObj - adds finalHistoryArr, finalTrendingArr, and finalSuggestedArr to finalMovieObj
                       //create movieSave - saves new movie data to schema
@@ -115,25 +116,25 @@ module.exports = {
                           // }
                         });
                       };
-    
-                   
-                      movieSave(finalMovieObj)
+
+
+                      movieSave(finalMovieObj);
                       let finalResponse = {
                         suggested: finalSuggestedArr
 
-                      }
+                      };
 
-                      const movieSearchResponse = transformSuggestedResponse(finalResponse)
+                      const movieSearchResponse = transformSuggestedResponse(finalResponse);
                       // finalMovieObj.history = movieHistoryResponse
                       // console.log(finalMovieObj.history)
                       // console.log(movieSearchResponse, "🚀")
-                      resolve(movieSearchResponse)
-                    })
+                      resolve(movieSearchResponse);
+                    });
 
 
                     //save (key) name and (value) id to redis
                     //create finalSearch - use transformToSearchDisplay (to format for search componment)
-                    // finalMovieObj.history = 
+                    // finalMovieObj.history =
 
                     //resolve with finalSearch
 
