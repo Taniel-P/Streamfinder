@@ -4,8 +4,8 @@ import {
   Switch,
   Route,
   Link
-} from "react-router-dom";
-import { Redirect } from "react-router-dom";
+} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Login from './Login';
 import CreateAccount from './CreateAccount';
 import './NewAuth.css';

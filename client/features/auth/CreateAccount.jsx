@@ -4,8 +4,8 @@ import {
   Switch,
   Route,
   Link
-} from "react-router-dom";
-import { Redirect } from "react-router-dom";
+} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Home from '../home/Home';
 import axios from 'axios';
 import './CreateAccount.css';
@@ -25,7 +25,7 @@ class CreateAccount extends React.Component {
         {name: 'Disney', id: 'disney', isSelected: false, cost: 17.99}
       ],
       redirect: null
-    }
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -35,8 +35,8 @@ class CreateAccount extends React.Component {
   handleChange(e) {
     this.setState({
       [e.target.id]: e.target.value
-    })
-  };
+    });
+  }
 
   handleMovieSelect(e) {
     let stateCopy = this.state.platforms;
@@ -47,7 +47,7 @@ class CreateAccount extends React.Component {
     }
     this.setState({
       platforms: stateCopy
-    })
+    });
   }
 
   handleKeyPress(e) {
@@ -60,69 +60,69 @@ class CreateAccount extends React.Component {
     const { pathname } = this.props.location;
     if (pathname && pathname === '/auth' || pathname === '/login' || pathname === '/createAccount') {
       this.setState({
-      redirect: '/'
+        redirect: '/'
       });
     }
-    console.log('Clicked')
+    console.log('Clicked');
     axios.post('/auth/user', this.state)
-    .then((res) => {
-      console.log('/auth Res', res);
-      if (res.status === 201) {
-        alert('Complete filling information');
-      }
-      if (res.status === 200) {
-      }
-      //Redirect to Signin page
-    })
-    .catch((err) => {
-      console.log('/user Err', err);
-      if (err) {
-        console.log('ERROR', err)
-        alert('Username or email is not available')
-      }
-    })
+      .then((res) => {
+        console.log('/auth Res', res);
+        if (res.status === 201) {
+          alert('Complete filling information');
+        }
+        if (res.status === 200) {
+        }
+        //Redirect to Signin page
+      })
+      .catch((err) => {
+        console.log('/user Err', err);
+        if (err) {
+          console.log('ERROR', err);
+          alert('Username or email is not available');
+        }
+      });
   }
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to={this.state.redirect} />
+      return <Redirect to={this.state.redirect} />;
     }
 
     return (
       <div id="CreateAccount" onKeyPress={ this.handleKeyPress }>
-      <div className="ca-titleHeader">
-        <h1>Streamfinder</h1>
+        <div className="ca-titleHeader">
+          <h1>Streamfinder</h1>
+        </div>
+        <div className="mainCreateAccount" >
+          <h1 className="createAccountHeader">Create Your Account</h1>
+          <div className='ca-login-link'>
+            <Link to="/login">Already have an account? Sign in here!</Link>
+          </div>
+          <div className="ca-name">
+            <input autoFocus type="text" id="name" placeholder="Name" onChange={this.handleChange}></input>
+          </div>
+          <div className="ca-username">
+            <input type="text" id="username" placeholder="Username" onChange={this.handleChange}></input>
+          </div>
+          <div className="ca-email">
+            <input type="email" id="email" placeholder="Email" onChange={this.handleChange}></input>
+          </div>
+          <div className="ca-password">
+            <input type="password" id="password" placeholder="Password" onChange={this.handleChange}></input>
+          </div>
+          <div className="ca-subscriptionOptions">
+            <label>Select Your Subscriptions</label>
+          </div>
+          <div className="ca-subscriptionIcons">
+            {this.state.platforms.map((platform, i) =>
+              <button id={platform.id} key={i} onClick={this.handleMovieSelect}>{platform.name}</button>
+            )}
+          </div>
+          <button onClick={this.onSubmit}>Submit</button>
+        </div>
       </div>
-      <div className="mainCreateAccount" >
-        <h1 className="createAccountHeader">Create Your Account</h1>
-      <div className='ca-login-link'>
-        <Link to="/login">Already have an account? Sign in here!</Link>
-      </div>
-        <div className="ca-name">
-          <input autoFocus type="text" id="name" placeholder="Name" onChange={this.handleChange}></input>
-        </div>
-        <div className="ca-username">
-          <input type="text" id="username" placeholder="Username" onChange={this.handleChange}></input>
-        </div>
-        <div className="ca-email">
-          <input type="email" id="email" placeholder="Email" onChange={this.handleChange}></input>
-        </div>
-        <div className="ca-password">
-          <input type="password" id="password" placeholder="Password" onChange={this.handleChange}></input>
-        </div>
-        <div className="ca-subscriptionOptions">
-          <label>Select Your Subscriptions</label>
-        </div>
-        <div className="ca-subscriptionIcons">
-          {this.state.platforms.map((platform, i) =>
-          <button id={platform.id} key={i} onClick={this.handleMovieSelect}>{platform.name}</button>
-          )}
-        </div>
-        <button onClick={this.onSubmit}>Submit</button>
-      </div>
-    </div>
-    )
-  };
+    );
+  }
 }
 
 export default CreateAccount;

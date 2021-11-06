@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchBar from '../sharedComponents/SearchBar';
 import activeMessage from '../sharedComponents/helpers/activeMessage';
-import TMDB_image from '../TMDB/TMDB_image';
+import TMDBimage from '../TMDB/TMDB_image';
 
 class SearchBarActive extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class SearchBarActive extends React.Component {
     this.state = {
       placeholder: this.placeholder,
       activeMessage: undefined
-    }
+    };
   }
 
   handleClick(e) {

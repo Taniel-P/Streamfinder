@@ -43,7 +43,7 @@ class Streamfinder extends React.Component {
     this.updateSession = this.updateSession.bind(this);
     this.checkCache = this.checkCache.bind(this);
     this.updateCache = this.updateCache.bind(this);
-    this.handleSearchIdSwitch = this.handleSearchIdSwitch.bind(this)
+    this.handleSearchIdSwitch = this.handleSearchIdSwitch.bind(this);
 
     this.cache = new Map();
     this.sessionToken = this.props.sessionToken || null;
@@ -54,8 +54,8 @@ class Streamfinder extends React.Component {
       //this is under the impression auth was valid and currentId was sent
       //to this component and updated via component did update.
       // currentId: 10138,
-      user:'lil timmy'
-    }
+      user: 'lil timmy'
+    };
   }
 
   updateSession(token) {
@@ -72,7 +72,7 @@ class Streamfinder extends React.Component {
     this.cache.set(id, data);
     this.state = {
 
-    }
+    };
   }
 
   handleSearchIdSwitch(id) {
@@ -94,40 +94,42 @@ class Streamfinder extends React.Component {
 
     return !sessionToken ? (
       <NewAuth updateSession={ updateSession } />
-      ) : (
+    ) : (
       <Router>
-          <Switch>
-            <Route exact path="/home">
-              <Home user={this.state.user}/>
-            </Route>
-            <Route path="/auth">
-              <NewAuth updateSession={ updateSession } />
-            </Route>
-            {/* <Route exact path="/signIn">
-              <SignIn updateSession={ updateSession } />
-            </Route>
-            <Route path="/createAccount">
-              <CreateAccount updateSession={ updateSession } />
-            </Route>
-            <Route exact path="/login">
-              <Login updateSession={ updateSession } />
-            </Route> */}
-            <Route path="/search">
-              <ErrorBoundary>
-                //search prolly only needs to update most recent id searched
-                <Search checkCache={ checkCache } updateCache={ updateCache } switch={this.handleSearchIdSwitch} />
-              </ErrorBoundary>
-            </Route>
-            <Route path="/media">
-              <MediaDetail checkCache={ checkCache } updateCache={ updateCache } />
-            </Route>
-            <Route path="/account">
-              <Account />
-            </Route>
-            <Route exact path="/*">
-              <Redirect to="/home" />
-            </Route>
-          </Switch>
+        <Switch>
+          <Route exact path="/home">
+            <Home user={this.state.user} />
+          </Route>
+          <Route path="/auth">
+            <NewAuth updateSession={ updateSession } />
+          </Route>
+          {/* <Route exact path="/signIn">
+            <SignIn updateSession={ updateSession } />
+          </Route>
+          <Route path="/createAccount">
+            <CreateAccount updateSession={ updateSession } />
+          </Route>
+          <Route exact path="/login">
+            <Login updateSession={ updateSession } />
+          </Route> */}
+          <Route path="/search">
+            <ErrorBoundary>
+              //search prolly only needs to update most recent id searched
+              <Search checkCache={ checkCache } updateCache={ updateCache } switch={this.handleSearchIdSwitch} />
+            </ErrorBoundary>
+          </Route>
+          <Route path="/media">
+            <ErrorBoundary>
+              <MediaDetail userId={this.state.userId} checkCache={ checkCache } updateCache={ updateCache }/>
+            </ErrorBoundary>
+          </Route>
+          <Route path="/account">
+            <Account />
+          </Route>
+          <Route exact path="/*">
+            <Redirect to="/home" />
+          </Route>
+        </Switch>
       </Router>
     );
   }
