@@ -34,7 +34,6 @@ const activeMessage = (message, callback, frameRate = 200, timeout = 8000) => {
     if (--frameIndex < 0) {
       frameIndex = dotMatrix.length - 1;
     }
-    // console.log(`${message}${dotMatrix[frame]}`, `frame: ${frame}`);
     callback(message + dotMatrix[frameIndex]);
   }, frameRate);
 
@@ -42,7 +41,5 @@ const activeMessage = (message, callback, frameRate = 200, timeout = 8000) => {
 
   return () => { clearInterval(interval); };
 };
-
-// activeMessage('Hello', console.log);
 
 export default activeMessage;
