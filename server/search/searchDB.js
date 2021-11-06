@@ -1,7 +1,7 @@
 const {Movie, User, TempUser} = require('../database/database.js');
 const redisClient = require('../cacheManager');
 const {transformToSearchDisplay, getUniqueIds, finalProviderData, createFinalMovieObj, createFinalTrendingArr, createFinalSuggestedArr} = require('./searchHelpers');
-const {transformHistoryResponse, transformToHomeResponse} = require('../home/movieHelpers')
+const {transformHistoryResponse, transformSuggestedResponse} = require('../home/movieHelpers')
 const {getHistory, getTrending, getSuggested, getProviders} = require('./APIController');
 
 module.exports = {
@@ -55,7 +55,7 @@ module.exports = {
                     if (userData[0].history.length) {
                       userData[0].history.forEach((historyObj) => {
                         if (historyObj[0].title.toLowerCase() !== finalMovieObj.title.toLowerCase()) {
-                          User.updateOne({username: user, $push: {history: finalMovieObj}}, (err, data) => {
+                          User.updateOne({username: user, $push: {history: finalMovieObj}, currentId:finalMovieObj.id}, (err, data) => {
                             console.log('saved new record: User History');
                           });
                         } else {
@@ -119,12 +119,11 @@ module.exports = {
                    
                       movieSave(finalMovieObj)
                       let finalResponse = {
-                        history: data[0].history,
                         suggested: finalSuggestedArr
 
                       }
 
-                      const movieSearchResponse = transformToHomeResponse(finalResponse)
+                      const movieSearchResponse = transformSuggestedResponse(finalResponse)
                       // finalMovieObj.history = movieHistoryResponse
                       // console.log(finalMovieObj.history)
                       // console.log(movieSearchResponse, "🚀")
