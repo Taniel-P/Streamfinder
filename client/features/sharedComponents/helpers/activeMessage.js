@@ -37,7 +37,7 @@ const activeMessage = (message, callback, frameRate = 200, timeout = 8000) => {
     callback(message + dotMatrix[frameIndex]);
   }, frameRate);
 
-  callback(message + dotMatrix[frameIndex--]);
+  callback(message + dotMatrix[--frameIndex]);
 
   return () => { clearInterval(interval); };
 };

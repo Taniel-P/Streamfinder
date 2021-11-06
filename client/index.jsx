@@ -5,7 +5,7 @@ import Streamfinder from './app/Streamfinder';
 
 window.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Streamfinder />,
+    <Streamfinder sessionToken={ window.localStorage.getItem('sessionToken') } />,
     document.getElementById('Streamfinder')
   );
 });
