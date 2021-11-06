@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 const config =require('../../../sonar-temp-config')
-import Auth from './Auth.jsx';
+import CreateAccount from './CreateAccount.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,7 +18,7 @@ import { Redirect } from "react-router-dom";
 
 describe('Test Component entry point', function () {
   it('renders without crashing given the required props', () => {
-    const wrapper = shallow(<Auth />);
+    const wrapper = shallow(<CreateAccount updateSession={() => {}} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

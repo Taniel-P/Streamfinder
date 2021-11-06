@@ -18,8 +18,6 @@ import {
 } from 'react-router-dom';
 
 import Auth from '../features/auth/Auth';
-import NewAuth from '../features/auth/NewAuth';
-import SignIn from '../features/auth/SignIn';
 import CreateAccount from '../features/auth/CreateAccount';
 import Login from '../features/auth/Login';
 import Home from '../features/home/Home';
@@ -93,7 +91,7 @@ class Streamfinder extends React.Component {
     const { updateSession, checkCache, updateCache } = this;
 
     return !sessionToken ? (
-      <NewAuth updateSession={ updateSession } />
+      <Auth updateSession={ updateSession } />
       ) : (
       <Router>
           <Switch>
@@ -101,7 +99,7 @@ class Streamfinder extends React.Component {
               <Home user={this.state.user}/>
             </Route>
             <Route path="/auth">
-              <NewAuth updateSession={ updateSession } />
+              <Auth updateSession={ updateSession } />
             </Route>
             {/* <Route exact path="/signIn">
               <SignIn updateSession={ updateSession } />
@@ -121,9 +119,7 @@ class Streamfinder extends React.Component {
             <Route path="/media">
               <MediaDetail checkCache={ checkCache } updateCache={ updateCache } />
             </Route>
-            <Route path="/account" render={(props) => <Account {...props} /> }>
-
-            </Route>
+            <Route path="/account" render={(props) => <Account {...props} /> }></Route>
             <Route exact path="/*">
               <Redirect to="/home" />
             </Route>
