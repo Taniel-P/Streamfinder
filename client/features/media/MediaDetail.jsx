@@ -196,7 +196,7 @@ class MediaDetail extends React.Component {
     }
 
     return (
-      <div id="mediaDetail">
+      <div id="MediaDetail">
         <div className="overview-header">
           <h1 className="overview-title">Streamfinder</h1>
           <SearchBar />

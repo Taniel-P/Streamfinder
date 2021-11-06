@@ -34,7 +34,7 @@ module.exports = {
         if (err) {
           console.log('ERROR in putMediaObjInUserWatchHistory: ', err);
         } else {
-          console.log('SUCCESS updateing media: ', data);
+          console.log('SUCCESS updating media: ', data);
         }
       });
     });
