@@ -36,48 +36,51 @@ class MediaDetail extends React.Component {
   }
 
   getMediaAndUserDetails() {
-    let userId = 10138;
+    //userId should come from props, but for now
+    let userId = 10130;
+    //mediaId should come from props, but for now
+    let mediaId = 10138;
     //this will be a request to the db to get media info to apply to state
     axios.get(`/media/userSubs?${userId}`)
       .then(({data}) => {
-        console.log('thyyyy data', data);
-
-        // this.setState({
-        //   suggested: data.suggested,
-        //   history: data.history,
-        //   trending: data.trending
-        // })
+        let subs = data;
+      })
+      .then(() => {
+        axios.get(`/media/mediaDetails?${mediaId}`)
+          .then(({data}) => {
+            console.log('second data: ', data);
+          });
       });
-    let subs = test.subscriptions;
+    // let subs = test.subscriptions;
 
     //on success, another request to db to find out what subscriptions the user has OR this can be passed to me in props
     //I will need the userId passed to me in props
     let userSubs = test.userSubs;
 
     //on success do some logic
-    let services = [];
-    let nonservices = [];
-    for (let i = 0; i < subs.length; i++) {
-      if (userSubs.includes(subs[i])) {
-        services.push(subs[i]);
-      } else {
-        nonservices.push(subs[i]);
-      }
-    }
+    // let services = [];
+    // let nonservices = [];
+    // for (let i = 0; i < subs.length; i++) {
+    //   if (userSubs.includes(subs[i])) {
+    //     services.push(subs[i]);
+    //   } else {
+    //     nonservices.push(subs[i]);
+    //   }
+    // }
 
-    this.setState({
-      id: test.id,
-      mediaType: test.mediaType,
-      name: test.name,
-      rating: test.rating,
-      summary: test.summary,
-      subscriptions: subs,
-      reviews: test.reviews,
-      imgUrl: test.thumbnail,
-      userSubs: userSubs,
-      watchWithSubscribed: services,
-      watchWithUnsubscribed: nonservices
-    });
+    // this.setState({
+    //   id: test.id,
+    //   mediaType: test.mediaType,
+    //   name: test.name,
+    //   rating: test.rating,
+    //   summary: test.summary,
+    //   subscriptions: subs,
+    //   reviews: test.reviews,
+    //   imgUrl: test.thumbnail,
+    //   userSubs: userSubs,
+    //   watchWithSubscribed: services,
+    //   watchWithUnsubscribed: nonservices
+    // });
   }
 
   handleLogoClick() {
