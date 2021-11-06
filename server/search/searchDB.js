@@ -1,11 +1,11 @@
-const {Movie} = require('../database/database.js');
+const {Movie, User, TempUser} = require('../database/database.js');
 const redisClient = require('../cacheManager');
-const {transformToSearchDisplay, getUniqueIds, finalProviderData, createFinalMovieObj} = require('./searchHelpers');
+const {transformToSearchDisplay, getUniqueIds, finalProviderData, createFinalMovieObj, createFinalTrendingArr, createFinalSuggestedArr} = require('./searchHelpers');
 
 const {getHistory, getTrending, getSuggested, getProviders} = require('./APIController');
 
 module.exports = {
-  getMovie: (searchInputTitle) => {
+  getMovie: (searchInputTitle, user) => {
     //we need to check cache to see if title is there
     //this is scuffed
     //because cache is not set up yet to based on auth.  A sample insert is made
@@ -48,64 +48,37 @@ module.exports = {
 
                   //create finalMovieObj - adds providers to the history obj,  providers based on movies id
                   const finalMovieObj = createFinalMovieObj(history, finalProviders);
-                  //create finalHistoryArr - adds providers to the movies in historyArr, providers based on movies id
-                  //create finalTrendingArr - adds providers to the movies in trendingArr, providers based on movies id
-                  const finalTrendingArr = (trending, finalProviders) => {
-                    trending.forEach((movie) => {
-                      let movieId = movie.id;
-                      finalProviders.forEach((movieProvider) => {
-                        if (movieProvider.id === movieId && movieProvider.providers) {
-                          for (let i = 0; i < movieProvider.providers.length; i++) {
-                            let currentService = movieProvider.providers[i];
-                            let currentLogo = movieProvider.logo_paths[i];
-                            if (currentService === 'Hulu') {
-                              movie.hulu = currentLogo;
-                            } else if (currentService === 'Disney Plus') {
-                              movie.disney = currentLogo;
-                            } else if (currentService === 'Netflix') {
-                              movie.netflix = currentLogo;
-                            } else if (currentService === 'HBO Max') {
-                              movie.hbo = currentLogo;
-                            } else if (currentService === 'Apple TV Plus') {
-                              movie.apple = currentLogo;
-                            } else if (currentService === 'Amazon Prime Video') {
-                              movie.amazon = currentLogo;
-                            }
-                          }
-                        }
-                      });
-                    });
-                  };
-                  finalTrendingArr(trending, finalProviders);
-                  //create finalSuggestedArr - adds providers to the movies in suggestedArr, providers based on movies id
-                  const finalSuggestedArr = (suggested, finalProviders) => {
-                    suggested.forEach((movie) => {
-                      let movieId = movie.id;
-                      finalProviders.forEach((movieProvider) => {
-                        if (movieProvider.id === movieId && movieProvider.providers) {
-                          for (let i = 0; i < movieProvider.providers.length; i++) {
-                            let currentService = movieProvider.providers[i];
-                            let currentLogo = movieProvider.logo_paths[i];
-                            if (currentService === 'Hulu') {
-                              movie.hulu = currentLogo;
-                            } else if (currentService === 'Disney Plus') {
-                              movie.disney = currentLogo;
-                            } else if (currentService === 'Netflix') {
-                              movie.netflix = currentLogo;
-                            } else if (currentService === 'HBO Max') {
-                              movie.hbo = currentLogo;
-                            } else if (currentService === 'Apple TV Plus') {
-                              movie.apple = currentLogo;
-                            } else if (currentService === 'Amazon Prime Video') {
-                              movie.amazon = currentLogo;
-                            }
-                          }
-                        }
-                      });
-                    });
-                  };
-                  finalSuggestedArr(suggested, finalProviders);
 
+                  //replace with real user function once running
+                  const checkAndUpdate = User.find({username: user}).then((userData) => {
+                    // console.log(userData)
+                    if (userData[0].history.length) {
+                      userData[0].history.forEach((historyObj) => {
+                        if (historyObj[0].title.toLowerCase() !== finalMovieObj.title.toLowerCase()) {
+                          User.updateOne({username: user, $push: {history: finalMovieObj}}, (err, data) => {
+                            console.log('saved new record: ', data)
+                          });
+                        } else {
+                          console.log('reocrd exists already yooo')
+                        }
+                      })
+
+                    } else if (!userData[0].history.length) {
+                     User.updateOne({username: user, $push: {history: finalMovieObj}}, (err, data) => {
+                       console.log('saved new record: ', data)
+                     });
+                    }
+                    return true
+
+                  })
+                  checkAndUpdate.then((bool) => {
+      
+                  //create finalHistoryArr - adds providers to the movies in historyArr, providers based on movies id
+                  
+                  //create finalTrendingArr - adds providers to the movies in trendingArr, providers based on movies id
+                  const finalTrendingArr = createFinalTrendingArr(trending, finalProviders);
+                  //create finalSuggestedArr - adds providers to the movies in suggestedArr, providers based on movies id
+                  const finalSuggestedArr = createFinalSuggestedArr(suggested, finalProviders);
                   //createDbObj - adds finalHistoryArr, finalTrendingArr, and finalSuggestedArr to finalMovieObj
                   //create movieSave - saves new movie data to schema
 
@@ -160,10 +133,12 @@ module.exports = {
                   //create finalSearch - use transformToSearchDisplay (to format for search componment)
 
                   //resolve with finalSearch
-                });
-              });
-            });
-          });
+                  
+                  })
+                })
+              })
+            })
+          })
         }
       });
     });

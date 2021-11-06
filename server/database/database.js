@@ -16,7 +16,8 @@ const UserSchema = mongoose.Schema({
   pass: String,
   email: String,
   subscriptions: [String],
-  currentId: Number
+  currentId: Number,
+  history: [Array]
 });
 
 const User = mongoose.model('User', UserSchema);
@@ -36,7 +37,6 @@ const MovieSchema = mongoose.Schema({
   //need to modify later like reviews
   suggested: Array,
   trending: Array,
-  history: Array,
   //modify --- needs to happen - rob being lazy atm
   mediaType: String,
   title: String,
@@ -58,4 +58,4 @@ const Movie = mongoose.model('Movie', MovieSchema);
 
 module.exports = {
   db, User, Review, Movie
-};
+}

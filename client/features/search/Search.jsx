@@ -14,6 +14,7 @@ class Search extends React.Component {
 
     this.state = {
       searchVal: '',
+      user: 'lil timmy',
       searchDisplay: []
     };
     this.handleClick = this.handleClick.bind(this);
@@ -31,7 +32,8 @@ class Search extends React.Component {
     //sends search value state/updates state
     //do stuff with server
     //set state with results
-    axios.post('/search/searchPost', {title: this.state.searchVal, user:'lil timmy'})
+    let obj = {title: this.state.searchVal, user:'lil timmy'}
+    axios.post('/search/searchPost', obj)
       .then(({data}) => {
 
         this.setState({
