@@ -57,8 +57,8 @@ class Streamfinder extends React.Component {
   }
 
   updateSession(token) {
-    console.log(token);
-    window.localStorage.setItem('sessionToken', 'fakehash');
+    console.log('TOKEN', token);
+    window.localStorage.setItem('sessionToken', token);
     this.setState({ sessionToken: token });
   }
 
@@ -112,7 +112,7 @@ class Streamfinder extends React.Component {
             </Route> */}
           <Route path="/search">
             <ErrorBoundary>
-                //search prolly only needs to update most recent id searched
+              {/* //search prolly only needs to update most recent id searched */}
               <Search checkCache={checkCache} updateCache={updateCache} switch={this.handleSearchIdSwitch} />
             </ErrorBoundary>
           </Route>

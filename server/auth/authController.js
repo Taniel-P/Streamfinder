@@ -41,16 +41,16 @@ exports.getUser = (req, res, next) => {
 
 exports.postUser = (req, res, next) => {
   const user = req.body;
-  if (user.name === null) {
+  if (user.name === null || user.name === '') {
     res.status(201).send('Name empty');
   }
-  if (user.username === null) {
+  if (user.username === null || user.username === '') {
     res.status(201).send('Username Empty');
   }
-  if (user.email === null) {
+  if (user.email === null || user.email === '') {
     res.status(201).send('Username email');
   }
-  if (user.password === null) {
+  if (user.password === null || user.password === '') {
     res.status(201).send('Password empty');
   }
   if (user.name && user.username && user.email && user.password) {

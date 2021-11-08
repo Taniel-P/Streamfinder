@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import axios from 'axios';
 // import Logger from '../../../logger.js'
+import LogOut from '../sharedComponents/LogOut';
 import './Account.css';
 
 class Account extends React.Component {
@@ -21,40 +22,31 @@ class Account extends React.Component {
       email: 'placeholder',
       password: null,
       platforms: []
-    }
+    };
   }
 
   componentDidMount() {
-    if (this.props.serverResponse) {
-      // Logger.consoleLog()
-      console.log('Server GET call for: ', this.props.location.state.user);
-      this.setState({
-        username: this.props.serverResponse.username,
-        email: this.props.serverResponse.email,
-        password: this.props.serverResponse.password,
-        platforms: this.props.serverResponse.platforms
+    const user = window.localStorage.getItem('sessionToken')
+    axios.get('/auth/user', { params: user })
+      .then((res) => {
+        console.log('ACCOUNT GET', res.data);
+        this.setState({
+          username: res.data.username,
+          email: res.data.email,
+          password: null,
+          platforms: res.data.platforms
+        });
+      })
+      .catch((err) => {
+        console.log('ACCOUNT GET ERR', err);
       });
-    } else {
-      axios.get('/auth/user', { params: this.props.location.state.user })
-        .then((res) => {
-          console.log('ACCOUNT GET', res.data);
-          this.setState({
-            username: res.data.username,
-            email: res.data.email,
-            password: null,
-            platforms: res.data.platforms
-          })
-        })
-        .catch((err) => {
-          console.log('ACCOUNT GET ERR', err);
-        })
-    }
+
   }
 
   render() {
-    { console.log('MOUNT==', this.props.location.state) }
     return (
       <div className="accountPage">
+        <LogOut/>
         <div className="users-header">
           <h1 className="users-title">Streamfinder</h1>
           <input className="users-searchBar" type="text" placeholder="Search For Movies" />
@@ -78,17 +70,17 @@ class Account extends React.Component {
           <h2>Subscription Info</h2>
           <ul>Subscriptions: {this.state.platforms.map((sub) => {
             if (sub.isSelected) {
-              return sub.name + ' '
+              return sub.name + ' ';
             }
           }
           )}</ul>
           <ul>Total Cost: {this.state.platforms.filter(({ isSelected }) => isSelected === true).reduce((sum, subs) => {
-            return sum + subs.cost
+            return sum + subs.cost;
           }, 0)}</ul>
           <ul>Most used subscription: </ul>
         </div>
       </div>
-    )
+    );
   }
 }
 

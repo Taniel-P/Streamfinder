@@ -43,14 +43,13 @@ class Login extends React.Component {
     //     redirect: '/'
     //   });
     // }
-    this.props.updateSession('fakehash');
     axios.post('/auth/login', this.state)
       .then((res) => {
         console.log('/login Res', res);
         if (!res.data) {
           alert('Incorrect password');
         } else {
-
+          this.props.updateSession(this.state.username);
         }
 
       })
@@ -60,7 +59,7 @@ class Login extends React.Component {
   }
 
   render() {
-    window.localStorage.removeItem('sessionToken');
+    // window.localStorage.removeItem('sessionToken');
     // if (this.state.redirect) {
     //   return <Redirect to={this.state.redirect} />
     // }
