@@ -19,10 +19,10 @@ class CreateAccount extends React.Component {
       email: null,
       password: null,
       platforms: [
-        {name: 'Netflix', id: 'netflix', isSelected: false, cost: 17.99},
-        {name: 'Amazon', id: 'amazon', isSelected: false, cost: 16.99},
-        {name: 'HBO', id: 'hbo', isSelected: false, cost: 15.99},
-        {name: 'Disney', id: 'disney', isSelected: false, cost: 17.99}
+        { name: 'Netflix', id: 'netflix', isSelected: false, cost: 17.99 },
+        { name: 'Amazon', id: 'amazon', isSelected: false, cost: 16.99 },
+        { name: 'HBO', id: 'hbo', isSelected: false, cost: 15.99 },
+        { name: 'Disney', id: 'disney', isSelected: false, cost: 17.99 }
       ],
       redirect: null
     };
@@ -66,7 +66,7 @@ class CreateAccount extends React.Component {
         }
         if (res.status === 200) {
           //Redirect to Signin page
-          this.setState({ redirect: '/login' })
+          this.setState({ redirect: '/login' });
         }
       })
       .catch((err) => {
@@ -84,7 +84,7 @@ class CreateAccount extends React.Component {
     }
 
     return (
-      <div id="CreateAccount" onKeyPress={ this.handleKeyPress }>
+      <div id="CreateAccount" onKeyPress={this.handleKeyPress}>
         <div className="ca-titleHeader">
           <h1>Streamfinder</h1>
         </div>
@@ -97,13 +97,13 @@ class CreateAccount extends React.Component {
             <input autoFocus type="text" name="fname" id="name" placeholder="Name" onChange={this.handleChange}></input>
           </div>
           <div className="ca-username">
-            <input type="text" name="username" autocomplete="username" id="username" placeholder="Username" onChange={this.handleChange}></input>
+            <input type="text" name="username" autoComplete="username" id="username" placeholder="Username" onChange={this.handleChange}></input>
           </div>
           <div className="ca-email">
-            <input type="text" name="email" autocomplete="email" id="email" placeholder="Email" onChange={this.handleChange}></input>
+            <input type="text" name="email" autoComplete="email" id="email" placeholder="Email" onChange={this.handleChange}></input>
           </div>
           <div className="ca-password">
-            <input type="password" name="password" autocomplete="new-password" id="password" placeholder="Password" onChange={this.handleChange}></input>
+            <input type="password" name="password" autoComplete="new-password" id="password" placeholder="Password" onChange={this.handleChange}></input>
           </div>
           <div className="ca-subscriptionOptions">
             <label>Select Your Subscriptions</label>

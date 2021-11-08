@@ -91,17 +91,17 @@ class Streamfinder extends React.Component {
     const { updateSession, checkCache, updateCache } = this;
 
     return !sessionToken ? (
-      <Auth updateSession={ updateSession } />
-      ) : (
+      <Auth updateSession={updateSession} />
+    ) : (
       <Router>
-          <Switch>
-            <Route exact path="/home">
-              <Home user={this.state.user}/>
-            </Route>
-            <Route path="/auth">
-              <Auth updateSession={ updateSession } />
-            </Route>
-            {/* <Route exact path="/signIn">
+        <Switch>
+          <Route exact path="/home">
+            <Home user={this.state.user} />
+          </Route>
+          <Route path="/auth">
+            <Auth updateSession={updateSession} />
+          </Route>
+          {/* <Route exact path="/signIn">
               <SignIn updateSession={ updateSession } />
             </Route>
             <Route path="/createAccount">
@@ -110,20 +110,20 @@ class Streamfinder extends React.Component {
             <Route exact path="/login">
               <Login updateSession={ updateSession } />
             </Route> */}
-            <Route path="/search">
-              <ErrorBoundary>
+          <Route path="/search">
+            <ErrorBoundary>
                 //search prolly only needs to update most recent id searched
-                <Search checkCache={ checkCache } updateCache={ updateCache } switch={this.handleSearchIdSwitch} />
-              </ErrorBoundary>
-            </Route>
-            <Route path="/media">
-              <MediaDetail checkCache={ checkCache } updateCache={ updateCache } />
-            </Route>
-            <Route path="/account" render={(props) => <Account {...props} /> }></Route>
-            <Route exact path="/*">
-              <Redirect to="/home" />
-            </Route>
-          </Switch>
+              <Search checkCache={checkCache} updateCache={updateCache} switch={this.handleSearchIdSwitch} />
+            </ErrorBoundary>
+          </Route>
+          <Route path="/media">
+            <MediaDetail checkCache={checkCache} updateCache={updateCache} />
+          </Route>
+          <Route path="/account" render={(props) => <Account {...props} />}></Route>
+          <Route exact path="/*">
+            <Redirect to="/home" />
+          </Route>
+        </Switch>
       </Router>
     );
   }

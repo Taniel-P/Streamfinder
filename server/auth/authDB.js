@@ -18,19 +18,19 @@ database.getUserLogin = (/* { params } */) => {
 
 database.getUser = (user) => {
   return new Promise((resolve, reject) => {
-    database.User.find({username: user})
-    .then((res) => {
-      const userObj = {
-        username: res[0].username,
-        email: res[0].email,
-        platforms: res[0].subscriptions
-      }
-      resolve(userObj)
-    })
-    .catch((err) => {
-      console.log('DB getUser Err', err)
-      reject(err);
-    })
+    database.User.find({ username: user })
+      .then((res) => {
+        const userObj = {
+          username: res[0].username,
+          email: res[0].email,
+          platforms: res[0].subscriptions
+        }
+        resolve(userObj)
+      })
+      .catch((err) => {
+        console.log('DB getUser Err', err)
+        reject(err);
+      })
   });
 };
 

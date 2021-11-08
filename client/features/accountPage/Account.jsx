@@ -35,24 +35,24 @@ class Account extends React.Component {
         platforms: this.props.serverResponse.platforms
       });
     } else {
-      axios.get('/auth/user', {params: this.props.location.state.user})
-      .then((res) => {
-        console.log('ACCOUNT GET', res.data);
-        this.setState({
-          username: res.data.username,
-          email: res.data.email,
-          password: null,
-          platforms: res.data.platforms
+      axios.get('/auth/user', { params: this.props.location.state.user })
+        .then((res) => {
+          console.log('ACCOUNT GET', res.data);
+          this.setState({
+            username: res.data.username,
+            email: res.data.email,
+            password: null,
+            platforms: res.data.platforms
+          })
         })
-      })
-      .catch((err) => {
-        console.log('ACCOUNT GET ERR', err);
-      })
+        .catch((err) => {
+          console.log('ACCOUNT GET ERR', err);
+        })
     }
   }
 
   render() {
-    {console.log('MOUNT==', this.props.location.state)}
+    { console.log('MOUNT==', this.props.location.state) }
     return (
       <div className="accountPage">
         <div className="users-header">
@@ -82,9 +82,9 @@ class Account extends React.Component {
             }
           }
           )}</ul>
-          <ul>Total Cost: {this.state.platforms.filter(({isSelected}) => isSelected === true).reduce((sum, subs) => {
-              return sum + subs.cost
-              }, 0)}</ul>
+          <ul>Total Cost: {this.state.platforms.filter(({ isSelected }) => isSelected === true).reduce((sum, subs) => {
+            return sum + subs.cost
+          }, 0)}</ul>
           <ul>Most used subscription: </ul>
         </div>
       </div>
