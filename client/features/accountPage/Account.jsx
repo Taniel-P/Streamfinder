@@ -26,7 +26,7 @@ class Account extends React.Component {
   }
 
   componentDidMount() {
-    const user = window.localStorage.getItem('sessionToken')
+    const user = window.localStorage.getItem('sessionToken');
     axios.get('/auth/user', { params: user })
       .then((res) => {
         console.log('ACCOUNT GET', res.data);
