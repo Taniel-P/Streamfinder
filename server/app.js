@@ -27,15 +27,10 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'staticAssets')));
 
 // routes(app);
-
-
 app.use('/home', homeRouter);
 app.use('/search', searchRouter);
 app.use('/auth', authorizationRouter);
 app.use('/media', mediaDetailRouter);
-
-
-
 
 app.get('*', (req, res) => {
   // const jsx = ReactDOMServer.renderToString(<Streamfinder/>);
@@ -48,7 +43,7 @@ app.get('*', (req, res) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Streamfinder</title>
         ${clientBundleStyle}
-        <link rel="icon" type="image/png" href="cornflower.png">
+        <link rel="icon" href="data:,">
       </head>
       <body>
         <div id="Streamfinder"></div>

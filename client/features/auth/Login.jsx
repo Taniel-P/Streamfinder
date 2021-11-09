@@ -37,32 +37,22 @@ class Login extends React.Component {
   }
 
   handleSubmit() {
-    // const { pathname } = this.props.location;
-    // if (pathname && pathname === '/auth' || pathname === '/login' || pathname === '/createAccount') {
-    //   this.setState({
-    //     redirect: '/'
-    //   });
-    // }
-    this.props.updateSession('fakehash');
+    this.props.updateSession(this.state.username);
     axios.post('/auth/login', this.state)
-      .then((res) => {
-        console.log('/login Res', res);
-        if (!res.data) {
-          alert('Incorrect password');
-        } else {
-        }
-
+      .then(({ data }) => {
+        console.log('/login', data);
+        this.setState({ redirect: '/account' });
       })
       .catch((err) => {
-        console.log('/login Err', err);
+        console.log('/login', err);
       });
   }
 
   render() {
     window.localStorage.removeItem('sessionToken');
-    // if (this.state.redirect) {
-    //   return <Redirect to={this.state.redirect} />
-    // }
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
 
     return (
       // <Router>
@@ -71,10 +61,10 @@ class Login extends React.Component {
       <div className="loginPage" onKeyPress={ this.handleKeyPress }>
         <h1 className="loginHeader">Sign In</h1>
         <div className="login-username">
-          <input autoFocus type="text" name="username" autocomplete="username" id="username" placeholder="Username" onChange={this.handleChange}></input>
+          <input autoFocus type="text" name="username" autoComplete="username" id="username" placeholder="Username" onChange={this.handleChange}></input>
         </div>
         <div className="login-password">
-          <input type="password" name="password" autocomplete="current-password" id="password" placeholder="Password" onChange={this.handleChange}></input>
+          <input type="password" name="password" autoComplete="current-password" id="password" placeholder="Password" onChange={this.handleChange}></input>
         </div>
         <button onClick={this.handleSubmit}>Sign in</button>
         <div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import MediaTileCarousel from '../sharedComponents/MediaTileCarousel';
+import SearchBarActive from '../sharedComponents/SearchBarActive';
 import './Home.css';
 import axios from 'axios';
 // import TempDisplay1 from '../Search/TempDisplay1';
@@ -11,6 +12,7 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
+      user: this.props.currentUser(),
       suggested: [],
       history: [],
       trending: []
@@ -19,17 +21,13 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    console.log('thispropsuser: ', this.props);
-    //if the prev props id is different from current and if id is not null
-    //when this page is hit - it should run a ajax request to server
-
-    //for the current id
-
-
-    if (this.props.user !== null && this.props.user) {
-      axios.get(`/home/homePage?${this.props.user}`)
+    const currentUser = this.props.currentUser();
+    if (currentUser && this.state.user !== currentUser) {
+      console.log('User on current session: ', currentUser);
+      console.log('User from prior session:', this.state.user);
+      axios.get(`/home/watch?username=${currentUser}`)
         .then(({data}) => {
-          console.log('thyyyy data', data);
+          console.log('User data received:', data);
 
           this.setState({
             suggested: data.suggested,
@@ -38,6 +36,11 @@ class Home extends React.Component {
           });
         });
     }
+    //if the prev props id is different from current and if id is not null
+    //when this page is hit - it should run a ajax request to server
+
+    //for the current id
+
   }
 
   handleMediaClick(event) {
@@ -61,14 +64,15 @@ class Home extends React.Component {
             className='search-button'>Search
           </button>
         </div> */}
-        <h2 className='s-header-home'>suggested</h2>
+        <SearchBarActive />
+        {/* <h2 className='s-header-home'>suggested</h2>
         <Temp data={this.state.suggested}/>
 
         <h2 className='t-header-home'>Trending</h2>
         <Temp data={this.state.trending}/>
 
         <h2 className='h-header-home'>History</h2>
-        <Temp data={this.state.history}/>
+        <Temp data={this.state.history}/> */}
         {Object.keys(data).map((carouselLabel, i) => (
           <MediaTileCarousel key={`mtc${i}`} tempData={data[carouselLabel]} label={ carouselLabel } onClick={this.handleMediaClick} />
         ))}
