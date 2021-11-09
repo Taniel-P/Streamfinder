@@ -54,7 +54,7 @@ class Login extends React.Component {
   }
 
   render() {
-    window.localStorage.removeItem('sessionToken');
+    // window.localStorage.removeItem('sessionToken');
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
     }
