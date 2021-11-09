@@ -35,7 +35,6 @@ class Streamfinder extends React.Component {
     this.updateSession = this.updateSession.bind(this);
     this.checkCache = this.checkCache.bind(this);
     this.updateCache = this.updateCache.bind(this);
-    this.handleSearchIdSwitch = this.handleSearchIdSwitch.bind(this);
 
     this.cache = new Map();
     this.sessionToken = this.props.sessionToken || null;
@@ -46,10 +45,15 @@ class Streamfinder extends React.Component {
   }
 
   updateSession(username) {
-    const sessionToken = btoa(`{"username": "${username}", "date": ${new Date().getTime()}}`);
-    window.localStorage.setItem('sessionToken', sessionToken);
-    this.setState({ sessionToken });
-    return sessionToken;
+    if (!username) {
+      window.localStorage.removeItem('sessionToken');
+      this.setState({ sessionToken: null });
+    } else {
+      const sessionToken = btoa(`{"username": "${username}", "date": ${new Date().getTime()}}`);
+      window.localStorage.setItem('sessionToken', sessionToken);
+      this.setState({ sessionToken });
+      return sessionToken;
+    }
   }
 
   sessionExpired() {
@@ -108,7 +112,7 @@ class Streamfinder extends React.Component {
       <Router>
           <Switch>
             <Route exact path="/home">
-              <Home currentUser={currentUser}/>
+              <Home currentUser={currentUser} updateSession={updateSession} />
             </Route>
             <Route path="/auth">
               <Auth updateSession={ updateSession } />
@@ -131,7 +135,9 @@ class Streamfinder extends React.Component {
           <Route path="/media">
             <MediaDetail checkCache={checkCache} updateCache={updateCache} />
           </Route>
-          <Route path="/account" render={(props) => <Account {...props} />}></Route>
+          <Route path="/account">
+            <Account updateSession={updateSession} />
+          </Route>
           <Route exact path="/*">
             <Redirect to="/home" />
           </Route>
