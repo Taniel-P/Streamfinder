@@ -5,6 +5,7 @@ import axios from 'axios';
 // import TempDisplay1 from '../Search/TempDisplay1';
 import Temp from './Temp';
 import LogOut from '../sharedComponents/LogOut';
+import UserIcon from '../sharedComponents/UserIcon';
 import data from './tempHomeData';
 
 class Home extends React.Component {
@@ -63,7 +64,8 @@ class Home extends React.Component {
             className='search-button'>Search
           </button>
         </div> */}
-        <LogOut/>
+        <LogOut />
+        <UserIcon />
         <h2 className='s-header-home'>suggested</h2>
         <Temp data={this.state.suggested}/>
 

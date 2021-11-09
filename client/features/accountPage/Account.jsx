@@ -11,6 +11,7 @@ import {
 import axios from 'axios';
 // import Logger from '../../../logger.js'
 import LogOut from '../sharedComponents/LogOut';
+import HomeIcon from '../sharedComponents/HomeIcon';
 import './Account.css';
 
 class Account extends React.Component {
@@ -29,7 +30,6 @@ class Account extends React.Component {
     const user = window.localStorage.getItem('sessionToken');
     axios.get('/auth/user', { params: user })
       .then((res) => {
-        console.log('ACCOUNT GET', res.data);
         this.setState({
           username: res.data.username,
           email: res.data.email,
@@ -40,7 +40,6 @@ class Account extends React.Component {
       .catch((err) => {
         console.log('ACCOUNT GET ERR', err);
       });
-
   }
 
   render() {
@@ -50,8 +49,7 @@ class Account extends React.Component {
         <div className="users-header">
           <h1 className="users-title">Streamfinder</h1>
           <input className="users-searchBar" type="text" placeholder="Search For Movies" />
-          <img className="users-homeIcon" src="../home/homeIcon.png" />
-          <img className="users-userIcon" src="../home/userIcon.png" />
+          <HomeIcon />
         </div>
         <hr />
         <h1 className="users-account">Account</h1>
