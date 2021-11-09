@@ -5,6 +5,7 @@ import './Home.css';
 import axios from 'axios';
 // import TempDisplay1 from '../Search/TempDisplay1';
 import Temp from './Temp';
+import LogOut from '../sharedComponents/LogOut';
 import data from './tempHomeData';
 
 class Home extends React.Component {
@@ -47,6 +48,7 @@ class Home extends React.Component {
     console.log('event: ', event);
   }
 
+
   render() {
     return (
       <div>
@@ -64,8 +66,13 @@ class Home extends React.Component {
             className='search-button'>Search
           </button>
         </div> */}
+<<<<<<< HEAD
         <SearchBarActive />
         {/* <h2 className='s-header-home'>suggested</h2>
+=======
+        <LogOut/>
+        <h2 className='s-header-home'>suggested</h2>
+>>>>>>> 5610fb3b451db4c54e336357f2446739a678476f
         <Temp data={this.state.suggested}/>
 
         <h2 className='t-header-home'>Trending</h2>

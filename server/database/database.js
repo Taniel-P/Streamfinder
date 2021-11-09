@@ -58,4 +58,4 @@ const Movie = mongoose.model('Movie', MovieSchema);
 
 module.exports = {
   db, User, Review, Movie
-}
+};

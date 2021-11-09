@@ -37,11 +37,15 @@ class Login extends React.Component {
   }
 
   handleSubmit() {
-    this.props.updateSession(this.state.username);
     axios.post('/auth/login', this.state)
-      .then(({ data }) => {
-        console.log('/login', data);
-        this.setState({ redirect: '/account' });
+      .then((res) => {
+        console.log('/login Res', res);
+        if (!res.data) {
+          alert('Incorrect password');
+        } else {
+          this.props.updateSession(this.state.username);
+        }
+
       })
       .catch((err) => {
         console.log('/login', err);
@@ -58,7 +62,7 @@ class Login extends React.Component {
       // <Router>
       //   <Switch>
       //     <Route path="/signIn">
-      <div className="loginPage" onKeyPress={ this.handleKeyPress }>
+      <div className="loginPage" onKeyPress={this.handleKeyPress}>
         <h1 className="loginHeader">Sign In</h1>
         <div className="login-username">
           <input autoFocus type="text" name="username" autoComplete="username" id="username" placeholder="Username" onChange={this.handleChange}></input>
