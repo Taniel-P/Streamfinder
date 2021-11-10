@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import '../sharedComponents/StarRatingInteractive.jsx';
 import './Reviews.css';
 import './ReviewCard.jsx';
@@ -16,31 +17,31 @@ class Reviews extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchReviews();
+    // this.fetchReviews();
   }
 
-  fetchReviews() {
-    const { userId, mediaId } = this.props;
-    axios.get('/get-review', {
-      params: {
-        userId,
-        mediaId
-      }
-    }).then((response) => {
-      const { reviewedByUser, userReview, reviews } = response;
-      if (reviewedByUser) {
-        this.setState({
-          reviewedByUser,
-          userReview,
-          reviews
-        });
-      } else {
-        this.setState({reviewedByUser: false });
-      }
-    }).catch((err) => {
-      // do something
-    });
-  }
+  // fetchReviews() {
+  //   const { userId, mediaId } = this.props;
+  //   axios.get('/get-review', {
+  //     params: {
+  //       userId,
+  //       mediaId
+  //     }
+  //   }).then((response) => {
+  //     const { reviewedByUser, userReview, reviews } = response;
+  //     if (reviewedByUser) {
+  //       this.setState({
+  //         reviewedByUser,
+  //         userReview,
+  //         reviews
+  //       });
+  //     } else {
+  //       this.setState({reviewedByUser: false });
+  //     }
+  //   }).catch((err) => {
+  //     // do something
+  //   });
+  // }
 
   handleClick(e) {
 

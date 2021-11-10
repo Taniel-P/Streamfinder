@@ -1,9 +1,11 @@
-import React from 'react';
-import StarRatingInteractive from '../sharedComponents/StarRatingInteractive';
+import React, { useState } from 'react';
+import axios from 'axios';
 import StarRating from '../sharedComponents/StarRating';
 import SearchBar from './../sharedComponents/SearchBar.jsx';
 import Reviews from './../reviews/Reviews.jsx';
+import Logo from './Logo.jsx';
 import test from './testData.js';
+import MediaModal from './MediaModal.jsx';
 import './MediaDetail.css';
 
 //figure out how to wrap with error boundary and logger
@@ -13,10 +15,10 @@ class MediaDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: '',
       mediaType: '',
       name: '',
       rating: '',
+      ratingCount: '',
       summary: '',
       subscriptions: [],
       reviews: [],
@@ -27,6 +29,8 @@ class MediaDetail extends React.Component {
     };
     this.getMediaAndUserDetails = this.getMediaAndUserDetails.bind(this);
     this.handleLogoClick = this.handleLogoClick.bind(this);
+    this.getLogoUrl = this.getLogoUrl.bind(this);
+    this.getServiceUrl = this.getServiceUrl.bind(this);
   }
 
   componentDidMount() {
@@ -34,71 +38,139 @@ class MediaDetail extends React.Component {
   }
 
   getMediaAndUserDetails() {
+    let userSubs;
+    let subs = [];
+    let userId = this.props.userId || 10138;
+    //mediaId should come from props, but for now
+    let mediaId = this.props.mediaId || 10138;
     //this will be a request to the db to get media info to apply to state
-    let subs = test.subscriptions;
+    axios.get(`/media/userSubs?${userId}`)
+      .then(({data}) => {
+        userSubs = data;
+      })
+      .then(() => {
+        axios.get(`/media/mediaDetails?${mediaId}`)
+          .then(({data}) => {
+            if (data.hulu) {
+              subs.push('Hulu');
+            }
+            if (data.disney) {
+              subs.push('Disney Plus');
+            }
+            if (data.netflix) {
+              subs.push('Netflix');
+            }
+            if (data.hbo) {
+              subs.push('HBO Max');
+            }
+            if (data.apple) {
+              subs.push('Apple TV Plus');
+            }
+            if (data.amazon) {
+              subs.push('Amazon Prime Video');
+            }
 
-    //on success, another request to db to find out what subscriptions the user has OR this can be passed to me in props
-    //I will need the userId passed to me in props
-    let userSubs = test.userSubs;
+            let services = [];
+            let nonservices = [];
+            for (let i = 0; i < subs.length; i++) {
+              if (userSubs.includes(subs[i])) {
+                services.push(subs[i]);
+              } else {
+                nonservices.push(subs[i]);
+              }
+            }
 
-    //on success do some logic
-    let services = [];
-    let nonservices = [];
-    for (let i = 0; i < subs.length; i++) {
-      if (userSubs.includes(subs[i])) {
-        services.push(subs[i]);
-      } else {
-        nonservices.push(subs[i]);
-      }
-    }
-
-    this.setState({
-      id: test.id,
-      mediaType: test.mediaType,
-      name: test.name,
-      rating: test.rating,
-      summary: test.summary,
-      subscriptions: subs,
-      reviews: test.reviews,
-      imgUrl: test.thumbnail,
-      userSubs: userSubs,
-      watchWithSubscribed: services,
-      watchWithUnsubscribed: nonservices
-    });
+            this.setState({
+              mediaType: data.mediaType,
+              name: data.title,
+              rating: (data.rating / 2),
+              ratingCount: data.ratingCount,
+              summary: data.summary,
+              subscriptions: subs,
+              reviews: data.reviews,
+              imgUrl: data.imgUrl,
+              userSubs: userSubs,
+              watchWithSubscribed: services,
+              watchWithUnsubscribed: nonservices
+            });
+          });
+      });
   }
 
-  handleLogoClick() {
-    //notify home component that user has watched the movie?
+  //this will be used to update user watch history
+  handleLogoClick(event) {
+    // //userId should come from props instead
+    // let userId = 10130;
+    // //mediaId should come from props instead
+    // let mediaId = 10138;
+    // axios.put(`/media/watchHistory?${userId}?${mediaId}`)
+    //   .then((data) => {
+    //     console.log('data: ', data)
+    //   })
+    // //notify home component that user has watched the movie?
+    // //add movie object to user history
+    console.log('logo clicked');
+  }
+
+  getLogoUrl(name) {
+    if (name === 'Hulu') {
+      return 'https://www.themoviedb.org/t/p/original/giwM8XX4V2AQb9vsoN7yti82tKK.jpg';
+    } else if (name === 'Disney Plus') {
+      return 'https://www.themoviedb.org/t/p/original/dgPueyEdOwpQ10fjuhL2WYFQwQs.jpg';
+    } else if (name === 'Netflix') {
+      return 'https://www.themoviedb.org/t/p/original/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg';
+    } else if (name === 'HBO Max') {
+      return 'https://www.themoviedb.org/t/p/original/aS2zvJWn9mwiCOeaaCkIh4wleZS.jpg';
+    } else if (name === 'Apple TV Plus') {
+      return 'https://www.themoviedb.org/t/p/original/A3WLxoSkmuxwaQkpfwL6H8WwWwM.jpg';
+    } else if (name === 'Amazon Prime Video') {
+      return 'https://www.themoviedb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg';
+    }
+  }
+
+  getServiceUrl(name) {
+    if (name === 'Hulu') {
+      return 'www.hulu.com';
+    } else if (name === 'Disney Plus') {
+      return 'disneyplus.com';
+    } else if (name === 'Netflix') {
+      return 'netflix.com';
+    } else if (name === 'HBO Max') {
+      return 'hbomax.com';
+    } else if (name === 'Apple TV Plus') {
+      return 'appletvplus.com';
+    } else if (name === 'Amazon Prime Video') {
+      return 'amazonprimevideo.com';
+    }
   }
 
   render() {
     let subscribed = this.state.watchWithSubscribed.map((name, i) => {
-      return <a
-        key={`subscribed-${i}`}
-        href={`//www.${name}.com`}
-        target='_blank'>
-        <img
-          className='streamingLogo'
-          src={`${test.logos[name]}`}
-          key={`subscribed-${i}`}
-          alt={`${name} logo`}
-          onClick={this.handleLogoClick}
-        />
-      </a>;
+      let logo = this.getLogoUrl(name);
+      let website = this.getServiceUrl(name);
+      return <Logo
+        // also need to pass media id!
+        title={this.state.name}
+        i={i}
+        name={name}
+        logo={logo}
+        website={website}
+        key={`logo-${i}`}
+      />;
     });
 
     let unsubscribed = this.state.watchWithUnsubscribed.map((name, i) => {
-      return <a
-        key={`unsubscribed-${i}`}
-        href={`//www.${name}.com`}
-        target='_blank'>
-        <img
-          className='streamingLogo'
-          src={`${test.logos[name]}`}
-          alt={`${name} logo`}
-          onClick={this.handleLogoClick}
-        />
-      </a>;
+      let logo = this.getLogoUrl(name);
+      let website = this.getServiceUrl(name);
+      return <Logo
+        // also need to pass media id!
+        title={this.state.name}
+        i={i}
+        name={name}
+        logo={logo}
+        website={website}
+        key={`logo-${i}`}
+      />;
     });
 
     let subLengthStatement,
@@ -113,50 +185,48 @@ class MediaDetail extends React.Component {
 
     if (this.state.watchWithUnsubscribed.length === 0) {
       unsubLengthStatement = 'Not available to watch on any other providers';
-    } else if (this.state.watchWithUnubscribed.length === 1) {
-      unsubLengthStatement = 'Also available on this other provider:';
+    } else if (this.state.watchWithUnsubscribed.length === 1) {
+      unsubLengthStatement = 'Available on this other provider:';
     } else {
-      unsubLengthStatement = 'Also available on these other providers:';
+      unsubLengthStatement = 'Available on these other providers:';
     }
 
     return (
-      <div id="MovieDetail">
+      <div id="MediaDetail">
         <div className="overview-header">
           <h1 className="overview-title">Streamfinder</h1>
           <SearchBar />
         </div>
         <hr/>
-        <div className="bannerImage">
-          <img className="overview-banner" src={this.state.imgUrl} alt="media poster"/>
-        </div>
-        <h1 className="mediaTitle">{this.state.name}</h1>
-        <div className="mediaRating">
-          {/* Originally we were gonna have an interactive star rating here and also a thumbs up or thumbs down...
-          Is this where we want the user to rate the media?
-          Are we keeping track of media likes or dislikes somewhere? */}
-          <StarRating avgRating={this.state.rating} />
-        </div>
-        <div className="aboutMovie">
-          <h2 className="overview-aboutHeader">About {this.state.name}</h2>
-          <p className="aboutDescription">{this.state.summary}</p>
-        </div>
-        <div className="watchOn">
-          <h2>{subLengthStatement}</h2>
-          <div className="watchOnIcons">
-            {subscribed}
+        <div id="innerDetails">
+          <div className="bannerImage">
+            <img className="overview-banner" src={this.state.imgUrl} alt="media poster"/>
           </div>
-          <h2>{unsubLengthStatement}</h2>
-          <div className="watchOnIcons">
-            {unsubscribed}
+          {/* <StarRating avgRating={this.state.rating} /> */}
+          <div className="aboutMovie">
+            <h2 className="overview-aboutHeader">{this.state.name}</h2>
+            <StarRating avgRating={this.state.rating} />
+            <p className="aboutDescription">{this.state.summary}</p>
+            <div className="watchOn">
+              <h2>{subLengthStatement}</h2>
+              <div className="watchOnIcons">
+                {subscribed}
+              </div>
+              <h2>{unsubLengthStatement}</h2>
+              <div className="watchOnIcons">
+                {unsubscribed}
+              </div>
+            </div>
           </div>
         </div>
         <hr/>
         <div className="Reviews">
-          {/* cannot render reviews until I have this.props.userId passed to me
-           <Reviews
+          <Reviews
             userId={this.props.userId}
-            mediaId={this.state.id}
-          /> */}
+            // I need mediaId passed to me from the component opening it
+            mediaId={10138}
+            reviews={this.state.reviews}
+          />
         </div>
       </div>
     );

@@ -17,7 +17,7 @@ class SearchBarActive extends React.Component {
     this.state = {
       placeholder: this.placeholder,
       activeMessage: undefined
-    }
+    };
   }
 
   onSearch(searchTerm) {

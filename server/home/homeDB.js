@@ -1,5 +1,5 @@
 const { Logger } = require('../../logger.js');
-const {Movie, User} = require('../database/database.js');
+const { Movie, User } = require('../database/database.js');
 
 module.exports = {
   getMovie:  (movieId) => {
@@ -11,7 +11,7 @@ module.exports = {
         Movie.find({id: movieId})
         .then((movieData) => {
           // const finalMovie = transformToHomeResponse(movieData[0])
-          resolve(movieData[0])
+          resolve(movieData[0]);
         })
         // TODO: No error handling
       })
@@ -24,8 +24,8 @@ module.exports = {
         .then((data) => {
           // const response = transformHistoryResponse(data[0])
           resolve(data[0])
-        })
+        });
         // TODO: No error handling
-    })
+    });
   }
-}
+};
