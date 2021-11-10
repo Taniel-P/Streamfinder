@@ -64,7 +64,7 @@ class Home extends React.Component {
             className='search-button'>Search
           </button>
         </div> */}
-        <LogOut />
+        <LogOut className="ap-logOutButton"/>
         <UserIcon />
         <h2 className='s-header-home'>suggested</h2>
         <Temp data={this.state.suggested}/>

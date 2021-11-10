@@ -8,6 +8,7 @@ import {
   useHistory,
   Redirect
 } from 'react-router-dom';
+import './UserIcon.css';
 
 class UserIcon extends React.Component {
   constructor(props) {

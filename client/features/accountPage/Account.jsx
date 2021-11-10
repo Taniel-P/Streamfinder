@@ -22,7 +22,12 @@ class Account extends React.Component {
       username: 'placeholder',
       email: 'placeholder',
       password: null,
-      platforms: []
+      platforms: [],
+      links: {
+        Netflix: 'https://www.themoviedb.org/t/p/original/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg',
+        HBO: 'https://www.themoviedb.org/t/p/original/aS2zvJWn9mwiCOeaaCkIh4wleZS.jpg',
+        Disney: 'https://www.themoviedb.org/t/p/original/dgPueyEdOwpQ10fjuhL2WYFQwQs.jpg'
+      }
     };
   }
 
@@ -45,7 +50,7 @@ class Account extends React.Component {
   render() {
     return (
       <div className="accountPage">
-        <LogOut/>
+        <LogOut />
         <div className="users-header">
           <h1 className="users-title">Streamfinder</h1>
           <input className="users-searchBar" type="text" placeholder="Search For Movies" />
@@ -66,13 +71,14 @@ class Account extends React.Component {
         <hr />
         <div className="subscriptionInfo">
           <h2>Subscription Info</h2>
-          <ul>Subscriptions: {this.state.platforms.map((sub) => {
+          <ul>Subscriptions: {this.state.platforms.map((sub, i) => {
             if (sub.isSelected) {
-              return sub.name + ' ';
+              return <img className="ap-Icon" src={this.state.links[sub.name]} key={i}/>;
+              // return sub.name + ' ';
             }
           }
           )}</ul>
-          <ul>Total Cost: {this.state.platforms.filter(({ isSelected }) => isSelected === true).reduce((sum, subs) => {
+          <ul>Total Cost: ${this.state.platforms.filter(({ isSelected }) => isSelected === true).reduce((sum, subs) => {
             return sum + subs.cost;
           }, 0)}</ul>
           <ul>Most used subscription: </ul>
