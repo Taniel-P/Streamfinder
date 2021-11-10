@@ -6,6 +6,7 @@ import axios from 'axios';
 // import TempDisplay1 from '../Search/TempDisplay1';
 import Temp from './Temp';
 import LogOut from '../auth/LogOut';
+import UserIcon from '../sharedComponents/UserIcon';
 import data from './tempHomeData';
 
 class Home extends React.Component {

@@ -63,25 +63,27 @@ class Login extends React.Component {
       // <Router>
       //   <Switch>
       //     <Route path="/signIn">
-      <div className="loginPage" onKeyPress={this.handleKeyPress}>
-        <h1 className="loginHeader">Sign In</h1>
-        <div className="login-username">
-          <input autoFocus type="text" name="username" autoComplete="username" id="username" placeholder="Username" onChange={this.handleChange}></input>
+      <div className="loginContainer">
+        <div className="login-titleHeader">
+          <h1>Streamfinder</h1>
         </div>
-        <div className="login-password">
-          <input type="password" name="password" autoComplete="current-password" id="password" placeholder="Password" onChange={this.handleChange}></input>
-        </div>
-        <button onClick={this.handleSubmit}>Sign in</button>
-        <div>
-          <Link to="/createAccount">New to Streamfinder? Sign up now!</Link>
+        <div className="loginPage" onKeyPress={this.handleKeyPress}>
+
+          <div className="mainLoginPage">
+            <h1 className="loginHeader">Sign In</h1>
+            <div className="login-username">
+              <input autoFocus type="text" name="username" autoComplete="username" id="username" placeholder="Username" onChange={this.handleChange}></input>
+            </div>
+            <div className="login-password">
+              <input type="password" name="password" autoComplete="current-password" id="password" placeholder="Password" onChange={this.handleChange}></input>
+            </div>
+            <button onClick={this.handleSubmit}>Sign in</button>
+            <div>
+              <Link style={{ color: 'cornflowerblue' }} to="/createAccount">New to Streamfinder? Sign up now!</Link>
+            </div>
+          </div>
         </div>
       </div>
-      //     </Route>
-      //     <Route path='/auth'>
-      //       <Auth />
-      //     </Route>
-      //   </Switch>
-      // </Router>
     );
   }
 }
