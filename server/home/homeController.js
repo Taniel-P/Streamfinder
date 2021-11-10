@@ -11,8 +11,6 @@ exports.getHomeInfo = (req, res, next) => {
   getHistory(queryUser).then((userObj) => {
     let userId = userObj.currentId;
     getMovie(userId).then((sAndTData) => {
-      console.log(sAndTData);
-
       const finalData = {
         history: transformHistoryResponse({history: userObj.history}),
         suggested: transformSuggestedResponse({suggested: sAndTData.suggested}),
