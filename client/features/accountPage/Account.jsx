@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import axios from 'axios';
 // import Logger from '../../../logger.js'
-import LogOut from '../sharedComponents/LogOut';
+import LogOut from '../auth/LogOut';
 import HomeIcon from '../sharedComponents/HomeIcon';
 import './Account.css';
 
@@ -50,7 +50,7 @@ class Account extends React.Component {
   render() {
     return (
       <div className="accountPage">
-        <LogOut />
+        <LogOut updateSession={this.props.updateSession} />
         <div className="users-header">
           <h1 className="users-title">Streamfinder</h1>
           <input className="users-searchBar" type="text" placeholder="Search For Movies" />

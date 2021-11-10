@@ -37,32 +37,27 @@ class Login extends React.Component {
   }
 
   handleSubmit() {
-    // const { pathname } = this.props.location;
-    // if (pathname && pathname === '/auth' || pathname === '/login' || pathname === '/createAccount') {
-    //   this.setState({
-    //     redirect: '/'
-    //   });
-    // }
-    axios.post('/auth/login', this.state)
-      .then((res) => {
-        console.log('/login Res', res);
-        if (!res.data) {
-          alert('Incorrect password');
-        } else {
-          this.props.updateSession(this.state.username);
-        }
+    this.props.updateSession(this.state.username);
 
-      })
-      .catch((err) => {
-        console.log('/login Err', err);
+    axios.post('/auth/login', this.state)
+    .then((res) => {
+      console.log('/login Res', res);
+      if (!res.data) {
+        alert('Incorrect password');
+      } else {
+        this.props.updateSession(this.state.username);
+      }
+    })
+    .catch((err) => {
+      console.log('/login', err);
       });
   }
 
   render() {
     // window.localStorage.removeItem('sessionToken');
-    // if (this.state.redirect) {
-    //   return <Redirect to={this.state.redirect} />
-    // }
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
 
     return (
       // <Router>

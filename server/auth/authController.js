@@ -19,7 +19,7 @@ exports.login = (req, res, next) => {
         res.status(500).send('Incorrect password');
       });
   } else {
-    return sendErrorResponse({ res, statusCode: 400, message: '' });
+    return sendErrorResponse({res, statusCode: 400, message: 'No credentials recieved'});
   }
 };
 
@@ -35,23 +35,23 @@ exports.getUser = (req, res, next) => {
         res.status(500).send(err);
       });
   } else {
-    return sendErrorResponse({ res, statusCode: 400, message: '' });
+    return sendErrorResponse({res, statusCode: 400, message: 'No username received'});
   }
 };
 
 exports.postUser = (req, res, next) => {
   const user = req.body;
-  if (user.name === null || user.name === '') {
-    res.status(201).send('Name empty');
+  if (user.name === null) {
+    res.status(201).send('Name required');
   }
-  if (user.username === null || user.username === '') {
-    res.status(201).send('Username Empty');
+  if (user.username === null) {
+    res.status(201).send('Username required');
   }
-  if (user.email === null || user.email === '') {
-    res.status(201).send('Username email');
+  if (user.email === null) {
+    res.status(201).send('Email required');
   }
-  if (user.password === null || user.password === '') {
-    res.status(201).send('Password empty');
+  if (user.password === null) {
+    res.status(201).send('Password required');
   }
   if (user.name && user.username && user.email && user.password) {
     authService.postUser(user)
@@ -62,7 +62,7 @@ exports.postUser = (req, res, next) => {
         res.status(500).send(err);
       });
   } else {
-    return sendErrorResponse({ res, statusCode: 400, message: '' });
+    return sendErrorResponse({res, statusCode: 400, message: 'No credentials received'});
   }
 };
 
@@ -73,6 +73,6 @@ exports.putUser = (req, res, next) => {
       .then(result => sendResponse({ res, responseBody: result.data }))
       .catch(error => sendErrorResponse({ res, statusCode: error.statusCode, message: error.message }));
   } else {
-    return sendErrorResponse({ res, statusCode: 400, message: '' });
+    return sendErrorResponse({res, statusCode: 400, message: 'No user found'});
   }
 };

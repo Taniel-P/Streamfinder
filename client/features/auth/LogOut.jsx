@@ -1,10 +1,11 @@
 import React from 'react';
 import './LogOut.css';
 
-const LogOut = () => {
+const LogOut = props => {
 
   const removeSession = () => {
-    window.localStorage.removeItem('sessionToken');
+    // window.localStorage.removeItem('sessionToken');
+    props.updateSession();
   };
 
   return (
