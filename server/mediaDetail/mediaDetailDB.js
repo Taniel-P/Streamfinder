@@ -33,9 +33,10 @@ module.exports = {
       User.findOneAndUpdate(filter, update, options, (err, data) => {
         if (err) {
           console.log('ERROR in putMediaObjInUserWatchHistory: ', err);
+          reject(err);
         } else {
-          resolve(data);
           console.log('SUCCESS updating media');
+          resolve(data);
         }
       });
     });
@@ -52,9 +53,10 @@ module.exports = {
       Movie.findOneAndUpdate(filter, update, options, (err, data) => {
         if (err) {
           console.log('ERROR in putNewRating: ', err);
+          reject(err);
         } else {
-          resolve(data);
           console.log('SUCCESS adding rating');
+          resolve(data);
         }
       });
     });
