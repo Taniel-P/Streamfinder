@@ -16,7 +16,7 @@ const UserSchema = mongoose.Schema({
   username: String,
   pass: String,
   email: String,
-  subscriptions: [String],
+  subscriptions: [],
   currentId: Number,
   history: [Array]
 });
@@ -56,4 +56,4 @@ const Movie = mongoose.model('Movie', MovieSchema);
 
 module.exports = {
   db, User, Review, Movie
-}
+};

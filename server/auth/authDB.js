@@ -18,14 +18,19 @@ database.getUserLogin = (/* { params } */) => {
 
 database.getUser = (user) => {
   return new Promise((resolve, reject) => {
-    resolve();
-    // db.getUserLogin(reviewIdFilter)
-    // .then(() => resolve())
-    // .catch(error => {
-    //   console.log('reportReview error:', error);
-    //   console.log('Server error', error);
-    //   reject({ statusCode: 500, message: error });
-    // });
+    database.User.find({ username: user })
+      .then((res) => {
+        const userObj = {
+          username: res[0].username,
+          email: res[0].email,
+          platforms: res[0].subscriptions
+        };
+        resolve(userObj);
+      })
+      .catch((err) => {
+        console.log('DB getUser Err', err);
+        reject(err);
+      });
   });
 };
 
@@ -38,14 +43,14 @@ database.login = (username, password) => {
             throw err;
           }
           resolve(result);
-        })
+        });
       })
       .catch((err) => {
-        console.log('DB Signin Err', err)
+        console.log('DB Signin Err', err);
         reject(err);
-      })
-  })
-}
+      });
+  });
+};
 
 
 database.addUser = (userObj) => {
@@ -57,17 +62,17 @@ database.addUser = (userObj) => {
         username: userObj.username,
         pass: hash,
         email: userObj.email,
-        platforms: userObj.platforms
-      })
+        subscriptions: userObj.platforms
+      });
       database.User.updateMany(filter, newUser, { upsert: true })
         .then((user) => {
-          console.log('RESOLVE', user)
+          console.log('RESOLVE', user);
           resolve(user);
         })
         .catch((err) => {
-          console.log('DB ERR', err)
+          console.log('DB ERR', err);
           reject(err);
-        })
+        });
     });
   });
 };
