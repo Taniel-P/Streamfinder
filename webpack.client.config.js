@@ -14,6 +14,7 @@ const config = {
     path: path.join(__dirname, './build/client'),
     filename: 'scripts/bundle.js',
     publicPath: `http://localhost:${clientPort}/`,
+    hashFunction: 'xxhash64',
   },
 
   devServer: {
