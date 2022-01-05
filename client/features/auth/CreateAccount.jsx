@@ -65,7 +65,7 @@ class CreateAccount extends React.Component {
         }
         if (res.status === 200) {
           //Redirect to Signin page
-          this.setState({ redirect: '/home' });
+          this.setState({ redirect: '/login' });
         }
       })
       .catch((err) => {

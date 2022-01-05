@@ -68,6 +68,7 @@ class Home extends React.Component {
           </button>
         </div> */}
         <LogOut updateSession={this.props.updateSession} />
+        <UserIcon />
         <SearchBarActive />
         {/* <h2 className='s-header-home'>suggested</h2>
         <h2 className='s-header-home'>suggested</h2>

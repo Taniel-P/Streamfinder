@@ -32,7 +32,9 @@ class Account extends React.Component {
   }
 
   componentDidMount() {
-    const user = window.localStorage.getItem('sessionToken');
+    // const info = window.localStorage.getItem('sessionToken');
+    const user = this.props.getUser();
+    // console.log('USER', user);
     axios.get('/auth/user', { params: user })
       .then((res) => {
         this.setState({
@@ -50,7 +52,7 @@ class Account extends React.Component {
   render() {
     return (
       <div className="accountPage">
-        <LogOut updateSession={this.props.updateSession} />
+        <LogOut updateSession={this.props.updateSession}/>
         <div className="users-header">
           <h1 className="users-title">Streamfinder</h1>
           <input className="users-searchBar" type="text" placeholder="Search For Movies" />
@@ -66,7 +68,7 @@ class Account extends React.Component {
           <ul>Username: {this.state.username}</ul>
           <ul>Email: {this.state.email}</ul>
           <ul>Password: ********</ul>
-          <button>Change password</button>
+          {/* <button>Change password</button> */}
         </div>
         <hr />
         <div className="subscriptionInfo">

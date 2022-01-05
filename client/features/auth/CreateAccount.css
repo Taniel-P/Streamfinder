@@ -70,12 +70,21 @@ h3 {
   padding-bottom: 1em;
 }
 
+.users-userIcon:hover {
+  opacity: 0.2;
+  cursor: pointer;
+}
+
 #netflix {
   padding-top: 1em;
   padding-left: .5em;
   padding-right: .5em;
   height: 75px;
   width: 75px;
+}
+
+#netflix:hover {
+  cursor: pointer;
 }
 
 #hbo {
@@ -86,12 +95,20 @@ h3 {
   width: 75px;
 }
 
+#hbo:hover {
+  cursor: pointer;
+}
+
 #disney {
   padding-top: 1em;
   padding-left: .5em;
   padding-right: .5em;
   height: 75px;
   width: 75px;
+}
+
+#disney:hover {
+  cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {

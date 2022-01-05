@@ -107,17 +107,17 @@ class Streamfinder extends React.Component {
     const { currentUser, sessionExpired, updateSession, checkCache, updateCache } = this;
 
     return sessionExpired() ? (
-      <Auth updateSession={ updateSession } />
-      ) : (
+      <Auth updateSession={updateSession} />
+    ) : (
       <Router>
-          <Switch>
-            <Route exact path="/home">
-              <Home currentUser={currentUser} updateSession={updateSession} />
-            </Route>
-            <Route path="/auth">
-              <Auth updateSession={ updateSession } />
-            </Route>
-            {/* <Route exact path="/signIn">
+        <Switch>
+          <Route exact path="/home">
+            <Home currentUser={currentUser} updateSession={updateSession} />
+          </Route>
+          <Route path="/auth">
+            <Auth updateSession={updateSession} />
+          </Route>
+          {/* <Route exact path="/signIn">
               <SignIn updateSession={ updateSession } />
             </Route>
             <Route path="/createAccount">
@@ -136,7 +136,7 @@ class Streamfinder extends React.Component {
             <MediaDetail checkCache={checkCache} updateCache={updateCache} />
           </Route>
           <Route path="/account">
-            <Account updateSession={updateSession} />
+            <Account updateSession={updateSession} getUser={currentUser}/>
           </Route>
           <Route exact path="/*">
             <Redirect to="/home" />
